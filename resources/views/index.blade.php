@@ -1,4 +1,4 @@
-<!-- {{-- View này sẽ kế thừa giao diện từ layout->masternnhhh ,,--}} -->
+<!-- {{-- View này sẽ kế thừa giao diện từ layout->master--}} -->
 @extends('layouts.master')
 
 @section('title')
