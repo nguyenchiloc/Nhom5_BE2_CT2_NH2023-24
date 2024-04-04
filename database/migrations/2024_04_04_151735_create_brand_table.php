@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('_group_product', function (Blueprint $table) {
-            $table->string('GroupId');
-            $table->string('GroupName');
-            $table->string('GroupDescribe');
+        Schema::create('brand', function (Blueprint $table) {
+            $table->string('BrandID');
+            $table->string('BrandName');
+            $table->string('ProductID');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_group_product');
+        Schema::dropIfExists('brand');
     }
 };

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('decentralization', function (Blueprint $table) {
+        Schema::create('_level', function (Blueprint $table) {
             $table->string('Id');
             $table->string('Name');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('decentralization');
+        Schema::dropIfExists('_level');
     }
 };

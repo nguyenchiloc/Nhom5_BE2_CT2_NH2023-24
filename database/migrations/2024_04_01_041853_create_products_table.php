@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('ProductName');
             $table->double('Price');
             $table->integer('Inventorynumber');
-            $table->string('belongs to the group');
-            $table->string('trademark');
-            $table->string('images');
-            $table->string('describe');
+            $table->string('GroupName');
+            $table->string('Brand');
+            $table->string('Images');
+            $table->string('Description');
             $table->timestamps();
         });
     }
