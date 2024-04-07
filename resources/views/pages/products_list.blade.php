@@ -7,7 +7,7 @@
 					</button>
 					@foreach($category as $row)
 						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1">
-							{{ $row->categorie_name}}
+							{{ $row->category_name}}
 						</button>
 					@endforeach
 				</div>
