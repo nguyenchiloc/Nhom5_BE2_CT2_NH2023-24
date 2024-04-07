@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PagesController;
 
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{page?}', function ($page='index') {
-    return view($page);
-})->name('page');
+// Route::get('/{page?}', function ($page='index') {
+//     return view($page);
+// })->name('page');
+Route::get('/{page?}', [PagesController::class, 'page'])->name('page');
+Route::get('/page/search', [PagesController::class, 'searchProducts'])->name('pages.search');

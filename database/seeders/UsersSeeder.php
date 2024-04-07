@@ -15,12 +15,12 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([['ID' => '01','Name' => 'Nguyen Chi Loc','Email' => 'loc09','Password' => '123',
-        'Phone' => '0906327989','Gender' => 'Nam','Date' => '2002-10-28','Address' => 'TPHCM', 'Level' => 'User','created_at' => now(),'updated_at' => now()],
-        ['ID' => '02','Name' => 'Do Thi Thao Uyen','Email' => 'uyen10','Password' => '456',
-        'Phone' => '0984562155','Gender' => 'Nu','Date' => '1996-4-20','Address' => 'TPHCM', 'Level' => 'User','created_at' => now(),'updated_at' => now()],
-        ['ID' => '03','Name' => 'Nguyen Chi Phuc','Email' => 'phuc12','Password' => '789',
-        'Phone' => '0919727907','Gender' => 'Nam','Date' => '1999-03-23','Address' => 'TPHCM', 'Level' => 'Admin','created_at' => now(),'updated_at' => now()],
+        DB::table('users')->insert([['full_name' => 'Nguyen Chi Loc','email' => 'loc09','password' => '123',
+        'phone' => '0906327989','gender' => 'Nam','date' => '2002-10-28','address' => 'TPHCM', 'level_id' => '2','created_at' => now(),'updated_at' => now()],
+        ['full_name' => 'Do Thi Thao Uyen','email' => 'uyen10','password' => '456',
+        'phone' => '0984562155','gender' => 'Nu','date' => '1996-4-20','address' => 'TPHCM', 'level_id' => '2','created_at' => now(),'updated_at' => now()],
+        ['full_name' => 'Nguyen Chi Phuc','email' => 'phuc12','password' => '789',
+        'phone' => '0919727907','gender' => 'Nam','date' => '1999-03-23','address' => 'TPHCM', 'level_id' => '1','created_at' => now(),'updated_at' => now()],
         
     ]);
     }

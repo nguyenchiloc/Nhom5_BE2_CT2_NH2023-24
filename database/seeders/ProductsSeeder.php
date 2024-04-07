@@ -16,27 +16,28 @@ class ProductsSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('products')->insert([['ProductID' => '01','ProductName' => 'Iphone 15','Price' => 2000 ,'Inventorynumber' => 7,
-        'GroupName' => 'Dien Thoai','Brand' => 'Apple','Images' => 'product-item1.jpg','Description' => 'Day La 1 Chiec Iphone', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '02','ProductName' => 'Apple Watch Series 9','Price' => 4000 ,'Inventorynumber' => 12,'GroupName' => 'Dong Ho',
-        'Brand' => 'Apple','Images' => 'product-item6.jpg','Description' => 'Day La 1 Chiec Apple Watch', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '03','ProductName' => 'Dong Ho Deo Tay','Price' => 1000 ,'Inventorynumber' => 17,'GroupName' => 'Dong ho',
-        'Brand' => 'Samsung','Images' => 'product-15.jpg','Description' => 'Day La 1 Chiec Dong Ho Deo tay', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '04','ProductName' => 'May Choi Game Cam Tay Sony','Price' => 4000 ,'Inventorynumber' => 7,
-        'GroupName' => 'May Choi Game','Brand' => 'Sony','Images' => 'post-item1.jpg','Description' => 'Day La 1 Chiec May Choi Game', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '05','ProductName' => 'Iphone 12','Price' => 2500 ,'Inventorynumber' => 12,'GroupName' => 'Dien Thoai',
-        'Brand' => 'Apple','Images' => 'product-item2.jpg','Description' => 'Day La 1 Chiec Iphone 12', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '06','ProductName' => 'Iphone 11','Price' => 2000 ,'Inventorynumber' => 17,'GroupName' => 'Dien Thoai',
-        'Brand' => 'Apple','Images' => 'product-item3.jpg','Description' => 'Day La 1 Chiec Iphone 11', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '07','ProductName' => 'Iphone 14','Price' => 2000 ,'Inventorynumber' => 7,
-        'GroupName' => 'Dien Thoai','Brand' => 'Iphone X','Images' => 'product-item4.jpg','Description' => 'Day La 1 Chiec Iphone X', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '08','ProductName' => 'Apple Watch Series 4','Price' => 3000 ,'Inventorynumber' => 12,'GroupName' => 'Dong Ho',
-        'Brand' => 'Apple','Images' => 'product-item7.jpg','Description' => 'Day La 1 Chiec Apple Watch', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '09','ProductName' => 'Dong Ho Casio','Price' => 1000 ,'Inventorynumber' => 17,'GroupName' => 'Dong ho',
-        'Brand' => 'Casio','Images' => 'product-item-8.jpg','Description' => 'Day La 1 Chiec Dong Ho Casio', 'created_at' => now(),'updated_at' => now()],
-        ['ProductID' => '10','ProductName' => 'Tai Nghe Bluetooth Xiaomi','Price' => 2000 ,'Inventorynumber' => 47,'GroupName' => 'Tai Nghe',
-        'Brand' => 'Xiaomi','Images' => 'post-item11.jpg','Description' => 'Day La 1 Chiec Tai Nghe Xiaomi
-        ', 'created_at' => now(),'updated_at' => now()],
+        DB::table('products')->insert([
+        ['product_name' => 'Iphone 15','product_price' => 30000000 ,'product_qty' => 7,
+        'category_id' => 1,'brand_id' => 1,'product_images' => 'product_1.jpg','product_description' => 'Đây là một chiếc Iphone 15', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Samsung S20','product_price' => 12000000 ,'product_qty' => 10,
+        'category_id' => 1,'brand_id' => 2,'product_images' => 'product_2.jpg','product_description' => 'Đây là một chiếc sam sung', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Iphone 12','product_price' => 15000000 ,'product_qty' => 2,
+        'category_id' => 1,'brand_id' => 1,'product_images' => 'product_3.jpg','product_description' => 'Đây là một chiếc Iphone 15', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Samsung A18','product_price' => 12000000 ,'product_qty' => 10,
+        'category_id' => 1,'brand_id' => 2,'product_images' => 'product_4.jpg','product_description' => 'Đây là một chiếc Samsung', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Apple Watch T6','product_price' => 8200000 ,'product_qty' => 10,
+        'category_id' => 2,'brand_id' => 2,'product_images' => 'product_5.jpg','product_description' => 'Đây là một chiếc đồng hồ thông minh Apple', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Samsung Watch S1','product_price' => 4500000 ,'product_qty' => 23,
+        'category_id' => 2,'brand_id' => 2,'product_images' => 'product_6.jpg','product_description' => 'Đây là một chiếc đồng hồ thông minh Samsung', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Samsung Watch A3','product_price' => 3000000 ,'product_qty' => 21,
+        'category_id' => 2,'brand_id' => 2,'product_images' => 'product_7.jpg','product_description' => 'Đây là một chiếc đồng hồ thông minh Samsung', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Tai nghe Bluetooth True Wireless AVA+ FreeGo ','product_price' => 1000000 ,'product_qty' => 50,
+        'category_id' => 3,'brand_id' => 2,'product_images' => 'product_10.jpg','product_description' => 'Đây là một chiếc tai nghe bluetooth Samsung', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Máy ảnh kỹ thuật số S10 ','product_price' => 14000000 ,'product_qty' => 50,
+        'category_id' => 3,'brand_id' => 2,'product_images' => 'product_18.jpg','product_description' => 'Đây là một chiếc máy ảnh kỹ thuật số hiệu thuộc thương hiệu Samsung', 'created_at' => now(),'updated_at' => now()],
+        ['product_name' => 'Iphone 12 Promax','product_price' => 1000000 ,'product_qty' => 50,
+        'category_id' => 1,'brand_id' => 1,'product_images' => 'product_17.jpg','product_description' => 'Đây là một chiếc sam sung', 'created_at' => now(),'updated_at' => now()],
+        
     ]);
     }
 }

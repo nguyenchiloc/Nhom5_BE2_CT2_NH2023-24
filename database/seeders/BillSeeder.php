@@ -16,12 +16,12 @@ class BillSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('bill')->insert([['BillID' => '01','UserID' => '01','ProductID' => '01','ProductNumber' => 10 ,'Totalmoney' => 20000 ,
-        'DateInvoice' => '2024/03/18','created_at' => now(),'updated_at' => now()],
-        ['BillID' => '02','UserID' => '02','ProductID' => '02','ProductNumber' => 2 ,'Totalmoney' => 8000 ,
-        'DateInvoice' => '2024/03/21','created_at' => now(),'updated_at' => now()],
-        ['BillID' => '03','UserID' => '03','ProductID' => '03','ProductNumber' => 4 ,'Totalmoney' => 4000 ,
-        'DateInvoice' => '2024/03/21','created_at' => now(),'updated_at' => now()],
+        DB::table('bill')->insert([['user_id' => 1,'product_id' => 1,'total_qty' => 10 ,'total_amount' => 20000 ,
+        'date_invoice' => '2024/03/18','created_at' => now(),'updated_at' => now()],
+        ['user_id' => 2,'product_id' => 2,'total_qty' => 2 ,'total_amount' => 8000 ,
+        'date_invoice' => '2024/03/21','created_at' => now(),'updated_at' => now()],
+        ['user_id' => 3,'product_id' => 3,'total_qty' => 4 ,'total_amount' => 4000 ,
+        'date_invoice' => '2024/03/21','created_at' => now(),'updated_at' => now()],
     ]);
     }
 }

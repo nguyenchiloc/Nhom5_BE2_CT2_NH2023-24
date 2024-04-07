@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bill', function (Blueprint $table) {
-            $table->string('BillID');
-            $table->string('UserID');
-            $table->string('ProductID');
-            $table->integer('ProductNumber');
-            $table->double('Totalmoney');
-            $table->date('DateInvoice');
+            $table->id('bill_id');
+            $table->integer('user_id');
+            $table->integer('product_id');
+            $table->integer('total_qty');
+            $table->double('total_amount');
+            $table->date('date_invoice');
             $table->timestamps();
         });
     }

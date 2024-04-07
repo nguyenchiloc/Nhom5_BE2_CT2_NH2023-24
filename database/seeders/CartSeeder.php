@@ -16,9 +16,9 @@ class CartSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('cart')->insert([['CartID' => '01','UserID' => '01','ProductID' => '01','created_at' => now(),'updated_at' => now()],
-        ['CartID' => '02','UserID' => '02','ProductID' => '02','created_at' => now(),'updated_at' => now()],
-        ['CartID' => '03','UserID' => '03','ProductID' => '03','created_at' => now(),'updated_at' => now()],
+        DB::table('cart')->insert([['user_id' => 1,'product_id' => 1,'created_at' => now(),'updated_at' => now()],
+        ['user_id' => 2,'product_id' => 2,'created_at' => now(),'updated_at' => now()],
+        ['user_id' => 3,'product_id' => 3,'created_at' => now(),'updated_at' => now()],
     ]);
 
     }
