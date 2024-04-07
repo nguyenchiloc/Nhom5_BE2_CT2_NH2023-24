@@ -183,7 +183,6 @@ E - Sunshine
 							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
 								1
 							</a>
-
 							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
 								2
 							</a>
@@ -244,7 +243,7 @@ E - Sunshine
 								New Products
 							</h4>
 							<ul>
-								@foreach($dataProduct as $row)
+								@foreach($product_news as $row)
 									<li class="flex-w flex-t p-b-30">
 										<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
 											<img style="width: 50px;" src="{{ asset('assets/images/products/'. $row->product_images) }}" alt="PRODUCT">
