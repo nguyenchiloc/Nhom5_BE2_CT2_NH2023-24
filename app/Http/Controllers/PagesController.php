@@ -25,19 +25,13 @@ class PagesController extends Controller
       $searchProducts = Product::where('product_name','LIKE','%'.$searchterm.'%')->latest()->paginate(15);
       return view('pages.search', compact('searchProducts', 'searchterm'));
    }
-   //  public function index(){
-   //      return view('index');
-   //   }
-   //   public function products(){
-   //      return view('pages.products');
-   //   }
-   //   public function contact(){
-   //      return view('pages.contact');
-   //   }
-   //   public function about(){
-   //      return view('pages.about');
-   //   }
-   //   public function blog(){
-   //      return view('pages.blog') ;
-   //   }
+   public function productDetail(Request $request, $id)
+   {
+
+      // Query Lấy các hình ảnh liên quan của các Sản phẩm đã được lọc
+      $product_detail = Product::where('product_id', $id)->first();
+      //All list
+      $products = Product::all();
+      return view('pages.products_detail', ['dataProduct'=> $products], compact('product_detail'));
+   }
 }

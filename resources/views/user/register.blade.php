@@ -8,59 +8,69 @@ E - Sunshine
 @section('layouts.cart')
 @endsection
 @section('main-content')
-
-<style>
-.account{
-    border: 2px solid blue;
-    margin-left:650px;
-    margin-top: 100px;
-    margin-bottom: 80px;
-    width:320px;
-    
-    
-}
-h2{
-    color: black;
-    margin-bottom: 10px;
-    margin-left: 110px;
-}
-.input{
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 4px;
-    margin-bottom: 6px;
-    margin-left:60px;
-}
-.submit{
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 0 40px 0 40px;
-    margin-bottom:10px;
-    margin-left: 85px;
-
-}
-</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .form-login{
+        padding: 6% 0 1% 0;
+    }
+    h1{
+      text-align: center;
+      color: #00a16b;
+      padding-top: 15px;
+    }
+    .form-control{
+        position: relative;
+        left: 30%;
+        width: 40%;
+    }
+     input[type=text], input[type=password] {
+      width: 90%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    label{
+        font-weight: 800; 
+    }
+    input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 40%;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+    input[type=submit]:hover {
+      background-color: #45a049;
+      font-weight: 800;
+    } 
+  </style>
 </head>
 <body>
-    <div class="account">
-        <h2>Register</h2>
-    <form method="GET" action="">
-        <input type="text" name="name" class="input" placeholder="Name">
-        <input type="email" name="email" class="input" placeholder="Email">
-        <input type="password" name="password " class="input" placeholder="Password">
-        <input type="submit" value ="Register" class="submit"></input>
-    </form>
-
-
-
+  <div class="container">
+    <div class="form-login">
+        <h1>Register Account</h1>
+        <form action="" class="form-control" method="GET">
+        <label for="username">User Name</label>
+        <input type="text" id="username" name="username" placeholder="Input user name.."><br>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Input email.."><br>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" minlength="8" placeholder="Input password.."><br>
+        <input type="submit" value="Submit">
+        </form>
     </div>
-
+  </div>
 </body>
 </html>
 
@@ -71,3 +81,4 @@ h2{
     
 @section('custom-scripts')
 @endsection
+

@@ -204,35 +204,30 @@ E - Sunshine
 							<h4 class="mtext-112 cl2 p-b-33">
 								Categories
 							</h4>
-
 							<ul>
+								<li class="bor18">
+									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
+										Laptop
+									</a>
+								</li>
 								<li class="bor18">
 									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 										Mobile Phones
 									</a>
 								</li>
-
 								<li class="bor18">
 									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 										Smart Watches
 									</a>
 								</li>
-
 								<li class="bor18">
 									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 										Headphones
 									</a>
 								</li>
-
 								<li class="bor18">
 									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
 										Accessories
-									</a>
-								</li>
-
-								<li class="bor18">
-									<a href="#" class="dis-block stext-115 cl6 hov-cl1 trans-04 p-tb-8 p-lr-4">
-										Laptop
 									</a>
 								</li>
 							</ul>
