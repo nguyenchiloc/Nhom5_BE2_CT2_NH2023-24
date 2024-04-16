@@ -16,9 +16,9 @@ class BrandSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('brand')->insert([[ 'brand_name' => 'Apple' , 'created_at' => now() , 'updated_at' => now()],
-        [ 'brand_name' => 'Samsung', 'created_at' => now() , 'updated_at' => now()],
-        [ 'brand_name' => 'Casio' , 'created_at' => now() , 'updated_at' => now()],
+        DB::table('brand')->insert([[ 'brand_name' => 'Apple' ,'brand_status' => '1', 'created_at' => now() , 'updated_at' => now()],
+        [ 'brand_name' => 'Samsung', 'brand_status' => '1','created_at' => now() , 'updated_at' => now()],
+        [ 'brand_name' => 'Casio' , 'brand_status' => '1','created_at' => now() , 'updated_at' => now()],
     ]);
     }
 }

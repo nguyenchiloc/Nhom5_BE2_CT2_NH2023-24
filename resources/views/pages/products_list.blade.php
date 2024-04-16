@@ -2,13 +2,16 @@
 	<div class="container">
 		<div class="flex-w flex-sb-m p-b-52">
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-				<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1">
-					All Products
-				</button>
-				@foreach($category as $row)
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1">
-						{{ $row->category_name}}
+				<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
+					<button name="all" type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {{ Request::is('All Products') ? 'how-active1' : '' }} list_category">
+						All Products
 					</button>
+				</form>
+				@foreach($category as $row)
+					<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
+						<button id="{{ $return_fillter}}" name="category" type="submit" value="{{ $row->category_id}}"  class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5  list_category">{{ $row->category_name}}
+						</button>
+					</form>
 				@endforeach
 			</div>
 			<div class="flex-w flex-c-m m-tb-10">
@@ -158,7 +161,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row isotope-grid">
+		<div class="row isotope-grid" id="pos">
 			<!-- product -->
 			@foreach($dataProduct as $row)
 			<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
@@ -198,4 +201,18 @@
 		</div>
 	</div>
 </div>
+<script>
+	//list category hover
+	const numList_category = document.querySelectorAll(".list_category");
+	var numCategory  = Number(numList_category[1].id)
+	numList_category.forEach(element => {
+		element.addEventListener('click', function(){
+			for (i = 0; i < numList_category.length; i++) {
+				numList_category[i].classList.remove('how-active1');
+			}
+		})
+		numList_category[numCategory].classList.add('how-active1');
+});
+	
+</script>
 		

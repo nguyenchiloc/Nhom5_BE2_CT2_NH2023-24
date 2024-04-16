@@ -9,15 +9,23 @@ use App\Models\Brand;
 
 class PagesController extends Controller
 {
-   public function page($page="index"){
+   public function page(Request $request, $page="index"){
       //$product = Product::getProduct();//Product::all();//Product::all()->take(6);  số lượng sản phẩm hiển thị
      // $product = Product::all()->sortBy("product_id")->take(6);
-      $products = Product::all(); //hiển thị danh sách  sản phẩm
+      $return_fillter = "";
+      if ($request->has('category')) {
+         $products = Product::where('category_id', $request->input('category'))->latest()->paginate(15);
+         $return_fillter = $request->input('category');
+      }
+      else{
+         $products = Product::all();
+      }
+      //hiển thị danh sách  sản phẩm
       $category = Category::all(); //hiển thị danh sách loại sản phẩm
       $brands = Brand::all(); //hiển thị danh sách thương hiệu 
       $product_news = Product::getProductNews(); //lấy sản phẩm mới nhất hiển thị cho page blog
       //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
-      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news'));
+      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'return_fillter'));
    }
    public function searchProducts(Request $request)
    {

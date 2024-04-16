@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('brand_id');
             $table->string('product_images');
             $table->string('product_description');
+            $table->string('product_status');
             $table->timestamps();
         });
     }

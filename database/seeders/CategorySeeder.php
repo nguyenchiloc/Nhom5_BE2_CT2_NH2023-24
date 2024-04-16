@@ -17,9 +17,9 @@ class CategorySeeder extends Seeder
     {
         //
         DB::table('category')->insert([
-            ['category_name' => 'Điện thoại','category_description' => 'Các sản phẩm điện thoại','created_at' => now(),'updated_at' => now()],
-            ['category_name' => 'Đồng hồ','category_description' => 'Các sản phẩm đồng hồ','created_at' => now(),'updated_at' => now()],
-            ['category_name' => 'Phụ kiện khác','category_description' => 'Các sản phẩm khác','created_at' => now(),'updated_at' => now()],
+            ['category_name' => 'Điện thoại','category_description' => 'Các sản phẩm điện thoại','category_status' => '1','created_at' => now(),'updated_at' => now()],
+            ['category_name' => 'Đồng hồ','category_description' => 'Các sản phẩm đồng hồ','category_status' => '1','created_at' => now(),'updated_at' => now()],
+            ['category_name' => 'Phụ kiện khác','category_description' => 'Các sản phẩm khác','category_status' => '1','created_at' => now(),'updated_at' => now()],
         ]);
     }
 }
