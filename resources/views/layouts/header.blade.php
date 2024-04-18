@@ -25,11 +25,11 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							USD
 						</a>
-						<a href="{{ route('user.login') }}" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">
 							Log in
 						</a>
 
-						<a href="{{ route('user.register') }}" class="flex-c-m trans-04 p-lr-25">
+						<a href="{{ route('register') }}" class="flex-c-m trans-04 p-lr-25">
 							Register
 						</a>
 					</div>
