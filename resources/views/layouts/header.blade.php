@@ -25,13 +25,35 @@
 						<a href="#" class="flex-c-m trans-04 p-lr-25">
 							USD
 						</a>
+						@guest
 						<a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">
 							Log in
 						</a>
-
 						<a href="{{ route('register') }}" class="flex-c-m trans-04 p-lr-25">
 							Register
 						</a>
+						@else
+						<ul class="flex-c-m trans-04 p-lr-25">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+									{{ Auth::user()->name }} <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="{{ route('logout') }}"
+											onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();">
+											Logout
+										</a>
+										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+											{{ csrf_field() }}
+										</form>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						
+						@endguest
 					</div>
 				</div>
 			</div>

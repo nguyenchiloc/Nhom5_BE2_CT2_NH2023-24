@@ -11,16 +11,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Illuminate\View\View;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      */
-    public function create(): View
+    public function create(): Response
     {
-        return view('auth.register');
+        return Inertia::render('Auth/Register');
     }
 
     /**
@@ -28,11 +29,11 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
-            'full_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'full_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -40,6 +41,11 @@ class RegisteredUserController extends Controller
             'full_name' => $request->full_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => '0123456789',
+            'gender' => 'Nữ',
+            'date' => '1996-4-20',
+            'address' => 'SaiGon',
+            'level_id' => '1',
         ]);
 
         event(new Registered($user));

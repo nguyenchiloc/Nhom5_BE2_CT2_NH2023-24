@@ -12,10 +12,10 @@ class UserController extends Controller
 {
     //Login
     public function login(){
-        return view('auth.login');   
+        return view('login');   
     }
     //Register
     public function register(){
-        return view('user.register');   
+        return view('auth.register');   
     }
 }
