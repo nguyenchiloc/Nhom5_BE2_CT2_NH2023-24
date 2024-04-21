@@ -8,52 +8,28 @@
 					<div class="left-top-bar">
 						Free shipping for standard order over $100
 					</div>
-
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							Help & FAQs
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							My Account
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							EN
-						</a>
-
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
-							USD
-						</a>
-						@guest
-						<a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">
-							Log in
-						</a>
-						<a href="{{ route('register') }}" class="flex-c-m trans-04 p-lr-25">
-							Register
-						</a>
-						@else
-						<ul class="flex-c-m trans-04 p-lr-25">
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-									{{ Auth::user()->name }} <span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a href="{{ route('logout') }}"
-											onclick="event.preventDefault();
-													document.getElementById('logout-form').submit();">
-											Logout
+						@method('POST')
+						@if (Route::has('login'))
+								@auth
+								@foreach($user_name as $user_name) 
+									<a href="{{ route('profile.index') }}" class="flex-c-m trans-04 p-lr-25"> {{ $user_name->full_name}}</a>
+								@endforeach
+									<a href="{{ route('home') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex-c-m trans-04 p-lr-25">Log Out</a> 
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+										@csrf
+									</form>
+								@else
+									<a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">
+										Log in
+									</a>
+									@if (Route::has('register'))
+										<a href="{{ route('register') }}" class="flex-c-m trans-04 p-lr-25">
+											Register
 										</a>
-										<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-											{{ csrf_field() }}
-										</form>
-									</li>
-								</ul>
-							</li>
-						</ul>
-						
-						@endguest
+									@endif
+								@endauth
+						@endif
 					</div>
 				</div>
 			</div>

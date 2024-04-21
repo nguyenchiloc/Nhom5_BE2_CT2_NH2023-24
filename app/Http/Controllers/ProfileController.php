@@ -1,63 +1,155 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Http\Requests\ProfileUpdateRequest;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
-use Inertia\Response;
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
+use Flasher\Prime\FlasherInterface;
+
 
 class ProfileController extends Controller
 {
     /**
-     * Display the user's profile form.
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request): Response
+    public function index(Request $request)
     {
-        return Inertia::render('Profile/Edit', [
-            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'status' => session('status'),
-        ]);
+        $user = Auth::user();
+        return view('auth.profile', compact('user'));
     }
 
     /**
-     * Update the user's profile information.
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function create()
     {
-        $request->user()->fill($request->validated());
+        //
+    }
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        // 
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id, FlasherInterface $flasher)
+    {
+        $user = User::findOrFail($id);
+        $this->validate($request,[
+            'full_name' => 'required|max:120',
+            'phone'     => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|min:9'
+        ]);
+        $user->full_name = $request->full_name;
+        $user->phone    = $request->phone;
+        $user->gender   = $request->gender;
+        $user->date     = $request->date;
+        $user->address  = $request->address;
+        $inputs = $request->all();
+        
+        //Kiểm tra có bị thay đổi ko?
+        
+        if($user->isDirty('full_name')) 
+        {
+            $user->update([
+                'full_name' => $request->full_name
+            ]);
         }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit');
+        if($user->isDirty('phone')) 
+        {
+            $user->update([
+                'phone' => $request->phone
+            ]);
+        }
+        if($user->isDirty('gender')) 
+        {
+            $user->update([
+                'gender' => $request->gender
+            ]);
+        }
+        if($user->isDirty('date')) 
+        {
+            $user->update([
+                'date' => $request->date
+            ]);
+        }
+        if($user->isDirty('address')) 
+        {
+            $user->update([
+                'address' => $request->address
+            ]);
+        }
+        $flasher->addSuccess('Updated success', 'Sunshine !');
+        return redirect()->back();
     }
-
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
+    public function changePassword(Request $request, $id, FlasherInterface $flasher)
     {
+        $user = User::findOrFail($id);
+
         $request->validate([
-            'password' => ['required', 'current-password'],
+            'password' => 'required|confirmed|min:5'
         ]);
+        if($request->old_password != $user->password){
+            $flasher->addError("Old Password Doesn't match!");
+            return redirect()->back();
+        }
+        $user->password = $request->password;
 
-        $user = $request->user();
-
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        if($user->isDirty('password')) {
+            $hashPass = bcrypt($request->password);
+            $user->update([
+                'password' => $hashPass
+            ]);
+            $flasher->addSuccess('Password Updated', 'Sunshine !');
+        }
+        return redirect()->back();
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

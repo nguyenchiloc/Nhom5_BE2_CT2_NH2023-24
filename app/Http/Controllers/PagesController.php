@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -21,11 +23,17 @@ class PagesController extends Controller
          $products = Product::all();
       }
       //hiển thị danh sách  sản phẩm
+      if(Auth::user() == ''){
+         $user_name = [];
+      }else{
+         //hiển thị tên tài khoản đăng nhập
+         $user_name = User::where('user_id', Auth::user()->user_id)->get();
+      }
       $category = Category::all(); //hiển thị danh sách loại sản phẩm
       $brands = Brand::all(); //hiển thị danh sách thương hiệu 
       $product_news = Product::getProductNews(); //lấy sản phẩm mới nhất hiển thị cho page blog
       //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
-      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'return_fillter'));
+      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'return_fillter', 'user_name'));
    }
    public function searchProducts(Request $request)
    {
