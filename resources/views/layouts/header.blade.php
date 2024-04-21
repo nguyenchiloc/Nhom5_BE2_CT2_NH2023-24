@@ -12,8 +12,8 @@
 						@method('POST')
 						@if (Route::has('login'))
 								@auth
-								@foreach($user_name as $user_name) 
-									<a href="{{ route('profile.index') }}" class="flex-c-m trans-04 p-lr-25"> {{ $user_name->full_name}}</a>
+								@foreach($user as $user) 
+									<a href="#" class="flex-c-m trans-04 p-lr-25"> {{ $user->full_name}}</a>
 								@endforeach
 									<a href="{{ route('home') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex-c-m trans-04 p-lr-25">Log Out</a> 
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -24,16 +24,16 @@ class PagesController extends Controller
       }
       //hiển thị danh sách  sản phẩm
       if(Auth::user() == ''){
-         $user_name = [];
+         $user = [];
       }else{
          //hiển thị tên tài khoản đăng nhập
-         $user_name = User::where('user_id', Auth::user()->user_id)->get();
+         $user = User::where('user_id', Auth::user()->user_id)->get();
       }
       $category = Category::all(); //hiển thị danh sách loại sản phẩm
       $brands = Brand::all(); //hiển thị danh sách thương hiệu 
       $product_news = Product::getProductNews(); //lấy sản phẩm mới nhất hiển thị cho page blog
       //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
-      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'return_fillter', 'user_name'));
+      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'return_fillter', 'user'));
    }
    public function searchProducts(Request $request)
    {
@@ -43,11 +43,16 @@ class PagesController extends Controller
    }
    public function productDetail(Request $request, $id)
    {
-
+      if(Auth::user() == ''){
+         $user = [];
+      }else{
+         //hiển thị tên tài khoản đăng nhập
+         $user = User::where('user_id', Auth::user()->user_id)->get();
+      }
       // Query Lấy các hình ảnh liên quan của các Sản phẩm đã được lọc
       $product_detail = Product::where('product_id', $id)->first();
       //All list
       $products = Product::all();
-      return view('pages.products_detail', ['dataProduct'=> $products], compact('product_detail'));
+      return view('pages.products_detail', ['dataProduct'=> $products], compact('product_detail', 'user'));
    }
 }

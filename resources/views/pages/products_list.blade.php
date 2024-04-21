@@ -178,7 +178,7 @@
 								{{ $row->getCategoryProduct->categorie_name}} {{ $row->product_name}}
 							</a>
 							<span class="stext-105 cl3">
-								{{ $row->product_price}} VND
+								{{ number_format($row->product_price) }} VND
 							</span>
 						</div>
 						<div class="block2-txt-child2 flex-r p-t-3">

@@ -57,7 +57,7 @@ E - Sunshine
 						{{$product_detail->product_name}}
 					</h4>
 					<span class="mtext-106 cl2">
-						{{$product_detail->product_price}}
+						{{ number_format($product_detail->product_price) }} VND
 					</span>
 					<p class="stext-102 cl3 p-t-23">
 						{{$product_detail->product_description}}
