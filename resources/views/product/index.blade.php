@@ -1,0 +1,117 @@
+@extends('layouts.admin')
+
+@section('breadcrumb')
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('product.index') }}">Home</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Products</li>
+        </ol>
+        <h5 class="font-weight-bolder mb-0">Product Management</h5>
+    </nav>
+@stop
+
+@section('content')
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <div class="row">
+                        <div class="col-6 d-flex align-items-center">
+                            <h6>All Products</h6>
+                        </div>
+                        <div class="col-6 text-end">
+                            <a class="btn bg-gradient-dark mb-0" href="{{ route('product.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Product</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-8">Name</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">Qty</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Category</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Brand</th> 
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Since</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($dataProduct as $Product)
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div>
+                                            <!-- If Product as Image it show up if not then a random picture will be displayed -->
+                                            <img src="{{ asset('assets/images/products/'. $Product->product_images_1) }}" class="avatar avatar-sm me-3" alt="avatar">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $Product->product_name }}</span>
+                                </td>
+                                <td>
+                                    <span class="text-secondary text-xs font-weight-bold">{{ number_format($Product->product_price) }} VND</span>
+                                </td>
+                                <td> 
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $Product->product_qty ?  $Product->product_qty : 0 }}</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $Product->getCategoryProduct->category_name }}</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">{{ $Product->getBrandProduct->brand_name }}</span>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    @if($Product->product_status == 'InActive')
+                                        <span class="badge badge-sm bg-gradient-secondary">InActive</span>
+                                    @else
+                                        <span class="badge badge-sm bg-gradient-success">ACTIVE</span>
+                                    @endif
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <form id="userDelete" action="{{ route('product.update', $Product->product_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('post')
+                                            <a href="{{ route('product.show', $Product->product_id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Show">
+                                                <i class="fas fa fa-eye "></i>
+                                            </a>
+                                            @csrf
+                                            @method('PATCH')
+                                            <a href="{{ route('product.update', $Product->product_id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                <i class="fas fa-edit "></i>
+                                            </a>
+                                            @method('DELETE')
+                                            <button class="cursor-pointer fas fa-trash" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete" onclick="return confirm('Are you sure?')"></button>
+                                    </form>
+                                </td>
+                                <td class="align-middle">
+                                    @foreach($dataProduct as $Product)
+                                        <form id="userDelete" action="{{ route('product.update', $Product->product_id) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            @can('Product edit')
+                                            <a href="{{ route('product.update', $Product->product_id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit Product">
+                                                <i class="fas fa-user-edit text-secondary"></i>
+                                            </a>
+                                            @endcan
+                                            @can('Product delete')
+                                                <button class="cursor-pointer fas fa-trash text-secondary" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete Product"></button>
+                                            @endcan
+                                        </form>
+                                    @endforeach
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@stop
