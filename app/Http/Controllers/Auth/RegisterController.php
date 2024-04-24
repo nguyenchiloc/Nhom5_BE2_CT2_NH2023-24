@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'gender'=>'',
             'date'=>'1994-02-14',
             'address'=>'',
+            'avatar'=>'',
             'level_id'=>'2' //mặc định là user
         ]);
     }

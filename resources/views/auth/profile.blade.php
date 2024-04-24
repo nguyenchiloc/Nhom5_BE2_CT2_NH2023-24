@@ -26,7 +26,7 @@
                 <div class="row gx-4">
                     <div class="col-auto">
                         <div class="avatar avatar-xl position-relative">
-                            <img id="uploadImg" alt="no avt" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
+                            <img id="uploadImg" src="{{ asset('assets/images/products/'. $user->avatar) }}" alt="avt" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
                         </div>
                     </div>
                     <div class="col-auto my-auto">
@@ -235,7 +235,7 @@
                                                 <div class="form-group">
                                                     <label for="old_password" class="form-control-label">{{ __('Password Current') }}</label>
                                                     <div class="@error('old_password') border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="old_password" placeholder="current password" id="old_password" name="old_password">
+                                                        <input class="form-control" type="password" placeholder="current password" id="old_password" name="old_password">
                                                         @error('old_password')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -246,10 +246,10 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="password" class="form-control-label">{{ __('Password') }}</label>
-                                                    <div class="@error('password') border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="password" placeholder="Password" id="password" name="password">
-                                                        @error('password')
+                                                    <label for="new_password" class="form-control-label">{{ __('New Password') }}</label>
+                                                    <div class="@error('new_password') border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="password" placeholder="New Password" id="new_password" name="new_password">
+                                                        @error('new_password')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </div>
@@ -261,7 +261,7 @@
                                                 <div class="form-group">
                                                     <label for="password_confirmation" class="form-control-label">{{ __('Re-Enter Password') }}</label>
                                                     <div class="@error('password_confirmation')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Re-Enter Password" id="password_confirmation" name="password_confirmation">
+                                                        <input class="form-control" type="password" placeholder="Re-Enter Password" id="password_confirmation" name="password_confirmation">
                                                         @error('password_confirmation')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -285,6 +285,7 @@
         function previewImg() {
             var imgPreview = document.getElementById('uploadImg');
             imgPreview.src = window.URL.createObjectURL(event.target.files[0]);
+            console.log(event)
         }
     </script>
 @endsection

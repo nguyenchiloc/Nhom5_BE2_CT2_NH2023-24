@@ -1,5 +1,5 @@
 <!-- Header -->
-	<header>
+<header>
 		<!-- Header desktop -->
 		<div class="container-menu-desktop">
 			<!-- Topbar -->
@@ -13,7 +13,12 @@
 						@if (Route::has('login'))
 								@auth
 								@foreach($user as $user) 
-									<a href="#" class="flex-c-m trans-04 p-lr-25"> {{ $user->full_name}}</a>
+									<a href="{{ route('profile.index') }}" class="flex-c-m trans-04 p-lr-25"> {{ $user->full_name}}</a>
+									@if ($user->level_id == '1')
+										<a href="{{ route('product.index') }}" class="flex-c-m trans-04 p-lr-25">
+											Admin
+										</a>
+									@endif
 								@endforeach
 									<a href="{{ route('home') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex-c-m trans-04 p-lr-25">Log Out</a> 
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

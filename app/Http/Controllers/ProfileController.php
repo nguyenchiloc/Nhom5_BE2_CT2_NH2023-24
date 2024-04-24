@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Flasher\Prime\FlasherInterface;
+use Illuminate\Support\Facades\Hash;
 
 
 class ProfileController extends Controller
@@ -87,60 +88,60 @@ class ProfileController extends Controller
         
         //Kiểm tra có bị thay đổi ko?
         
-        if($user->isDirty('full_name')) 
-        {
-            $user->update([
-                'full_name' => $request->full_name
-            ]);
-        }
-        if($user->isDirty('phone')) 
-        {
-            $user->update([
-                'phone' => $request->phone
-            ]);
-        }
-        if($user->isDirty('gender')) 
-        {
-            $user->update([
-                'gender' => $request->gender
-            ]);
-        }
-        if($user->isDirty('date')) 
-        {
-            $user->update([
-                'date' => $request->date
-            ]);
-        }
-        if($user->isDirty('address')) 
-        {
-            $user->update([
-                'address' => $request->address
-            ]);
-        }
-        $flasher->addSuccess('Updated success', 'Sunshine !');
-        return redirect()->back();
+        // if($user->isDirty('full_name')) 
+        // {
+        //     $user->update([
+        //         'full_name' => $request->full_name
+        //     ]);
+        // }
+        // if($user->isDirty('phone')) 
+        // {
+        //     $user->update([
+        //         'phone' => $request->phone
+        //     ]);
+        // }
+        // if($user->isDirty('gender')) 
+        // {
+        //     $user->update([
+        //         'gender' => $request->gender
+        //     ]);
+        // }
+        // if($user->isDirty('date')) 
+        // {
+        //     $user->update([
+        //         'date' => $request->date
+        //     ]);
+        // }
+        // if($user->isDirty('address')) 
+        // {
+        //     $user->update([
+        //         'address' => $request->address
+        //     ]);
+        // }
+        // $user->update([
+        //     'avatar' => $request->avatar
+        // ]);
+
+        //$flasher->addSuccess('Updated success', 'Sunshine !');
+        return $request->all();//redirect()->back();
     }
     public function changePassword(Request $request, $id, FlasherInterface $flasher)
     {
         $user = User::findOrFail($id);
-
-        $request->validate([
-            'password' => 'required|confirmed|min:5'
-        ]);
-        if($request->old_password != $user->password){
+        
+        // $request->validate([
+        //     'old_password' => 'required|confirmed|min:5',
+        //     'new_password' => 'required|confirmed|min:5'
+        // ]); tam thoi dong, check lai sau 
+        if (!Hash::check($request->old_password, $user->password)) 
+        {
             $flasher->addError("Old Password Doesn't match!");
             return redirect()->back();
         }
-        $user->password = $request->password;
-
-        if($user->isDirty('password')) {
-            $hashPass = bcrypt($request->password);
-            $user->update([
-                'password' => $hashPass
-            ]);
-            $flasher->addSuccess('Password Updated', 'Sunshine !');
-        }
-        return redirect()->back();
+        $user->password =  Hash::make($request->new_password);
+        $user->save();
+        $flasher->addSuccess('Password Updated', 'Sunshine !');
+        return  redirect()->back();
     }
     /**
      * Remove the specified resource from storage.
