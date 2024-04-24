@@ -25,7 +25,7 @@ E - Sunshine
 					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 p-t-120 isotope-item">
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="{{ asset('assets/images/products/'. $searchResult->product_images) }}" alt="IMG-PRODUCT">
+								<img src="{{ asset('assets/images/products/'. $searchResult->product_images_1) }}" alt="IMG-PRODUCT">
 								<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 									Quick View
 								</a>

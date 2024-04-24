@@ -17,12 +17,15 @@ return new class extends Migration
             $table->id('product_id');
             $table->string('product_name');
             $table->double('product_price');
+            $table->double('sale_price')->nullable();
             $table->integer('product_qty');
             $table->integer('category_id');
             $table->integer('brand_id');
-            $table->string('product_images');
             $table->string('product_description');
             $table->string('product_status');
+            $table->string('product_images_1')->nullable();
+            $table->string('product_images_2')->nullable();
+            $table->string('product_images_3')->nullable();
             $table->timestamps();
         });
     }

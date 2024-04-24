@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -21,31 +21,25 @@ use App\Http\Controllers\ProfileController;
 // Route::get('/{page?}', function ($page='index') { 
 //     return view($page);
 // })->name('page');
+
 Auth::routes();
 Route::get('/home', [PagesController::class, 'page'])->name('home');
 Route::get('/{page?}', [PagesController::class, 'page'])->name('page');
-Route::get('/page/search', [PagesController::class, 'searchProducts'])->name('pages.search');
-Route::get('/page/products_detail/{id?}', [PagesController::class, 'productDetail'])->name('pages.products_detail');
+Route::get('/search', [PagesController::class, 'searchProducts'])->name('pages.search');
+Route::get('/products_detail/{id?}', [PagesController::class, 'productDetail'])->name('pages.products_detail');
 //profiles
-Route::prefix('auth')->group(function () {
+Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function(){
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::patch('/profile/{user_id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/{user_id}/changePassword', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 });
-// Route::group([
-//     'namespace'  => 'App\Http\Controllers',
-//     'as'         => 'auth.'
-//     ], function() {
-//     Route::resource('profile', 'ProfileController');
-//     Route::patch('profile/{user}/passUpdate', [ProfileController::class, 'passUpdate'])->name('profile.passUpdate');
-//     Route::patch('profile/{user}/othersUpdate', [ProfileController::class, 'othersUpdate'])->name('profile.othersUpdate');
-
-//     Route::resource('roles','RoleController');
-//     Route::resource('permissions','PermissionController');
-
-//     Route::resource('users','UserController');
-//     Route::patch('users/{user}/passUpdate', [UserController::class, 'passUpdate'])->name('users.passUpdate');
-//     Route::patch('users/{user}/othersUpdate', [UserController::class, 'othersUpdate'])->name('users.othersUpdate');
-
-// });
+//Admin - Product
+Route::group(['prefix' => 'product', 'middleware' => ['auth']], function(){
+    Route::get('/list', [ProductController::class, 'index'])->name('product.index');
+    Route::get('/news/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/news/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/show/{product_id?}', [ProductController::class, 'show'])->name('product.show');
+    Route::get('/product/{product_id?}/edit', [ProductController::class, 'edit'])->name('product.edit');
+    Route::get('/update/{product_id?}', [ProductController::class, 'update'])->name('product.update');
+});
     

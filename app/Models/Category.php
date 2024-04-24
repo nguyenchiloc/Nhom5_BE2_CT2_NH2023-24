@@ -11,8 +11,17 @@ class Category extends Model
     public $table = "Category";
     //khóa chính 
     public $primaryKey = 'category_id';
-    use HasFactory;
+    protected $fillable = ['category_id', 'category_name'];
     public function product(){
         return $this->hasMany(Product::class, 'category_id', 'category_id');
+    }
+    public static function getCategoryName() 
+    {
+    	$category_name = [];
+    	$categories = Category::all();
+        foreach ($categories as $category) {
+            $category_name[$category->category_id] = $category->category_name;
+        } 
+        return $category_name;
     }
 }

@@ -241,7 +241,7 @@ E - Sunshine
 								@foreach($product_news as $row)
 									<li class="flex-w flex-t p-b-30">
 										<a href="#" class="wrao-pic-w size-214 hov-ovelay1 m-r-20">
-											<img style="width: 50px;" src="{{ asset('assets/images/products/'. $row->product_images) }}" alt="PRODUCT">
+											<img style="width: 50px;" src="{{ asset('assets/images/products/'. $row->product_images_1) }}" alt="PRODUCT">
 										</a>
 										<div class="size-215 flex-col-t p-t-8">
 											<a href="#" class="stext-116 cl8 hov-cl1 trans-04">

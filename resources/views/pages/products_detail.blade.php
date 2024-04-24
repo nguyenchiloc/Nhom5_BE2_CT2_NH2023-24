@@ -17,9 +17,9 @@ E - Sunshine
 						<div class="wrap-slick3-dots"></div>
 						<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 						<div class="slick3 gallery-lb">
-							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images) }}">
+							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
 								<div class="wrap-pic-w pos-relative">
-									<img src="{{ asset('assets/images/products/'. $product_detail->product_images) }}" alt="IMG-PRODUCT">
+									<img src="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}" alt="IMG-PRODUCT">
 
 									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
 										<i class="fa fa-expand"></i>
@@ -27,21 +27,21 @@ E - Sunshine
 								</div>
 							</div>
 
-							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images) }}">
+							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
 								<div class="wrap-pic-w pos-relative">
-									<img src="{{ asset('assets/images/products/'. $product_detail->product_images) }}" alt="IMG-PRODUCT">
+									<img src="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}" alt="IMG-PRODUCT">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images) }}">
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
 										<i class="fa fa-expand"></i>
 									</a>
 								</div>
 							</div>
 
-							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images) }}">
+							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
 								<div class="wrap-pic-w pos-relative">
-									<img src="{{ asset('assets/images/products/'. $product_detail->product_images) }}" alt="IMG-PRODUCT">
+									<img src="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}" alt="IMG-PRODUCT">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images) }}">
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
 										<i class="fa fa-expand"></i>
 									</a>
 								</div>
@@ -339,7 +339,7 @@ E - Sunshine
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="{{ asset('assets/images/products/'. $row->product_images) }}" alt="IMG-PRODUCT">
+								<img src="{{ asset('assets/images/products/'. $row->product_images_1) }}" alt="IMG-PRODUCT">
 								<a href="{{ route('pages.products_detail', $row->product_id)}}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Quick View
 								</a>
