@@ -12,7 +12,7 @@ class Brand extends Model
     public $table = "Brand";
     //khóa chính 
     public $primaryKey = 'brand_id';
-    use HasFactory;
+    protected $fillable = ['brand_id', 'brand_name', 'brand_description', 'brand_status'];
     public function product(){
         return $this->hasMany(Product::class, 'brand_id', 'brand_id');
     }

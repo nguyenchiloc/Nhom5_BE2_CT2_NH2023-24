@@ -73,7 +73,8 @@ class RegisterController extends Controller
             'date'=>'1994-02-14',
             'address'=>'',
             'avatar'=>'',
-            'level_id'=>'2' //mặc định là user
+            'level_id'=>'2', //mặc định là user,
+            'status'=>'Active' //mặc định active
         ]);
     }
 }

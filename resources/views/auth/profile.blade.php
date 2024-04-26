@@ -1,10 +1,10 @@
 @extends('layouts.user-auth')
     @section('breadcrumb')
             <style>
-                .text-dark-1{
+                .text-back-index{
                     color: #fff;
                 }
-                .text-dark-1:hover{
+                .text-back-index:hover{
                     color: #109525;
                 }
                 .breadcrumb-item.active {
@@ -13,8 +13,8 @@
             </style>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="text-dark-1" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-sm text-dark-1 active test" aria-current="page">Edit User</li>
+                    <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item text-sm text-back-index active test" aria-current="page">Edit User</li>
                 </ol>
             </nav>
 
@@ -121,7 +121,7 @@
                                                 <div class="form-group">
                                                     <label for="email" class="form-control-label">{{ __('Email') }}</label>
                                                     <div class="@error('email')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="email" placeholder="@example.com" value="{{ $user->email }}" id="email" name="email" disabled>
+                                                        <input class="form-control" type="email" placeholder="@mail.com" value="{{ $user->email }}" id="email" name="email" disabled>
                                                         @error('email')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -200,7 +200,7 @@
                                                     <label for="is_active" class="form-control-label">{{ __('Active') }}</label>
                                                     <div class="@error('is_active')border border-danger rounded-3 @enderror">
                                                         <select class="form-control" id="is_active" name="is_active">
-                                                            <option value="0" @if($user->is_active == 0) selected @endif>Not Active</option>
+                                                            <option value="0" @if($user->is_active == 0) selected @endif>InActive</option>
                                                             <option value="1"  @if($user->is_active != 0) selected @endif>Active</option>
                                                         </select>
                                                         @error('is_active')

@@ -18,22 +18,31 @@
 	.page_edit a:hover{
 		background-color:  #80f392;
 	}
+    .navbar-collapse {
+		display: none !important;
+    }
 </style>
 @section('content')
 	<!-- DataTales Example -->
 	<div class="container">
 		<div class="row clearfix page_edit">
-				<form id="product_edit" action="/product/{{$product->product_id}}" method="POST" class="inline">@csrf
-					@csrf
-					@method('PATCH')
-					<div class="col-md-12">
-						<a class="btn btn-primary-1" href="{{ route('product.update', $product->product_id) }}"> <i class="fa fa-edit" aria-hidden="true"></i> Edit </a>
-					</div>
-				</form>
+			<form id="product_edit" action="/product/{{$product->product_id}}" method="POST" class="inline">@csrf
+				@csrf
+				@method('PATCH')
+				<div class="col-md-12">
+					<a class="btn btn-primary-1" href="{{ route('product.edit', $product->product_id) }}"> <i class="fa fa-edit" aria-hidden="true"></i> Edit </a>
+				</div>
+			</form>
 		</div>
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+					<li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('product.index') }}">Back</a></li>
+					<li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit products</li>
+				</ol>
+			</nav>
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary"> {{ $product->title }} </h6>
+				<h6 class="m-0 font-weight-bold text-primary-1"> Thông tin sản phẩm </h6>
 			</div>
 			<div class="card-body">
 				<div class="row clearfix justify-content-md-center">

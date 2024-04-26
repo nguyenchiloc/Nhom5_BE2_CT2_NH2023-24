@@ -23,66 +23,76 @@
     <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.0.5') }}" rel="stylesheet" />
     @yield('styles')
 </head>
-<style>
-    .fa-edit, .fa-trash, .fa-eye{
-        color: #67748e;
-    }
-    .fa-eye:hover{
-        color: #2196f3;
-    }
-    .fa-edit:hover{
-        color: green;
-    }
-    .fa-trash:hover{
-        color: red;
-    }
-</style>
-<body class="g-sidenav-show  bg-gray-100">
-
-@include('admin.admin-sidebar')
-
-<main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-
-    @include('admin.admin-navhead')
-
-    <!-- Content -->
-    <div class="container-fluid py-4">
-
-        @yield('content')
-
-        @include('admin.admin-footer')
-    </div>
-    <!-- End Of Content -->
-
-</main>
-
-<!--   Core JS Files   -->
-<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
-<script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
-
-
-<!-- Script For Scrollbar -->
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
+    <style>
+        .fa-edit, .fa-trash, .fa-eye, .fa-plus{
+            color: #67748e;
         }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-</script>
-<!-- End of Script For Scrollbar -->
+        .fa-eye:hover{
+            color: #2196f3;
+        }
+        .fa-plus:hover{
+            color: blue;
+        }
+        .fa-edit:hover{
+            color: green;
+        }
+        .fa-trash:hover{
+            color: red;
+        }
+        .text-back-index{
+            color: #67748e;
+        }
+        .text-back-index:hover{
+            color: #109525;
+        }
+        .breadcrumb-item.active {
+            color: #109525;
+        }
+    </style>
+    <body class="g-sidenav-show  bg-gray-100">
 
-<script defer src="https://cdn.jsdelivr.net/npm/@flasher/flasher@1.0.17/dist/flasher.min.js"></script>
-@yield('scripts')
+            @include('admin.admin-sidebar')
 
-<!-- Github buttons -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.5') }}"></script>
-</body>
+            <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+            <!-- Content -->
+            <div class="container-fluid py-4">
+
+                @yield('content')
+
+                @include('admin.admin-footer')
+            </div>
+            <!-- End Of Content -->
+
+        </main>
+
+        <!--   Core JS Files   -->
+        <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+        <script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
+
+
+        <!-- Script For Scrollbar -->
+        <script>
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
+                }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            }
+        </script>
+        <!-- End of Script For Scrollbar -->
+
+        <script defer src="https://cdn.jsdelivr.net/npm/@flasher/flasher@1.0.17/dist/flasher.min.js"></script>
+        @yield('scripts')
+
+        <!-- Github buttons -->
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.0.5') }}"></script>
+    </body>
 
 </html>

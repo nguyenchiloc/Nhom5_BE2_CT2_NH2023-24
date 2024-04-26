@@ -1,25 +1,25 @@
 @extends('layouts.admin')
-
-@section('breadcrumb')
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="{{ route('product.index') }}">Home</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Products</li>
-        </ol>
-        <h5 class="font-weight-bolder mb-0">Product Management</h5>
-    </nav>
-@stop
-
 @section('content')
     <div class="row">
         <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Products</li>
+                </ol>
+                <h5 class="font-weight-bolder mb-0">Product Management</h5>
+            </nav>
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="row">
-                        <div class="col-6 d-flex align-items-center">
+                        <div class="col-2 d-flex align-items-center">
                             <h6>All Products</h6>
                         </div>
-                        <div class="col-6 text-end">
+                        <div class="col-8 text-end">
+                            @include('admin.admin-navhead')
+                        </div>
+                       
+                        <div class="col-2 text-end">
                             <a class="btn bg-gradient-dark mb-0" href="{{ route('product.create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;Add Product</a>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                                     @endif
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <form id="userDelete" action="{{ route('product.update', $Product->product_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                    <form id="adminDelete" action="{{ route('product.destroy', $Product->product_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
                                             @csrf
                                             @method('post')
                                             <a href="{{ route('product.show', $Product->product_id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Show">
@@ -82,28 +82,12 @@
                                             </a>
                                             @csrf
                                             @method('PATCH')
-                                            <a href="{{ route('product.update', $Product->product_id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                            <a href="{{ route('product.edit', $Product->product_id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit">
                                                 <i class="fas fa-edit "></i>
                                             </a>
                                             @method('DELETE')
                                             <button class="cursor-pointer fas fa-trash" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete" onclick="return confirm('Are you sure?')"></button>
                                     </form>
-                                </td>
-                                <td class="align-middle">
-                                    @foreach($dataProduct as $Product)
-                                        <form id="userDelete" action="{{ route('product.update', $Product->product_id) }}" method="POST" class="inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            @can('Product edit')
-                                            <a href="{{ route('product.update', $Product->product_id) }}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit Product">
-                                                <i class="fas fa-user-edit text-secondary"></i>
-                                            </a>
-                                            @endcan
-                                            @can('Product delete')
-                                                <button class="cursor-pointer fas fa-trash text-secondary" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete Product"></button>
-                                            @endcan
-                                        </form>
-                                    @endforeach
                                 </td>
                             </tr>
                             @endforeach

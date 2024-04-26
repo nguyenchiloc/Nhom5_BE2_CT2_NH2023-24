@@ -14,14 +14,14 @@
             <ul class="navbar-nav  justify-content-end">
                 <!-- User Links -->
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                    <a href="javascript:;" id="dropdownMenuButton" class="nav-link dropdown-toggle text-body font-weight-bold px-0" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <a href="javascript:;" id="dropdownMenuButton" class="nav-link dropdown-toggle text-body font-weight-bold px-0" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-user me-sm-1"></i>
                         @auth
                             <span class="d-sm-inline d-none">{{ Auth::user()->name }}</span>
                         @else
                             <span class="d-sm-inline d-none">Sign In</span>
                         @endauth
-                    </a>
+                    </a> -->
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                         <li class="mb-2">
                             <a class="dropdown-item border-radius-md" href="{{ route('home') }}">

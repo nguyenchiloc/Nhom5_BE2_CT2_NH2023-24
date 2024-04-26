@@ -1,10 +1,10 @@
 @extends('layouts.user-auth')
     @section('breadcrumb')
             <style>
-                .text-dark-1{
+                .text-back-index{
                     color: #67748e;
                 }
-                .text-dark-1:hover{
+                .text-back-index:hover{
                     color: #109525;
                 }
                 .breadcrumb-item.active {
@@ -13,7 +13,7 @@
             </style>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="text-dark-1" href="{{ route('product.index') }}">Back</a></li>
+                    <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('product.index') }}">Back</a></li>
                     <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create products</li>
                 </ol>
             </nav>
@@ -143,7 +143,7 @@
                                                     <label for="product_status" class="form-control-label">{{ __('Active') }}</label>
                                                     <div class="@error('product_status')border border-danger rounded-3 @enderror">
                                                         <select class="form-control" id="product_status" name="product_status">
-                                                            <option value="Not Active" >Not Active</option>
+                                                            <option value="InActive" >InActive</option>
                                                             <option value="Active" selected>Active</option>
                                                         </select>
                                                         @error('is_active')

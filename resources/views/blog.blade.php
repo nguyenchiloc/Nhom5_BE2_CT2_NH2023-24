@@ -245,7 +245,7 @@ E - Sunshine
 										</a>
 										<div class="size-215 flex-col-t p-t-8">
 											<a href="#" class="stext-116 cl8 hov-cl1 trans-04">
-												{{ $row->getCategoryProduct->group_name}} {{ $row->product_name}}
+												{{ $row->getCategoryProduct->category_name}} {{ $row->product_name}}
 											</a>
 											<span class="stext-116 cl6 p-t-20">
 												{{ $row->product_price}} VND

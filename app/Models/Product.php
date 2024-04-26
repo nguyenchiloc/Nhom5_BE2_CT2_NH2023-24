@@ -20,6 +20,8 @@ class Product extends Model
         'product_description',
         'product_status',
         'product_images_1',
+        'product_images_2',
+        'product_images_3',
     ];
     public function getCategoryProduct(){
         return $this->belongsTo(Category::class,'category_id');

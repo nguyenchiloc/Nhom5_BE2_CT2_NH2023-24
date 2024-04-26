@@ -16,7 +16,7 @@
 									<a href="{{ route('profile.index') }}" class="flex-c-m trans-04 p-lr-25"> {{ $user->full_name}}</a>
 									@if ($user->level_id == '1')
 										<a href="{{ route('product.index') }}" class="flex-c-m trans-04 p-lr-25">
-											Admin
+											Manager Admin
 										</a>
 									@endif
 								@endforeach

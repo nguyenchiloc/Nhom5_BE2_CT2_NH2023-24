@@ -6,6 +6,8 @@ use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BrandController;
 
 
 /*
@@ -40,6 +42,22 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth']], function(){
     Route::post('/news/store', [ProductController::class, 'store'])->name('product.store');
     Route::get('/show/{product_id?}', [ProductController::class, 'show'])->name('product.show');
     Route::get('/product/{product_id?}/edit', [ProductController::class, 'edit'])->name('product.edit');
-    Route::get('/update/{product_id?}', [ProductController::class, 'update'])->name('product.update');
+    Route::patch('/update/{product_id?}', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('/destroy/{product_id?}', [ProductController::class, 'destroy'])->name('product.destroy');
 });
-    
+//Admin - Category
+Route::group(['prefix' => 'management/category', 'middleware' => ['auth']], function(){
+    Route::get('/list', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/edit/{category_id?}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::patch('/update/{category_id?}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/destroy/{category_id?}', [CategoryController::class, 'destroy'])->name('category.destroy');
+});    
+//Admin - Brand
+Route::group(['prefix' => 'management/brand', 'middleware' => ['auth']], function(){
+    Route::get('/list', [BrandController::class, 'index'])->name('brand.index');
+    Route::post('/store', [BrandController::class, 'store'])->name('brand.store');
+    Route::get('/edit/{brand_id?}', [BrandController::class, 'edit'])->name('brand.edit');
+    Route::patch('/update/{brand_id?}', [BrandController::class, 'update'])->name('brand.update');
+    Route::delete('/destroy/{brand_id?}', [BrandController::class, 'destroy'])->name('brand.destroy');
+}); 

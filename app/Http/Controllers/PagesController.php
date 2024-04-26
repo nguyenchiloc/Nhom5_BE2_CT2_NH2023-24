@@ -14,13 +14,19 @@ class PagesController extends Controller
    public function page(Request $request, $page="index"){
       //$product = Product::getProduct();//Product::all();//Product::all()->take(6);  số lượng sản phẩm hiển thị
      // $product = Product::all()->sortBy("product_id")->take(6);
+      $category = Category::all()->where('category_status', 'Active'); 
       $return_fillter = "";
       if ($request->has('category')) {
          $products = Product::where('category_id', $request->input('category'))->latest()->paginate(15);
          $return_fillter = $request->input('category');
       }
       else{
-         $products = Product::all();
+        // $products = Product::all();
+        //sản phẩm hiển thị theo trạng thái của loại sản phẩm
+         foreach ($category as $category){
+            $category_list[] = array($category->category_id);
+         }
+         $products = Product::whereIn('category_id', $category_list)->get(); 
       }
       //hiển thị danh sách  sản phẩm
       if(Auth::user() == ''){
@@ -29,8 +35,8 @@ class PagesController extends Controller
          //hiển thị tên tài khoản đăng nhập
          $user = User::where('user_id', Auth::user()->user_id)->get();
       }
-      $category = Category::all(); //hiển thị danh sách loại sản phẩm
-      $brands = Brand::all(); //hiển thị danh sách thương hiệu 
+      $category = Category::all()->where('category_status', 'Active'); //hiển thị danh sách loại sản phẩm
+      $brands = Brand::all()->where('brand_status', 'Active');; //hiển thị danh sách thương hiệu 
       $product_news = Product::getProductNews(); //lấy sản phẩm mới nhất hiển thị cho page blog
       //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
       return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'return_fillter', 'user'));

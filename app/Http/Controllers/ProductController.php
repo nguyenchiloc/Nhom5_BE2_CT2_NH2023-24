@@ -65,7 +65,6 @@ class ProductController extends Controller
         }else{
             $flasher->addError('Fail !');
         }
-       //return  redirect()->action('App\Http\Controllers\ProductController@create');
         return redirect()->back();
     }
 
@@ -78,9 +77,8 @@ class ProductController extends Controller
     public function show($id)
     {
         //
-        $data = Product::where('product_id', $id)->first();
+        $data = Product::findOrFail($id);
         return view('product.show', ['product'=> $data]);
-        //return redirect(route('product.index'));
     }
 
     /**
@@ -91,7 +89,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data_news = Product::findOrFail($id);
+        $category = Category::all(); //hiển thị danh sách loại sản phẩm
+        $brands = Brand::all(); //hiển thị danh sách thương hiệu 
+        return view('product.edit', ['product'=> $data_news], compact('category', 'brands'));
     }
 
     /**
@@ -103,18 +104,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id, FlasherInterface $flasher)
     {
-        // $data                   = $request->all();
-        // $product                = Product::find($id);
-        // $product->category_id   = $data['category_id'];
-        // $product->title         = $data['title'];
-        // $product->description   = $data['description'];
-        // $product->cost_price    = $data['cost_price'];
-        // $product->price         = $data['price'];
-
-        // if( $product->save() ) {
-        //     $flasher->addSuccess('Updated success', 'Sunshine !');
-        // }
-        // return redirect(route('product.edit'));
+        //
+        $data_edit = Product::findOrFail($id);
+        $data_edit->product_name = $request->product_name;
+        $data_edit->product_price = $request->product_price;
+        $data_edit->sale_price = $request->sale_price;
+        $data_edit->product_qty = $request->product_qty;
+        $data_edit->category_id = $request->category_id;
+        $data_edit->brand_id = $request->brand_id;
+        $data_edit->product_description = $request->product_description;
+        $data_edit->product_images_1 = $request->product_images_1;
+        $data_edit->product_images_2 = $request->product_images_2;
+        $data_edit->product_images_3 = $request->product_images_3;
+        if( $data_edit->save()) {
+            $flasher->addSuccess('Updated success', 'Sunshine !');
+        }else{
+            $flasher->addError('Fail !');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -123,8 +130,15 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, FlasherInterface $flasher)
     {
         //
+        $data_delete = Product::findOrFail($id);
+        if( $data_delete->delete()) {
+            $flasher->addSuccess('Delete success', 'Sunshine !');
+        }else{
+            $flasher->addError('Fail!');
+        }
+        return redirect()->back();
     }
 }
