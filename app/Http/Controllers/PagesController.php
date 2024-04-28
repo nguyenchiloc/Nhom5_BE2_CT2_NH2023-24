@@ -7,39 +7,31 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\User;
+use App\Models\Price;
 use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
    public function page(Request $request, $page="index"){
-      //$product = Product::getProduct();//Product::all();//Product::all()->take(6);  số lượng sản phẩm hiển thị
-     // $product = Product::all()->sortBy("product_id")->take(6);
-      $category = Category::all()->where('category_status', 'Active'); 
-      $return_fillter = "";
-      if ($request->has('category')) {
-         $products = Product::where('category_id', $request->input('category'))->latest()->paginate(15);
-         $return_fillter = $request->input('category');
+      /***************************Common****************************************** */
+      //hiển thị danh sách loại sản phẩm active
+      $category = Category::all()->where('category_status', '=', 'Active');  
+      //hiển thị danh sách thương hiệu active
+      $brands = Brand::all()->where('brand_status', 'Active');
+      //hiển thị danh sách loại giá tiền sản phẩm active
+      $price = Price::all()->where('price_status', '=', 'Active'); 
+       /***************************Common****************************************** */
+      //Mảng Category
+      foreach ($category as $arrCategory){
+         $category_list[] = array($arrCategory->category_id);
       }
-      else{
-        // $products = Product::all();
-        //sản phẩm hiển thị theo trạng thái của loại sản phẩm
-         foreach ($category as $category){
-            $category_list[] = array($category->category_id);
-         }
-         $products = Product::whereIn('category_id', $category_list)->get(); 
-      }
-      //hiển thị danh sách  sản phẩm
-      if(Auth::user() == ''){
-         $user = [];
-      }else{
-         //hiển thị tên tài khoản đăng nhập
-         $user = User::where('user_id', Auth::user()->user_id)->get();
-      }
-      $category = Category::all()->where('category_status', 'Active'); //hiển thị danh sách loại sản phẩm
-      $brands = Brand::all()->where('brand_status', 'Active');; //hiển thị danh sách thương hiệu 
-      $product_news = Product::getProductNews(); //lấy sản phẩm mới nhất hiển thị cho page blog
+      $products = Product::whereIn('category_id', $category_list)->latest()->paginate(15); 
+      //hiển thị tên tài khoản đăng nhập
+      $user = Auth::user() == '' ? [] : User::where('user_id', Auth::user()->user_id)->get();
+      //lấy sản phẩm mới nhất hiển thị cho page blog
+      $product_news = Product::getProductNews(); 
       //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
-      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'return_fillter', 'user'));
+      return view($page, ['dataProduct'=> $products], compact('category', 'brands', 'product_news', 'user', 'price'));
    }
    public function searchProducts(Request $request)
    {
@@ -49,13 +41,8 @@ class PagesController extends Controller
    }
    public function productDetail(Request $request, $id)
    {
-      if(Auth::user() == ''){
-         $user = [];
-      }else{
-         //hiển thị tên tài khoản đăng nhập
-         $user = User::where('user_id', Auth::user()->user_id)->get();
-      }
-      // Query Lấy các hình ảnh liên quan của các Sản phẩm đã được lọc
+      $user = Auth::user() == '' ? [] : User::where('user_id', Auth::user()->user_id)->get();
+      // Query Lấy các product chi tiết
       $product_detail = Product::where('product_id', $id)->first();
       //All list
       $products = Product::all();

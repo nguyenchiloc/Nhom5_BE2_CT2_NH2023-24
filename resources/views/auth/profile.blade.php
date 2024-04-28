@@ -22,11 +22,11 @@
             <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('../assets/img/curved-images/curved0.jpg'); background-position-y: 50%;">
                 <span class="mask bg-gradient-primary opacity-6"></span>
             </div>
-            <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+            <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden" onclick="window.location='{{ route('profile.index') }}'">
                 <div class="row gx-4">
                     <div class="col-auto">
                         <div class="avatar avatar-xl position-relative">
-                            <img id="uploadImg" src="{{ asset('assets/images/products/'. $user->avatar) }}" alt="avt" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
+                            <img id="uploadImg" src="{{ asset('assets/images/avt/'. $user->avatar) }}" alt="avt" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
                         </div>
                     </div>
                     <div class="col-auto my-auto">

@@ -1,17 +1,18 @@
 <div class="bg0 m-t-23 p-b-140">
 	<div class="container">
 		<div class="flex-w flex-sb-m p-b-52">
-			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
-				<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
-					<button name="all" type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {{ Request::is('All Products') ? 'how-active1' : '' }} list_category">
+			<div class="flex-w flex-l-m filter-tope-group m-tb-10" id='category'>
+				<form action="{{ route('page',['page'=>'']) }}#category" method="GET">
+					<button id="0" name="all" type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {{ Request::is('All Products') ? 'how-active1' : '' }} list_category">
 						All Products
 					</button>
 				</form>
 				@foreach($category as $row)
-					<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
-						<button id="{{ $return_fillter}}" name="category" type="submit" value="{{ $row->category_id}}"  class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5  list_category">{{ $row->category_name}}
+					<form action="{{ route('pages.fillterCategory', $row->category_id) }}#category" method="GET">
+						<button id="{{ isset($categoryID) ? $categoryID : ''  }}" type="submit" href="#category" name="{{ $row->category_id}}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_category">
+							{{ $row->category_name}}
 						</button>
-					</form>
+					</form>	
 				@endforeach
 			</div>
 			<div class="flex-w flex-c-m m-tb-10">
@@ -41,109 +42,56 @@
 			<!-- Filter -->
 			<div class="dis-none panel-filter w-full p-t-10">
 				<div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
-					<div class="filter-col1 p-r-15 p-b-27">
-						<div class="mtext-102 cl2 p-b-15">
-							Sort By
+						<div class="filter-col1 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">
+								Sort By
+							</div>
+							@csrf
+							<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
+								<button type="submit" href="#pos" name="0" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_price">
+									All	
+								</button>
+							</form>	
+							<form action="{{ route('pages.fillterSort') }}#pos" method="GET">
+								<button type="submit" href="#" name="Asc" value="Price: Low to High" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Price: Low to High</button><br>
+								<button type="submit" href="#" name="Desc" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Price: High to Low</button>
+							</form>		
 						</div>
-						<ul>
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Default
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Popularity
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Average rating
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-									Newness
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Price: Low to High
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									Price: High to Low
-								</a>
-							</li>
-						</ul>
-					</div>
-
 					<div class="filter-col2 p-r-15 p-b-27">
 						<div class="mtext-102 cl2 p-b-15">
 							Price
 						</div>
-
-						<ul>
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-									All
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$0.00 - $50.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$50.00 - $100.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$100.00 - $150.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$150.00 - $200.00
-								</a>
-							</li>
-
-							<li class="p-b-6">
-								<a href="#" class="filter-link stext-106 trans-04">
-									$200.00+
-								</a>
-							</li>
-						</ul>
+						@csrf
+						<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
+							<button type="submit" href="#pos" name="0" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_price">
+								All	
+							</button>
+						</form>		
+						@foreach($price as $row)
+							<form action="{{ route('pages.fillterPrice', $row->price_id) }}#pos" method="GET">	
+								<button type="submit" href="#pos" name="{{ $row->price_id}}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_price">
+									{{ $row->price_name}}
+								</button>
+							</form>	
+						@endforeach
 					</div>
-
 					<div class="filter-col3 p-r-15 p-b-27">
 						<div class="mtext-102 cl2 p-b-15">
 							Brand
 						</div>
-						<ul>
-							@foreach($brands as $row)
-							<li class="p-b-6">
-								<span class="fs-15 lh-12 m-r-6" style="color: #222;">
-									<i class="zmdi zmdi-circle"></i>
-								</span>
-								<a href="#" class="filter-link stext-106 trans-04">
+						@csrf
+						<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
+							<button type="submit" href="#pos" name="0" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_brand">
+								All	
+							</button>
+						</form>		
+						@foreach($brands as $row)
+							<form action="{{ route('pages.fillterBrand', $row->brand_id) }}#pos" method="GET">	
+								<button type="submit" href="#pos" name="{{ $row->brand_id}}" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_brand">
 									{{ $row->brand_name}}
-								</a>
-							</li>
-							@endforeach
-						</ul>
+								</button>
+							</form>	
+						@endforeach
 					</div>
 
 					<div class="filter-col4 p-b-27">
@@ -161,6 +109,13 @@
 				</div>
 			</div>
 		</div>
+		
+		@if(isset($sortName))
+			<h5 style="padding-bottom : 5px;">{{ isset($sortName) ? $sortName : ''  }}</b></h5>
+		@endif
+		@if(isset($sortPriceName))
+			<h5 style="padding-bottom : 5px; text-transform: lowercase;">Sản phẩm {{ isset($sortPriceName) ? $sortPriceName : ''  }}</b></h5>
+		@endif
 		<div class="row isotope-grid" id="pos">
 			<!-- product -->
 			@foreach($dataProduct as $row)
@@ -193,12 +148,8 @@
 			@endforeach
 			<!-- product -->
 		</div>
-		<!-- Load more -->
-		<div class="flex-c-m flex-w w-full p-t-45">
-			<a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-				Load More
-			</a>
-		</div>
+		<!-- Paginator -->
+		{{ $dataProduct->links() }}
 	</div>
 </div>
 <script>

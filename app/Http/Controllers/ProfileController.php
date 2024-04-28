@@ -72,6 +72,13 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    private $uploadPath; 
+    private $uploadFolder;
+    public function __construct()  
+    {  
+      $this->uploadPath = public_path('assets/images/avt');  
+      $this->uploadFolder = 'public/assets/images/avt/';  
+    } 
     public function update(Request $request, $id, FlasherInterface $flasher)
     {
         $user = User::findOrFail($id);
@@ -84,46 +91,18 @@ class ProfileController extends Controller
         $user->gender   = $request->gender;
         $user->date     = $request->date;
         $user->address  = $request->address;
-        $inputs = $request->all();
-        
-        //Kiểm tra có bị thay đổi ko?
-        
-        // if($user->isDirty('full_name')) 
-        // {
-        //     $user->update([
-        //         'full_name' => $request->full_name
-        //     ]);
-        // }
-        // if($user->isDirty('phone')) 
-        // {
-        //     $user->update([
-        //         'phone' => $request->phone
-        //     ]);
-        // }
-        // if($user->isDirty('gender')) 
-        // {
-        //     $user->update([
-        //         'gender' => $request->gender
-        //     ]);
-        // }
-        // if($user->isDirty('date')) 
-        // {
-        //     $user->update([
-        //         'date' => $request->date
-        //     ]);
-        // }
-        // if($user->isDirty('address')) 
-        // {
-        //     $user->update([
-        //         'address' => $request->address
-        //     ]);
-        // }
-        // $user->update([
-        //     'avatar' => $request->avatar
-        // ]);
-
-        //$flasher->addSuccess('Updated success', 'Sunshine !');
-        return $request->all();//redirect()->back();
+        //set avatar
+        $file = $request->avatar;
+        $extension = "jpg";
+        $filename  = $user->user_id. '.' . $extension;//$file->getClientOriginalName();//lấy tên file
+        $user->avatar  = $filename;
+        $request->file('avatar')->move('assets/images/avt/', $filename);  //Lưu vào thư mục
+        if($user->save()) {
+            $flasher->addSuccess('Updated success', 'Sunshine !');
+        }else{
+            $flasher->addError('Fail !');
+        }
+        return  redirect()->back();
     }
     public function changePassword(Request $request, $id, FlasherInterface $flasher)
     {

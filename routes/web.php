@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductFilterController;
 
 
 /*
@@ -60,4 +61,11 @@ Route::group(['prefix' => 'management/brand', 'middleware' => ['auth']], functio
     Route::get('/edit/{brand_id?}', [BrandController::class, 'edit'])->name('brand.edit');
     Route::patch('/update/{brand_id?}', [BrandController::class, 'update'])->name('brand.update');
     Route::delete('/destroy/{brand_id?}', [BrandController::class, 'destroy'])->name('brand.destroy');
+}); 
+//Fillter 
+Route::group(['prefix' => 'fillter'], function(){
+    Route::get('/sort/product', [ProductFilterController::class, 'fillterSort'])->name('pages.fillterSort'); 
+    Route::get('/{id?}/category', [ProductFilterController::class, 'fillterCategory'])->name('pages.fillterCategory'); 
+    Route::get('/price/{id?}', [ProductFilterController::class, 'fillterPrice'])->name('pages.fillterPrice'); 
+    Route::get('/{id?}/brand', [ProductFilterController::class, 'fillterBrand'])->name('pages.fillterBrand'); 
 }); 
