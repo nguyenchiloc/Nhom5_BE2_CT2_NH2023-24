@@ -11,5 +11,5 @@ class Price extends Model
     public $table = "Price";
     //khóa chính 
     public $primaryKey = 'price_id';
-    protected $fillable = ['price_id', 'price_name', 'type', 'price_to', 'price_from', 'price_status'];
+    protected $fillable = ['price_id', 'price_name', 'price_to', 'price_from', 'price_status'];
 }

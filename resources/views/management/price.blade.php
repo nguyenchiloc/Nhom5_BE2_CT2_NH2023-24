@@ -5,15 +5,15 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Brand</li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Price</li>
                 </ol>
-                <h5 class="font-weight-bolder mb-0">Brand Management</h5>
+                <h5 class="font-weight-bolder mb-0">Price Management</h5>
             </nav>
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="row">
                         <div class="col-2 d-flex align-items-center">
-                            <h6>All Brand</h6>
+                            <h6>All Price</h6>
                         </div>
                         <div class="col-8 text-end">
                             @include('admin.admin-navhead')
@@ -27,41 +27,42 @@
                             <tr class="text-center">
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price To (VND)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price From (VND)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Satus</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($brand as $index => $brand)
+                            @foreach($price as $index => $price)
                                 <tr class="text-center">
                                     <td>
                                         <span class="text-secondary text-xs font-weight-bold text-center">{{ $index + 1 }}</span>
                                     </td>
                                     <td>
-                                        <span class="text-secondary text-xs font-weight-bold">{{ $brand->brand_name }}</span>
+                                        <span class="text-secondary text-xs font-weight-bold">{{ $price->price_name }}</span>
                                     </td>
                                     <td>
-                                        <span class="text-secondary text-xs font-weight-bold">{{ $brand->brand_description }}</span>
+                                        <span class="text-secondary text-xs font-weight-bold">{{ number_format($price->price_to) }}</span>
                                     </td>
                                     <td>
-                                        <span class="text-secondary text-xs font-weight-bold">{{ $brand->brand_description }}</span>
+                                        <span class="text-secondary text-xs font-weight-bold">{{ number_format($price->price_from) }}</span>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        @if($brand->brand_status == 'InActive')
+                                        @if($price->price_status == 'InActive')
                                             <span class="badge badge-sm bg-gradient-secondary">InActive</span>
                                         @else
                                             <span class="badge badge-sm bg-gradient-success">ACTIVE</span>
                                         @endif
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <form id="adminDelete" action="{{ route('brand.destroy', $brand->brand_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                        <form id="adminDelete" action="{{ route('price.destroy', $price->price_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
                                             <a href="#create" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Create">
                                                 <i class="fa fa-plus "></i>
                                             </a>
                                             @csrf
                                             @method('PATCH')
-                                            <a href="#edit"  class="mx-3 edit-brand" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick="window.location=' {{ route('brand.edit', $brand->brand_id) }}#edit'">
+                                            <a href="#edit"  class="mx-3 edit-price" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick="window.location=' {{ route('price.edit', $price->price_id) }}#edit'">
                                                 <i class="fas fa-edit "></i>
                                             </a>
                                             @method('DELETE')
@@ -85,15 +86,15 @@
                                     <h5 class="mb-0">{{ __('Create') }}</h5>
                                 </div>
                                 <div class="card-body pt-4 p-3">
-                                    <form action="{{ route('brand.store') }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                    <form action="{{ route('price.store') }}" method="post" role="form text-left" enctype="multipart/form-data">
                                     @csrf    
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="brand_name" class="form-control-label">{{ __('Name') }}</label>
-                                                    <div class="@error('brand_name')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input name...." id="brand_name" value="" name="brand_name">
-                                                        @error('brand_name')
+                                                    <label for="price_name" class="form-control-label">{{ __('Name') }}</label>
+                                                    <div class="@error('price_name')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="text" placeholder="Input name...." id="price_name" value="" name="price_name">
+                                                        @error('price_name')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </div>
@@ -101,10 +102,21 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="brand_description" class="form-control-label">{{ __('Description') }}</label>
-                                                    <div class="@error('brand_description')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input description..." id="brand_description" value="" name="brand_description">
-                                                        @error('brand_description')
+                                                    <label for="price_to" class="form-control-label">{{ __('Price To') }}</label>
+                                                    <div class="@error('price_to')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="number" placeholder="Input description..." id="price_to" value="" name="price_to">
+                                                        @error('price_to')
+                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="price_from" class="form-control-label">{{ __('Price From') }}</label>
+                                                    <div class="@error('price_from')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="number" placeholder="Input description..." id="price_from" value="" name="price_from">
+                                                        @error('price_from')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </div>
@@ -112,13 +124,13 @@
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="form-group">
-                                                    <label for="brand_status" class="form-control-label">{{ __('Status') }}</label>
-                                                    <div class="@error('brand_status')border border-danger rounded-3 @enderror">
-                                                        <select class="form-control" id="brand_status" name="brand_status">
+                                                    <label for="price_status" class="form-control-label">{{ __('Status') }}</label>
+                                                    <div class="@error('price_status')border border-danger rounded-3 @enderror">
+                                                        <select class="form-control" id="price_status" name="price_status">
                                                             <option value="InActive" >InActive</option>
                                                             <option value="Active" selected>Active</option>
                                                         </select>
-                                                        @error('brand_status')
+                                                        @error('price_status')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </div>
@@ -140,23 +152,23 @@
             <div class="tab-content" id="edit">
                 <div class="py-4 tab-pane fade show active" id="pills-details" role="tabpanel">
                     <div class="row">
-                        @if(isset($brand_data_old))
+                        @if(isset($price_data_old))
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header pb-0 px-3">
                                     <h5 class="mb-0">{{ __('Edit') }}</h5>
                                 </div>
                                     <div class="card-body pt-4 p-3">
-                                        <form action="{{ route('brand.update', $brand_data_old->brand_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                        <form action="{{ route('price.update', $price_data_old->price_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
                                             @csrf
                                             @method('PATCH')    
                                             <div class="row">
                                                 <div class="col-md-1">
                                                     <div class="form-group">
-                                                        <label for="brand_id" class="form-control-label">{{ __('Brand ID') }}</label>
-                                                        <div class="@error('brand_id')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" id="brand_id" value="{{ $brand_data_old->brand_id }}" name="brand_id"  disabled>
-                                                            @error('brand_id')
+                                                        <label for="price_id" class="form-control-label">{{ __('Price ID') }}</label>
+                                                        <div class="@error('price_id')border border-danger rounded-3 @enderror">
+                                                            <input class="form-control" type="text" id="price_id" value="{{ $price_data_old->price_id }}" name="price_id"  disabled>
+                                                            @error('price_id')
                                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                             @enderror
                                                         </div>
@@ -164,36 +176,47 @@
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="brand_name" class="form-control-label">{{ __('Brand Name') }}</label>
-                                                        <div class="@error('brand_name')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" placeholder="Input name...." id="brand_name" value="{{ $brand_data_old->brand_name }}" name="brand_name">
-                                                            @error('brand_name')
+                                                        <label for="price_name" class="form-control-label">{{ __('Price Name') }}</label>
+                                                        <div class="@error('new_price_name')border border-danger rounded-3 @enderror">
+                                                            <input class="form-control" type="text" placeholder="Input name...." id="price_name" value="{{ $price_data_old->price_name }}" name="new_price_name">
+                                                            @error('new_price_name')
                                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="brand_description" class="form-control-label">{{ __('Description') }}</label>
-                                                        <div class="@error('brand_description')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" placeholder="Input price" id="brand_description" value="{{ $brand_data_old->brand_description }}" name="brand_description">
-                                                            @error('brand_description')
-                                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        <label for="price_to" class="form-control-label">{{ __('Price To') }}</label>
+                                                        <div class="@error('new_price_to')border border-danger rounded-3 @enderror">
+                                                            <input class="form-control" type="number" placeholder="Input description..." id="price_to" value="{{ $price_data_old->price_to }}" name="new_price_to">
+                                                            @error('new_price_to')
+                                                            <p class="text-danger text-xs mt-2">Price to can not large price from</p>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="price_from" class="form-control-label">{{ __('Price From') }}</label>
+                                                        <div class="@error('new_price_from')border border-danger rounded-3 @enderror">
+                                                            <input class="form-control" type="number" placeholder="Input description..." id="price_from" value="{{ $price_data_old->price_from }}" name="new_price_from">
+                                                            @error('new_price_from')
+                                                            <p class="text-danger text-xs mt-2">Price form must belarge price to</p>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-1 text-end">
                                                     <div class="form-group">
-                                                        <label for="brand_status" class="form-control-label">{{ __('Active') }}</label>
-                                                        <div class="@error('brand_status')border border-danger rounded-3 @enderror">
-                                                            <select class="form-control" id="brand_status" name="brand_status">
-                                                                <option value="InActive"  @if( $brand_data_old->brand_status  == "InActive") selected @endif>InActive</option>
-                                                                <option value="Active" @if( $brand_data_old->brand_status  == "Active") selected @endif>Active</option>
+                                                        <label for="price_status" class="form-control-label">{{ __('Active') }}</label>
+                                                        <div class="@error('new_price_status')border border-danger rounded-3 @enderror">
+                                                            <select class="form-control" id="price_status" name="new_price_status">
+                                                                <option value="InActive"  @if( $price_data_old->price_status  == "InActive") selected @endif>InActive</option>
+                                                                <option value="Active" @if( $price_data_old->price_status  == "Active") selected @endif>Active</option>
                                                             </select>
                                                             </select>
-                                                            @error('is_active')
+                                                            @error('new_price_status')
                                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                             @enderror
                                                         </div>
@@ -219,5 +242,5 @@
 @stop
 <script>
    
-   // {{ route('brand.edit', $brand->brand_id) }}
+   // {{ route('price.edit', $price->price_id) }}
 </script>
