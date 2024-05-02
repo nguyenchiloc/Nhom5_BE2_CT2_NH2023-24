@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			@php
-                $total_price = 0;
+                $total_price = 0; 
             @endphp
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
