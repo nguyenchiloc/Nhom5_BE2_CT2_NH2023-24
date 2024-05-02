@@ -1,4 +1,4 @@
-@extends('layouts.user-auth')
+@extends('layouts.admin')
     @section('breadcrumb')
             <style>
                 .text-back-index{

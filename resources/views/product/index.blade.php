@@ -36,7 +36,7 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Category</th>
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">Brand</th> 
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Since</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 <th class="text-secondary opacity-7"></th>
                             </tr>
                             </thead>
@@ -95,6 +95,8 @@
                         </table>
                     </div>
                 </div>
+                <!-- Paginator -->
+                {{ $dataProduct->links() }}
             </div>
         </div>
     </div>

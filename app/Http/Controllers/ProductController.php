@@ -26,7 +26,7 @@ class ProductController extends Controller
             //hiển thị tên tài khoản đăng nhập
             $user = User::where('user_id', Auth::user()->user_id)->get();
         }
-        $products = Product::all();
+        $products = Product::paginate(15);
         $category = Category::all(); //hiển thị danh sách loại sản phẩm
         $brands = Brand::all(); //hiển thị danh sách thương hiệu 
         $product_news = Product::getProductNews(); //lấy sản phẩm mới nhất hiển thị cho page blog
