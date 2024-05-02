@@ -10,6 +10,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductFilterController;
+use App\Http\Controllers\CartController;
 
 
 
@@ -31,7 +32,7 @@ use App\Http\Controllers\ProductFilterController;
 Auth::routes();
 Route::get('/home', [PagesController::class, 'page'])->name('home');
 Route::get('/{page?}', [PagesController::class, 'page'])->name('page');
-Route::get('/search', [PagesController::class, 'searchProducts'])->name('pages.search');
+Route::get('/products/search', [PagesController::class, 'searchProducts'])->name('pages.search');
 Route::get('/products_detail/{id?}', [PagesController::class, 'productDetail'])->name('pages.products_detail');
 //profiles
 Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function(){
@@ -80,3 +81,10 @@ Route::group(['prefix' => 'fillter'], function(){
     Route::get('/price/{id?}', [ProductFilterController::class, 'fillterPrice'])->name('pages.fillterPrice'); 
     Route::get('/{id?}/brand', [ProductFilterController::class, 'fillterBrand'])->name('pages.fillterBrand'); 
 }); 
+//User - Cart
+Route::group(['prefix' => 'cart', 'middleware' => ['auth']], function(){
+    Route::post('/{product_id}', [CartController::class, 'add_to_cart'])->name('cart.add_to_cart');
+    Route::get('/show_cart', [CartController::class, 'show_cart'])->name('cart.show_cart');
+    Route::patch('/update/{cart_id}', [CartController::class, 'update_cart'])->name('cart.update_cart'); 
+    Route::delete('/destroy/{cart_id}', [CartController::class, 'destroy_cart'])->name('cart.destroy');
+});

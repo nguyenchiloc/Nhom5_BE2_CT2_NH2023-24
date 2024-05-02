@@ -12,14 +12,12 @@
 						@method('POST')
 						@if (Route::has('login'))
 								@auth
-								@foreach($user as $user) 
-									<a href="{{ route('profile.index') }}" class="flex-c-m trans-04 p-lr-25"> {{ $user->full_name}}</a>
-									@if ($user->level_id == '1')
+									<a href="{{ route('profile.index') }}" class="flex-c-m trans-04 p-lr-25"> {{ Auth::user()->full_name}}</a>
+									@if (Auth::user()->level_id == '1')
 										<a href="{{ route('product.index') }}" class="flex-c-m trans-04 p-lr-25">
 											Manager Admin
 										</a>
 									@endif
-								@endforeach
 									<a href="{{ route('home') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex-c-m trans-04 p-lr-25">Log Out</a> 
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 										@csrf
@@ -71,10 +69,15 @@
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
 							<i class="zmdi zmdi-search"></i>
 						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
+						@if(!Auth::check())
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
+								<i class="zmdi zmdi-shopping-cart"></i>
+							</div>
+						@else
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="{{ Auth::user()->getUserCarts->count() }}">
+								<i class="zmdi zmdi-shopping-cart"></i>
+							</div>
+						@endif
 
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
 							<i class="zmdi zmdi-favorite-outline"></i>

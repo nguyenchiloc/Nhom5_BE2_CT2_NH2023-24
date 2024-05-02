@@ -24,7 +24,7 @@
     @yield('styles')
 </head>
     <style>
-        .fa-edit, .fa-trash, .fa-eye, .fa-plus{
+        .fa-edit, .fa-trash, .fa-eye, .fa-plus, .fa-times{
             color: #67748e;
         }
         .fa-eye:hover{
@@ -37,6 +37,9 @@
             color: green;
         }
         .fa-trash:hover{
+            color: red;
+        }
+        .fa-times:hover{
             color: red;
         }
         .text-back-index{

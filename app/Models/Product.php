@@ -23,6 +23,11 @@ class Product extends Model
         'product_images_2',
         'product_images_3',
     ];
+    //Một product_id sẽ có nhiều cart_id
+    public function getProductCarts()
+    {
+        return $this->hasMany(Cart::class);
+    }
     public function getCategoryProduct(){
         return $this->belongsTo(Category::class,'category_id');
     }

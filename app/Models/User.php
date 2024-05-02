@@ -48,6 +48,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+    //Một user_id sẽ có nhiều cart_id
+    public function getUserCarts()
+    {
+        return $this->hasMany(Cart::class, 'user_id', 'user_id');
+    }
     
 }
