@@ -20,4 +20,8 @@ class BillDetail extends Model
     {
         return $this->belongsTo(Bill::class);
     }
+    public function getDetailProduct()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
 }

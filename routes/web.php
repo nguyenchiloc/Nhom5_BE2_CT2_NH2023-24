@@ -11,7 +11,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductFilterController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\BillController;
+use App\Http\Controllers\BillsController;
 
 
 
@@ -91,7 +91,7 @@ Route::group(['prefix' => 'cart', 'middleware' => ['auth']], function(){
     Route::post('/checkout/order', [CartController::class, 'postCheckOut'])->name('cart.postCheckOut');
 });
 //Admin/User - Bill
-Route::group(['prefix' => 'bill', 'middleware' => ['auth']], function(){
-    Route::post('/show_order', [BillController::class, 'show_order'])->name('bill.show_order');
-   
+Route::group(['prefix' => 'bills', 'middleware' => ['auth']], function(){
+    Route::get('/show_order', [BillsController::class, 'show_order'])->name('bills.show_order');
+    Route::post('/show_detail/{id}', [BillsController::class, 'show_detail'])->name('bills.show_detail');
 });
