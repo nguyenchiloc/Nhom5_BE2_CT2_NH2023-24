@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Flasher\Prime\FlasherInterface;
 
 class CustomerController extends Controller
 {
@@ -14,6 +16,9 @@ class CustomerController extends Controller
     public function index()
     {
         //
+        $customer = User::all(); 
+        //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
+        return  view('management.customer', compact('customer'));
     }
 
     /**
@@ -57,6 +62,12 @@ class CustomerController extends Controller
     public function edit($id)
     {
         //
+         //
+        $customer = User::all(); //hiển thị danh sách loại sản phẩm
+        //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
+        $customer_data_old = User::findOrFail($id);
+        $customer_data_old = User::where('user_id', $customer_data_old->user_id)->first();
+        return  view('management.customer', compact('customer', 'customer_data_old'));
     }
 
     /**
@@ -66,9 +77,17 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, FlasherInterface $flasher)
     {
         //
+        $data_edit = User::findOrFail($id);
+        $data_edit->level_id = $request->customer_level;
+        if( $data_edit->save()) {
+            $flasher->addSuccess('Updated success', 'Sunshine !');
+        }else{
+            $flasher->addError('Fail !');
+        }
+        return redirect()->back();
     }
 
     /**

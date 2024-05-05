@@ -137,81 +137,80 @@
             </div> 
             <!-- End Create -->
             <!-- Edit -->
+            @if(isset($brand_data_old))
             <div class="tab-content" id="edit">
                 <div class="py-4 tab-pane fade show active" id="pills-details" role="tabpanel">
                     <div class="row">
-                        @if(isset($brand_data_old))
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header pb-0 px-3">
                                     <h5 class="mb-0">{{ __('Edit') }}</h5>
                                 </div>
-                                    <div class="card-body pt-4 p-3">
-                                        <form action="{{ route('brand.update', $brand_data_old->brand_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
-                                            @csrf
-                                            @method('PATCH')    
-                                            <div class="row">
-                                                <div class="col-md-1">
-                                                    <div class="form-group">
-                                                        <label for="brand_id" class="form-control-label">{{ __('Brand ID') }}</label>
-                                                        <div class="@error('brand_id')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" id="brand_id" value="{{ $brand_data_old->brand_id }}" name="brand_id"  disabled>
-                                                            @error('brand_id')
-                                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <label for="brand_name" class="form-control-label">{{ __('Brand Name') }}</label>
-                                                        <div class="@error('brand_name')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" placeholder="Input name...." id="brand_name" value="{{ $brand_data_old->brand_name }}" name="brand_name">
-                                                            @error('brand_name')
-                                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="brand_description" class="form-control-label">{{ __('Description') }}</label>
-                                                        <div class="@error('brand_description')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" placeholder="Input price" id="brand_description" value="{{ $brand_data_old->brand_description }}" name="brand_description">
-                                                            @error('brand_description')
-                                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-1 text-end">
-                                                    <div class="form-group">
-                                                        <label for="brand_status" class="form-control-label">{{ __('Active') }}</label>
-                                                        <div class="@error('brand_status')border border-danger rounded-3 @enderror">
-                                                            <select class="form-control" id="brand_status" name="brand_status">
-                                                                <option value="InActive"  @if( $brand_data_old->brand_status  == "InActive") selected @endif>InActive</option>
-                                                                <option value="Active" @if( $brand_data_old->brand_status  == "Active") selected @endif>Active</option>
-                                                            </select>
-                                                            </select>
-                                                            @error('is_active')
-                                                            <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                                            @enderror
-                                                        </div>
+                                <div class="card-body pt-4 p-3">
+                                    <form action="{{ route('brand.update', $brand_data_old->brand_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PATCH')    
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                <div class="form-group">
+                                                    <label for="brand_id" class="form-control-label">{{ __('Brand ID') }}</label>
+                                                    <div class="@error('brand_id')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="text" id="brand_id" value="{{ $brand_data_old->brand_id }}" name="brand_id"  disabled>
+                                                        @error('brand_id')
+                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="d-flex justify-content-end">
-                                                <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Update' }}</button>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="brand_name" class="form-control-label">{{ __('Brand Name') }}</label>
+                                                    <div class="@error('brand_name')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="text" placeholder="Input name...." id="brand_name" value="{{ $brand_data_old->brand_name }}" name="brand_name">
+                                                        @error('brand_name')
+                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                @endif
-                                
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="brand_description" class="form-control-label">{{ __('Description') }}</label>
+                                                    <div class="@error('brand_description')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="text" placeholder="Input price" id="brand_description" value="{{ $brand_data_old->brand_description }}" name="brand_description">
+                                                        @error('brand_description')
+                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1 text-end">
+                                                <div class="form-group">
+                                                    <label for="brand_status" class="form-control-label">{{ __('Active') }}</label>
+                                                    <div class="@error('brand_status')border border-danger rounded-3 @enderror">
+                                                        <select class="form-control" id="brand_status" name="brand_status">
+                                                            <option value="InActive"  @if( $brand_data_old->brand_status  == "InActive") selected @endif>InActive</option>
+                                                            <option value="Active" @if( $brand_data_old->brand_status  == "Active") selected @endif>Active</option>
+                                                        </select>
+                                                        </select>
+                                                        @error('is_active')
+                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end">
+                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Update' }}</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div> 
+            @endif
             <!-- End Edit -->
             
         </div>

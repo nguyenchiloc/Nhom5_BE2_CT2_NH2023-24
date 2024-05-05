@@ -12,6 +12,7 @@ use App\Http\Controllers\PriceController;
 use App\Http\Controllers\ProductFilterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BillsController;
+use App\Http\Controllers\CustomerController;
 
 
 
@@ -74,6 +75,11 @@ Route::group(['prefix' => 'management/price', 'middleware' => ['auth']], functio
     Route::get('/edit/{price_id?}', [PriceController::class, 'edit'])->name('price.edit');
     Route::patch('/update/{price_id?}', [PriceController::class, 'update'])->name('price.update');
     Route::delete('/destroy/{price_id?}', [PriceController::class, 'destroy'])->name('price.destroy');
+}); 
+//Admin - Customer
+Route::group(['prefix' => 'management/customer', 'middleware' => ['auth']], function(){
+    Route::get('/list', [CustomerController::class, 'index'])->name('customer.index');
+    Route::patch('/update/{cus_id?}', [CustomerController::class, 'update'])->name('customer.update');
 }); 
 //Fillter category, sort, brand
 Route::group(['prefix' => 'fillter'], function(){

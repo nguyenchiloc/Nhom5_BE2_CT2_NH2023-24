@@ -15,7 +15,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brand = Brand::all(); //hiển thị danh sách loại sản phẩm
+        $brand = Brand::all(); //hiển thị danh sách 
         //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
         return  view('management.brand', compact('brand'));
     }
