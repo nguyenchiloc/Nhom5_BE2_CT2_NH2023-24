@@ -70,7 +70,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'phone'=>'',
             'gender'=>'',
-            'date'=>'1994-02-14',
+            'date'=>'2024-01-01',
             'address'=>'',
             'avatar'=>'',
             'level_id'=>'2', //mặc định là user,

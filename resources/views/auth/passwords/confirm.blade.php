@@ -44,9 +44,9 @@
                             </div>
                         </div>
                         <p class="text-secondary text-center pt-5">
-                            Copyright © <script>
+                            <script>
                                 document.write(new Date().getFullYear())
-                            </script> Dash UI - Laravel Starter
+                            </script> 
                         </p>
                     </div>
                     <div class="col-md-6">

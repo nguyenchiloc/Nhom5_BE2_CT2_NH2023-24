@@ -11,6 +11,8 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\User;
 use App\Models\Price;
+use App\Models\Bill;
+use App\Models\BillDetail;
 use Flasher\Prime\FlasherInterface;
 
 class CartController extends Controller
@@ -19,7 +21,6 @@ class CartController extends Controller
     {
         $this->middleware('auth');
     }
-
     public function add_to_cart(Request $request, $product_id)
     {
         $user_id = Auth::user()->user_id;
@@ -35,6 +36,7 @@ class CartController extends Controller
                 'user_id' => $user_id,
                 'product_id' => $product_id,
                 'quantity' => $request->quantity,
+                'carts_status' => 'save',
             ]);
         }
         else {
@@ -45,7 +47,6 @@ class CartController extends Controller
 
         return  redirect()->back();
     }
-
     public function show_cart()
     {
        //hiển thị danh sách loại sản phẩm active
@@ -57,7 +58,8 @@ class CartController extends Controller
        //hiển thị user
        $user = Auth::user() == '' ? [] : User::where('user_id', Auth::user()->user_id)->get();
        /***************************Common****************************************** */
-       $carts = Cart::where('user_id', Auth::user()->user_id)->get();
+       $carts = Cart::where('user_id', Auth::user()->user_id)
+                 ->where('cart_status', '=', 'save')->get(); 
         //Tính tổng 
         return view('cart.show_cart', [ 'carts' => $carts], compact('category', 'brands', 'user', 'price'));
     }
@@ -65,14 +67,14 @@ class CartController extends Controller
     { 
         $data_edit = Cart::findOrFail($id);
         //xét điều kiện +- quantity
-        if($request->cart_status == "cart_quantity_up"){
+        if($request->cart_qty_status == "cart_quantity_up"){
             $data_edit->quantity = $request->quantity + 1;
         }
         else{
             $data_edit->quantity = $request->quantity - 1;
         }
         if( $data_edit->quantity > 0){
-            if( $data_edit->save()) {
+            if($data_edit->save()) {
                 $flasher->addSuccess('Updated success', 'Sunshine !');
             }
             else{
@@ -94,5 +96,66 @@ class CartController extends Controller
             $flasher->addError('Fail!');
         }
         return redirect()->back();
+    }
+    //checkout
+    public function getCheckOut()
+    { 
+        $carts = Cart::where('user_id', Auth::user()->user_id)->get();
+        return  view('cart.checkout', [ 'carts' => $carts]);
+    }
+    public function postCheckOut(Request $request, FlasherInterface $flasher) {
+        $data_cart = Cart::where('user_id', Auth::user()->user_id)->get();
+        if ($data_cart == null)
+        {
+            $flasher->addError('Your cart is null !');
+            return redirect()->back();
+        }
+        if(Auth::user()->phone == null || Auth::user()->address == null)
+        {
+            $flasher->addError('Please check the information again !');
+            return redirect()->back();
+        }
+        foreach ($data_cart as $cart) {
+            $product = Product::findOrFail($cart->product_id);
+            if ($product == null)
+            {
+                $flasher->addError('product is null !');
+                return redirect()->back();
+            }
+            //kiểm tra số lượng trong kho
+            $check_qty_stock = $product->product_qty - $cart->quantity;
+            if($check_qty_stock < 0){
+                $message = $product->product_name . " không đủ sản phẩm";
+                $flasher->addError($message);
+                return redirect()->back(); 
+            }
+        }
+
+        $bill = Bill::create([
+            'user_id' => Auth::user()->user_id,
+            'total_qty' => $request->total_qty,
+            'total_amount' => $request->total_price,
+            'date_invoice' => date('Y-m-d H:i:s'),
+            'status' => 'unconfirm',//trạng thái chưa xác nhận đơn hàng
+            'note' => $request->note,
+        ]);
+        foreach ($data_cart as $cart) {
+            $product = Product::findOrFail($cart->product_id);
+            BillDetail::create([
+                'bill_id'    => $bill->bill_id,
+                'product_id' => $cart->product_id,
+                'quantily'  => $cart->quantity,
+                'price'     => $product->product_price,
+            ]);
+            $product->update([
+                'product_qty' => $product->product_qty - $cart->quantity,
+            ]);
+            $cart->update([
+                'cart_status' => 'wait',
+            ]);
+            //$cart->delete();
+        }
+        $flasher->addSuccess('Order success', 'Sunshine !');
+        return  view('cart.confirm_order');
     }
 }

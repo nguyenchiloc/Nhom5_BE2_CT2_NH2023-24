@@ -113,12 +113,7 @@ E - Sunshine
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0; font-weight: 900;">
                 <div class="col text-right">{{ number_format($total_price) }} VND</div>
             </div>
-            <form action="{{ route('cart.getCheckOut') }}" method="post">
-                @csrf
-                <button type="submit" class="btn"
-                    @if ($carts->isEmpty()) disabled @endif>CHECKOUT</button>
-            </form>
-            
+            <button class="btn">CHECKOUT</button>
         </div>
     </div>
     

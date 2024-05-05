@@ -51,7 +51,10 @@ class User extends Authenticatable
     //Một user_id sẽ có nhiều cart_id
     public function getUserCarts()
     {
-        return $this->hasMany(Cart::class, 'user_id', 'user_id');
+        return $this->hasMany(Cart::class, 'user_id', 'user_id')->where('cart_status','=','save');
     }
-    
+    public function getUserBill()
+    {
+        return $this->hasMany(Bill::class, 'user_id', 'user_id');
+    }
 }

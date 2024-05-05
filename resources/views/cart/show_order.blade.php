@@ -26,11 +26,11 @@ E - Sunshine
         <div class="col-md-10 cart">
             <div class="title">
                 <div class="row">
-                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                    <div class="col"><h4><b>Your Order</b></h4></div>
                     @if(!Auth::check())
                         <div class="col align-self-center text-right text-muted"> 0 items</div>
                     @else
-                    <div class="col align-self-center text-right text-muted"> {{  Auth::user()->getUserCarts->count() }} items</div>
+                    <div class="col align-self-center text-right text-muted"> {{  Auth::user()->getUserBill->count() }} items</div>
                     @endif
                 </div>
             </div>   

@@ -14,7 +14,8 @@ class Cart extends Model
         'cart_id',
         'quantity',
         'user_id',
-        'product_id'
+        'product_id',
+        'cart_status'
     ];
     //Một cart_id có 1 user id
     public function getCartUser()

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->integer('user_id');
             $table->integer('product_id');
+            $table->string('cart_status');
             $table->timestamps();
         });
     }
