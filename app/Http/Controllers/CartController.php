@@ -36,7 +36,7 @@ class CartController extends Controller
                 'user_id' => $user_id,
                 'product_id' => $product_id,
                 'quantity' => $request->quantity,
-                'carts_status' => 'save',
+                'cart_status' => 'save',
             ]);
         }
         else {
@@ -100,11 +100,13 @@ class CartController extends Controller
     //checkout
     public function getCheckOut()
     { 
-        $carts = Cart::where('user_id', Auth::user()->user_id)->get();
+        $carts = Cart::where('user_id', Auth::user()->user_id)
+                ->where('cart_status', '=', 'save')->get();
         return  view('cart.checkout', [ 'carts' => $carts]);
     }
     public function postCheckOut(Request $request, FlasherInterface $flasher) {
-        $data_cart = Cart::where('user_id', Auth::user()->user_id)->get();
+        $data_cart = Cart::where('user_id', Auth::user()->user_id)
+                    ->where('cart_status', '=', 'save')->get();
         if ($data_cart == null)
         {
             $flasher->addError('Your cart is null !');
@@ -141,17 +143,20 @@ class CartController extends Controller
         ]);
         foreach ($data_cart as $cart) {
             $product = Product::findOrFail($cart->product_id);
+            $cart = Cart::findOrFail($cart->cart_id);
             BillDetail::create([
                 'bill_id'    => $bill->bill_id,
+                'cart_id'    => $cart->cart_id,
                 'product_id' => $cart->product_id,
                 'quantily'  => $cart->quantity,
                 'price'     => $product->product_price,
             ]);
+            //Khi user đặt hàng thì số lượng sản phẩm trong kho trừ ra
             $product->update([
                 'product_qty' => $product->product_qty - $cart->quantity,
             ]);
             $cart->update([
-                'cart_status' => 'wait',
+                'cart_status' => 'order',
             ]);
             //$cart->delete();
         }

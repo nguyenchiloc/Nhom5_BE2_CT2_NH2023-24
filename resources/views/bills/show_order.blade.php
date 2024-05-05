@@ -49,7 +49,8 @@ E - Sunshine
                         @foreach($bills as $index => $bill) 
                         <div class="row border-top border-bottom">
                             <div class="row main align-items-center">
-                                <div class="col-3" style="text-align :center;">{{ $index + 1 }}.{{ Auth::user()->user_id }}-{{ $bill->bill_id }}-{{ date('Ymd', strtotime($bill->date_invoice)) }}
+                                <div class="col-3" style="text-align :center;" id="showIDOrder">
+                                    {{ Auth::user()->user_id }}-{{ $bill->bill_id }}-{{ date('Ymd', strtotime($bill->date_invoice)) }}
                                 </div>
                                 <div class="col-2" style="text-align :center;">{{  date('d/m/Y', strtotime($bill->date_invoice)) }}
                                 </div>
@@ -57,8 +58,7 @@ E - Sunshine
                                 <div class="col-2" style="text-align :center;">
                                     <form method="POST" action="{{ route('bills.show_detail', $bill->bill_id) }}">
                                         @csrf
-                                            <input type="text" name="bill_id" value="{{ $bill->bill_id }}" hidden>
-                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-3 mr-3"></i>{{ 'Detail' }}</button>
+                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-1 mb-1 ml-3 mr-3"></i>{{ 'Detail' }}</button>
                                     </form>
                                 </div>
                                 <div class="col-3" style="text-align :center">{{ number_format($bill->total_amount) }} VND</div>
@@ -79,7 +79,7 @@ E - Sunshine
                 <div class="col-md-12 cart">
                     <div class="title">
                         <div class="row">
-                            <div class="col-10"><h5><b>Detail order: {{ Auth::user()->user_id }}-{{ $bill->bill_id }}-{{ date('Ymd', strtotime($bill->date_invoice)) }}</b></h5></div>
+                            <div class="col-10"><h5><b>Detail order: {{ Auth::user()->user_id }}-{{ $bills_info->bill_id }}-{{ date('Ymd', strtotime($bills_info->date_invoice)) }}</b></h5></div>
                             <div class="col align-self-center text-right text-muted"> {{  $bills_detail->count() }} items</div>
                         </div>
                     </div>   
@@ -104,9 +104,14 @@ E - Sunshine
                         @endforeach
                         <div class="row border-top border-bottom">
                             <div class="row main align-items-center">
-                                <div class="col-12" style="text-align :center; font-weight: 900;">Total: {{ number_format($bill->total_amount) }} VND</div>
+                                <div class="col-12" style="text-align :center; font-weight: 900;">Total: {{ number_format($bills_info->total_amount) }} VND</div>
                             </div>
                         </div>
+                        <form action="{{ route('bills.getCancelOrder', $bills_info->bill_id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn" @if ($bills_info->status == 'confirm') disabled @endif onclick="return confirm('Are you sure cancel?')">Cancel</button>
+                        </form>
                         <!-- Paginator -->
                     @else    
                     <p>You have no items</p>
@@ -117,7 +122,8 @@ E - Sunshine
         @endif
     </div>
 </div>
-
+<script>
+</script>
 
 @endsection
 <!-- --------scripts-------------- -->

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('billdetail', function (Blueprint $table) {
             $table->id('bill_detail_id');
             $table->integer('bill_id');
+            $table->integer('cart_id');
             $table->integer('product_id');
             $table->integer('quantily');
             $table->double('price');

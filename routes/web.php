@@ -15,6 +15,7 @@ use App\Http\Controllers\BillsController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,8 +84,8 @@ Route::group(['prefix' => 'fillter'], function(){
 }); 
 //User - Cart
 Route::group(['prefix' => 'cart', 'middleware' => ['auth']], function(){
-    Route::post('/{product_id}', [CartController::class, 'add_to_cart'])->name('cart.add_to_cart');
     Route::get('/show_cart', [CartController::class, 'show_cart'])->name('cart.show_cart');
+    Route::post('/{product_id}', [CartController::class, 'add_to_cart'])->name('cart.add_to_cart');
     Route::patch('/update/{cart_id}', [CartController::class, 'update_cart'])->name('cart.update_cart'); 
     Route::delete('/destroy/{cart_id}', [CartController::class, 'destroy_cart'])->name('cart.destroy');
     Route::get('/checkout', [CartController::class, 'getCheckOut'])->name('cart.getCheckOut');
@@ -94,4 +95,10 @@ Route::group(['prefix' => 'cart', 'middleware' => ['auth']], function(){
 Route::group(['prefix' => 'bills', 'middleware' => ['auth']], function(){
     Route::get('/show_order', [BillsController::class, 'show_order'])->name('bills.show_order');
     Route::post('/show_detail/{id}', [BillsController::class, 'show_detail'])->name('bills.show_detail');
+    Route::delete('/cancel/{bill_id}', [BillsController::class, 'getCancelOrder'])->name('bills.getCancelOrder');
+    //admin
+    Route::get('/admin/list', [BillsController::class, 'index'])->name('bills.index');
+    Route::get('/admin/edit/{bill_id?}', [BillsController::class, 'edit'])->name('bills.edit');
+    Route::patch('/admin/update/{bill_id?}', [BillsController::class, 'update'])->name('bills.update');
+    
 });

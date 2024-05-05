@@ -47,6 +47,7 @@ E - Sunshine
             </div>
             @php
                 $total_price = 0;
+                $count_cart = 0;
             @endphp
             @if(count($carts))
                 @foreach($carts as $cart) 
@@ -85,6 +86,7 @@ E - Sunshine
                 <!-- tính tổng -->
                 @php
                     $total_price += $cart->getCartProduct->product_price * $cart->quantity;
+                    $count_cart = count($carts);
                 @endphp
                 @endforeach
             @else    
@@ -113,12 +115,14 @@ E - Sunshine
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0; font-weight: 900;">
                 <div class="col text-right">{{ number_format($total_price) }} VND</div>
             </div>
-            <form action="{{ route('cart.getCheckOut') }}" method="post">
+            <!-- <form action="{{ route('cart.getCheckOut') }}" method="post">
                 @csrf
                 <button type="submit" class="btn"
                     @if ($carts->isEmpty()) disabled @endif>CHECKOUT</button>
-            </form>
-            
+            </form> -->
+            <a href="{{ route('cart.getCheckOut') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                Check Out
+            </a>
         </div>
     </div>
     

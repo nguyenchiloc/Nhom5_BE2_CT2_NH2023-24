@@ -12,6 +12,7 @@ class BillDetail extends Model
     protected $fillable = [
         'bill_detail_id',
         'bill_id',
+        'cart_id',
         'product_id',
         'quantily',
         'price',
@@ -23,5 +24,9 @@ class BillDetail extends Model
     public function getDetailProduct()
     {
         return $this->belongsTo(Product::class, 'product_id');
+    }
+    public function getBillDetailCart()
+    {
+        return $this->hasOne(Cart::class);
     }
 }
