@@ -107,6 +107,10 @@ E - Sunshine
                                 <div class="col-12" style="text-align :center; font-weight: 900;">Total: {{ number_format($bills_info->total_amount) }} VND</div>
                             </div>
                         </div>
+                        @if ($bills_info->status == 'confirm')
+                            <p>Đơn hàng của bạn đã được xác nhận. <br>
+                                Vui lòng chờ vận chuyển và nhận hàng!</p>
+                        @endif
                         <form action="{{ route('bills.getCancelOrder', $bills_info->bill_id) }}" method="post">
                             @csrf
                             @method('DELETE')
