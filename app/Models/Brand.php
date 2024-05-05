@@ -13,6 +13,7 @@ class Brand extends Model
     //khóa chính 
     public $primaryKey = 'brand_id';
     protected $fillable = ['brand_id', 'brand_name', 'brand_description', 'brand_status'];
+    
     public function product(){
         return $this->hasMany(Product::class, 'brand_id', 'brand_id');
     }

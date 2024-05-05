@@ -164,8 +164,7 @@ E - Sunshine
 					</li>
 
 					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
-					</li>
+						<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews ({{ $product_detail->getProdReview->count() }})
 				</ul>
 
 				<!-- Tab panes -->
@@ -244,31 +243,40 @@ E - Sunshine
 							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 								<div class="p-b-30 m-lr-15-sm">
 									<!-- Review -->
-									<div class="flex-w flex-t p-b-68">
-										<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-											<img src="images/avatar-01.jpg" alt="AVATAR">
-										</div>
-
-										<div class="size-207">
-											<div class="flex-w flex-sb-m p-b-17">
-												<span class="mtext-107 cl2 p-r-20">
-													Ariana Grande
-												</span>
-
-												<span class="fs-18 cl11">
-													<i class="zmdi zmdi-star"></i>
-													<i class="zmdi zmdi-star"></i>
-													<i class="zmdi zmdi-star"></i>
-													<i class="zmdi zmdi-star"></i>
-													<i class="zmdi zmdi-star-half"></i>
-												</span>
+									@php 
+										$avgrating = 0;
+									@endphp
+									@foreach($product_detail->getProdReview as $review)
+										<div class="flex-w flex-t p-b-68">
+											<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
+												<img src="{{ asset('assets/images/avt/'. $review->getReviewUser->avatar) }}" class="avatar avatar-sm me-3" alt="avatar">
 											</div>
+												{{ $review->getReviewUser->full_name }}
+											<div class="size-207">
+												<div class="flex-w flex-sb-m p-b-17">
+													<span class="mtext-107 cl2 p-r-20">
+													
+													</span>
+													@php 
+														$avgrating = $review->rating;
+													@endphp
+													<span class="fs-18 cl11">
+														@for($i = 1; $i <= 5; $i++)
+															@if($i <= $avgrating)
+															<i class="zmdi zmdi-star"></i>
+															@else
+																<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+															@endif
+														@endfor
+													</span> 
+												</div>
 
-											<p class="stext-102 cl6">
-												Quod autem in homine praestantissimum atque optimum est, id deseruit. Apud ceteros autem philosophos
-											</p>
+												<p class="stext-102 cl6">
+													{{ $review->comment}}
+												</p>
+											</div>
 										</div>
-									</div>
+									@endforeach
 									
 									<!-- Add review -->
 									<form class="w-full">
@@ -286,11 +294,19 @@ E - Sunshine
 											</span>
 
 											<span class="wrap-rating fs-18 cl11 pointer">
-												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+												@php 
+													$avgrating = 0;
+												@endphp
+												@foreach($product_detail->getProdReview as $bill_dtl_item)
+													$avgrating = $avgrating + $bill_dtl_item->review->rating;
+												@endforeach
+												@for($i = 1; $i <=5; $i++)
+													@if($i <= $avgrating)
+														<i class="zmdi zmdi-star"></i>
+													else
+														<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+													@endif
+												@endfor
 												<input class="dis-none" type="number" name="rating">
 											</span>
 										</div>

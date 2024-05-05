@@ -57,4 +57,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Bill::class, 'user_id', 'user_id');
     }
+    public function getUserRv()
+    {
+        return $this->hasMany(Review::class, 'user_id', 'user_id');
+    }
 }
