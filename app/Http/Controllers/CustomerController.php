@@ -62,7 +62,6 @@ class CustomerController extends Controller
     public function edit($id)
     {
         //
-         //
         $customer = User::all(); //hiển thị danh sách loại sản phẩm
         //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
         $customer_data_old = User::findOrFail($id);

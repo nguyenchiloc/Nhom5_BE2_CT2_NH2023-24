@@ -24,6 +24,6 @@ class Review extends Model
     }
     public function getReviewProd()
     {
-        return $this->hasOne(User::class,'product_id');
+        return $this->hasOne(Product::class,'product_id');
     }
 }

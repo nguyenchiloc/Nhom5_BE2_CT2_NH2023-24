@@ -175,6 +175,7 @@ E - Sunshine
 							<p class="stext-102 cl6">
 								Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
 							</p>
+							<a href=""></a>
 						</div>
 					</div>
 
@@ -233,6 +234,7 @@ E - Sunshine
 										</span>
 									</li>
 								</ul>
+								<a href=""></a>
 							</div>
 						</div>
 					</div>
@@ -254,9 +256,7 @@ E - Sunshine
 												{{ $review->getReviewUser->full_name }}
 											<div class="size-207">
 												<div class="flex-w flex-sb-m p-b-17">
-													<span class="mtext-107 cl2 p-r-20">
-													
-													</span>
+													<span class="mtext-107 cl2 p-r-20"></span>
 													@php 
 														$avgrating = $review->rating;
 													@endphp
@@ -270,20 +270,69 @@ E - Sunshine
 														@endfor
 													</span> 
 												</div>
-
 												<p class="stext-102 cl6">
 													{{ $review->comment}}
 												</p>
+												<div style="text-align: end; display: ruby-text;">
+													<button type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-5 m-tb-5" onclick="clickEditComment(this)" value="{{ $review->review_id }}">
+														Edit
+													</button>
+													<form id="Detele" action="{{ route('review.destroy', $review->review_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                          				@csrf
+														@method('DELETE')
+														<button type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-5 m-tb-5" onclick="return confirm('Are you sure?')">
+															Delete
+														</button>
+													</form>
+												</div>
+												
 											</div>
+											<!-- @if($review->getReviewUser->user_id == Auth::user()->user_id)   -->
+											<div id="{{$review->review_id}}" style="display: none;">
+												<form action="{{ route('review.update', $review->review_id) }}#comment" method="post" role="form text-left" enctype="multipart/form-data">
+													@csrf
+                                            		@method('PATCH')
+													<div class="form-group" style="width: 100%;" id="#comment">
+														<label for="new_comment">{{ 'Comment' }}</label>
+														<div class="@error('new_comment')border border-danger rounded-3 @enderror">
+															<textarea class="form-control" id="new_comment" rows="3" name="new_comment">{{ $review->comment }}</textarea>
+														</div>
+													</div>
+													<div class="flex-w flex-m p-b-23">
+														<span class="stext-102 cl3 m-r-16">
+															Your Rating
+														</span>
+														<div class="flex-w flex-sb-m p-b-17">
+															@php 
+																$avgrating = $review->rating;
+															@endphp
+															<span class="wrap-rating fs-18 cl11 pointer">
+																@for($i = 1; $i <= 5; $i++)
+																	@if($i <= $avgrating)
+																	<i class="item-rating pointer zmdi zmdi-star"></i>
+																	@else
+																		<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+																	@endif
+																@endfor	
+																<input class="dis-none" type="number" name="rating">
+															</span>
+														</div>
+													</div>
+													<div class="d-flex justify-content-end">
+														<button type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn2 p-lr-15 trans-04 m-b-10" style="border: 1px soild gray"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Update' }}</button>
+													</div>
+                                       			 </form>
+											</div>
+											<!-- @endif -->
 										</div>
 									@endforeach
 									
 									<!-- Add review -->
-									<form class="w-full">
+									<form class="w-full" action="{{ route('review.create', $product_detail->product_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
+										@csrf
 										<h5 class="mtext-108 cl2 p-b-7">
 											Add a review
 										</h5>
-
 										<p class="stext-102 cl6">
 											Your email address will not be published. Required fields are marked *
 										</p>
@@ -292,21 +341,12 @@ E - Sunshine
 											<span class="stext-102 cl3 m-r-16">
 												Your Rating
 											</span>
-
 											<span class="wrap-rating fs-18 cl11 pointer">
-												@php 
-													$avgrating = 0;
-												@endphp
-												@foreach($product_detail->getProdReview as $bill_dtl_item)
-													$avgrating = $avgrating + $bill_dtl_item->review->rating;
-												@endforeach
-												@for($i = 1; $i <=5; $i++)
-													@if($i <= $avgrating)
-														<i class="zmdi zmdi-star"></i>
-													else
-														<i class="item-rating pointer zmdi zmdi-star-outline"></i>
-													@endif
-												@endfor
+												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
+												<i class="item-rating pointer zmdi zmdi-star-outline"></i>
 												<input class="dis-none" type="number" name="rating">
 											</span>
 										</div>
@@ -314,21 +354,11 @@ E - Sunshine
 										<div class="row p-b-25">
 											<div class="col-12 p-b-5">
 												<label class="stext-102 cl3" for="review">Your review</label>
-												<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="review"></textarea>
-											</div>
-
-											<div class="col-sm-6 p-b-5">
-												<label class="stext-102 cl3" for="name">Name</label>
-												<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="name" type="text" name="name">
-											</div>
-
-											<div class="col-sm-6 p-b-5">
-												<label class="stext-102 cl3" for="email">Email</label>
-												<input class="size-111 bor8 stext-102 cl2 p-lr-20" id="email" type="text" name="email">
+												<textarea class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10" id="review" name="comment"></textarea>
 											</div>
 										</div>
 
-										<button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+										<button type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
 											Submit
 										</button>
 									</form>
@@ -391,3 +421,14 @@ E - Sunshine
 @endsection
 @section('custom-scripts')
 @endsection		
+<script>
+	function clickEditComment(id) {
+		var id = event.target.value;
+		var x = document.getElementById(id);
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+</script>

@@ -13,8 +13,7 @@ use App\Http\Controllers\ProductFilterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BillsController;
 use App\Http\Controllers\CustomerController;
-
-
+use App\Http\Controllers\ReviewsController;
 
 
 /*
@@ -108,3 +107,9 @@ Route::group(['prefix' => 'bills', 'middleware' => ['auth']], function(){
     Route::patch('/admin/update/{bill_id?}', [BillsController::class, 'update'])->name('bills.update');
     
 });
+//User - Review comment
+Route::group(['prefix' => 'post', 'middleware' => ['auth']], function(){
+    Route::post('/{product_id}/create', [ReviewsController::class, 'create'])->name('review.create');
+    Route::patch('/post/{review_id?}', [ReviewsController::class, 'update'])->name('review.update');
+    Route::delete('/destroy/{review_id}', [ReviewsController::class, 'destroy'])->name('review.destroy');
+}); 
