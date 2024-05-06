@@ -86,7 +86,7 @@
                                     <h5 class="mb-0">{{ __('Create') }}</h5>
                                 </div>
                                 <div class="card-body pt-4 p-3">
-                                    <form action="{{ route('price.store') }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                    <form action="{{ route('price.create') }}" method="post" role="form text-left" enctype="multipart/form-data">
                                     @csrf    
                                         <div class="row">
                                             <div class="col-md-2">

@@ -54,7 +54,7 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth']], function(){
 //Admin - Category
 Route::group(['prefix' => 'management/category', 'middleware' => ['auth']], function(){
     Route::get('/list', [CategoryController::class, 'index'])->name('category.index');
-    Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::post('/create', [CategoryController::class, 'create'])->name('category.create');
     Route::get('/edit/{category_id?}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::patch('/update/{category_id?}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('/destroy/{category_id?}', [CategoryController::class, 'destroy'])->name('category.destroy');
@@ -62,7 +62,7 @@ Route::group(['prefix' => 'management/category', 'middleware' => ['auth']], func
 //Admin - Brand
 Route::group(['prefix' => 'management/brand', 'middleware' => ['auth']], function(){
     Route::get('/list', [BrandController::class, 'index'])->name('brand.index');
-    Route::post('/store', [BrandController::class, 'store'])->name('brand.store');
+    Route::post('/create', [BrandController::class, 'create'])->name('brand.create');
     Route::get('/edit/{brand_id?}', [BrandController::class, 'edit'])->name('brand.edit');
     Route::patch('/update/{brand_id?}', [BrandController::class, 'update'])->name('brand.update');
     Route::delete('/destroy/{brand_id?}', [BrandController::class, 'destroy'])->name('brand.destroy');
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'management/brand', 'middleware' => ['auth']], functio
 //Admin - Price
 Route::group(['prefix' => 'management/price', 'middleware' => ['auth']], function(){
     Route::get('/list', [PriceController::class, 'index'])->name('price.index');
-    Route::post('/store', [PriceController::class, 'store'])->name('price.store');
+    Route::post('/create', [PriceController::class, 'create'])->name('price.create');
     Route::get('/edit/{price_id?}', [PriceController::class, 'edit'])->name('price.edit');
     Route::patch('/update/{price_id?}', [PriceController::class, 'update'])->name('price.update');
     Route::delete('/destroy/{price_id?}', [PriceController::class, 'destroy'])->name('price.destroy');

@@ -59,7 +59,7 @@
                                             </a>
                                             @csrf
                                             @method('PATCH')
-                                            <a href="#edit"  class="mx-3 edit-category" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick="window.location=' {{ route('category.edit', $category->category_id) }}#edit'">
+                                            <a href="#edit"  class="mx-3 edit-category" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick="window.location='{{ route('category.edit', $category->category_id) }}#edit'">
                                                 <i class="fas fa-edit "></i>
                                             </a>
                                             @method('DELETE')
@@ -83,7 +83,7 @@
                                     <h5 class="mb-0">{{ __('Create') }}</h5>
                                 </div>
                                 <div class="card-body pt-4 p-3">
-                                    <form action="{{ route('category.store') }}" method="post" role="form text-left" enctype="multipart/form-data">
+                                    <form action="{{ route('category.create') }}" method="post" role="form text-left" enctype="multipart/form-data">
                                     @csrf    
                                         <div class="row">
                                             <div class="col-md-2">

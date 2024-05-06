@@ -18,24 +18,13 @@ class PriceController extends Controller
         //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
         return  view('management.price', compact('price'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, FlasherInterface $flasher)
+    public function create(Request $request, FlasherInterface $flasher)
     {
         //
         $news = new Price;
@@ -49,18 +38,6 @@ class PriceController extends Controller
         }
         return redirect()->back();
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-         //
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -92,7 +69,6 @@ class PriceController extends Controller
 
         $data_edit->price_name = $request->new_price_name;
         $data_edit->price_to = $request->new_price_to;
-        $data_edit->price_from = $request->price_from;
         $data_edit->price_status = $request->new_price_status;
         
         //Xét điều kiện lấy lỗi
@@ -126,6 +102,6 @@ class PriceController extends Controller
         }else{
             $flasher->addError('Fail!');
         }
-        return redirect()->back();
+        return redirect()->route('price.index');
     }
 }

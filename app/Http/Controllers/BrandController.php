@@ -8,34 +8,13 @@ use Flasher\Prime\FlasherInterface;
 
 class BrandController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $brand = Brand::all(); //hiển thị danh sách 
         //compact:  cần chuyển nhiều mảng tới một page thì ta dùng
         return  view('management.brand', compact('brand'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, FlasherInterface $flasher)
+    public function create(Request $request, FlasherInterface $flasher)
     {
         //
         $news = new Brand;
@@ -49,24 +28,6 @@ class BrandController extends Controller
         }
         return redirect()->back();
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
@@ -76,14 +37,6 @@ class BrandController extends Controller
         $brand_data_old = Brand::where('brand_id', $brand_data_old->brand_id)->first();
         return  view('management.brand', compact('brand', 'brand_data_old'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id, FlasherInterface $flasher)
     {
         //
@@ -98,13 +51,6 @@ class BrandController extends Controller
         }
         return redirect()->back();
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id, FlasherInterface $flasher)
     {
         $data_delete = Brand::findOrFail($id);
@@ -113,6 +59,6 @@ class BrandController extends Controller
         }else{
             $flasher->addError('Fail!');
         }
-        return redirect()->back();
+        return redirect()->route('brand.index');
     }
 }
