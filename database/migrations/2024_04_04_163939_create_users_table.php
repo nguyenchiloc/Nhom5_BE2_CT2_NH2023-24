@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->integer('level_id');
             $table->string('status');
+            $table->string('about');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -59,10 +59,6 @@ E - Sunshine
 					<span class="mtext-106 cl2">
 						{{ number_format($product_detail->product_price) }} VND
 					</span>
-					<p class="stext-102 cl3 p-t-23">
-						{{$product_detail->product_description}}
-					</p>
-					
 					<!--  -->
 					<div class="p-t-33">
 						<div class="flex-w flex-r-m p-b-10">
@@ -125,7 +121,6 @@ E - Sunshine
 							</form>
 						</div>
 					</div>
-
 					<!--  -->
 					<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 						<div class="flex-m bor9 p-r-10 m-r-11">
@@ -149,7 +144,14 @@ E - Sunshine
 				</div>
 			</div>
 		</div>
-
+		<div class="bor10 m-t-10">
+			<h5 style="text-align: center;font-weight: bold;margin-top: 10px;">Thông tin sản phẩm</h5>	
+			<p class="stext-102 cl3 p-t-0" style="height: 250px;margin: 20px; overflow-y:auto;">
+				{{$product_detail->product_description}}
+			</p>
+		</div>	
+		
+		
 		<div class="bor10 m-t-50 p-t-43 p-b-40">
 			<!-- Tab01 -->
 			<div class="tab01">

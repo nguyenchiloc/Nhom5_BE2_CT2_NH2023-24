@@ -15,10 +15,13 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        //
-        DB::table('brand')->insert([[ 'brand_name' => 'Apple' ,'brand_description' => 'Thương hiệu Apple','brand_status' => 'Active', 'created_at' => now() , 'updated_at' => now()],
+        //như bên kia 1.Apple 2.Samsung 3.Xiaomi 4.Asus 5.HP -->tạo dữ liệu giúp chị .OK
+        DB::table('brand')->insert([
+            [ 'brand_name' => 'Apple' ,'brand_description' => 'Thương hiệu Apple','brand_status' => 'Active', 'created_at' => now() , 'updated_at' => now()],
             [ 'brand_name' => 'Samsung', 'brand_description' => 'Thương hiệu Samsung', 'brand_status' => 'Active','created_at' => now() , 'updated_at' => now()],
-            [ 'brand_name' => 'Casio' , 'brand_description' => 'Thương hiệu Casio', 'brand_status' => 'Active','created_at' => now() , 'updated_at' => now()],
+            [ 'brand_name' => 'Xiaomi' , 'brand_description' => 'Thương hiệu Xiaomi', 'brand_status' => 'Active','created_at' => now() , 'updated_at' => now()],
+            [ 'brand_name' => 'Asus', 'brand_description' => 'Thương hiệu Asus', 'brand_status' => 'Active','created_at' => now() , 'updated_at' => now()],
+            [ 'brand_name' => 'HP' , 'brand_description' => 'Thương hiệu HP', 'brand_status' => 'Active','created_at' => now() , 'updated_at' => now()],
         ]);
     }
 }

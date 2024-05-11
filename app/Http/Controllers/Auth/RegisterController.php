@@ -70,9 +70,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'phone'=>'',
             'gender'=>'',
-            'date'=>'2024-01-01',
+            'date'=>'',
             'address'=>'',
             'avatar'=>'',
+            'about'=>'',
             'level_id'=>'2', //mặc định là user,
             'status'=>'Active' //mặc định active
         ]);

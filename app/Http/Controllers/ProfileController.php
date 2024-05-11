@@ -91,6 +91,7 @@ class ProfileController extends Controller
         $user->gender   = $request->gender;
         $user->date     = $request->date;
         $user->address  = $request->address;
+        $user->about    = $request->about;
         //set avatar
         $file = $request->avatar;
         $extension = "jpg";

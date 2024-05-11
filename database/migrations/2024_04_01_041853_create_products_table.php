@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('product_qty');
             $table->integer('category_id');
             $table->integer('brand_id');
-            $table->string('product_description');
+            $table->string('product_description', 10000);//tăng độ dài mô tả thành 10000
             $table->string('product_status');
             $table->string('product_images_1')->nullable();
             $table->string('product_images_2')->nullable();
