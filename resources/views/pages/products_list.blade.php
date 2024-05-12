@@ -4,7 +4,7 @@
 			<div class="flex-w flex-l-m filter-tope-group m-tb-10" id='category'>
 				<form action="{{ route('page',['page'=>'']) }}#category" method="GET">
 					<button id="0" name="all" type="submit" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 {{ Request::is('All Products') ? 'how-active1' : '' }} list_category">
-						All Products
+						Tất cả
 					</button>
 				</form>
 				@foreach($category as $row)
@@ -49,22 +49,22 @@
 							@csrf
 							<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
 								<button type="submit" href="#pos" name="0" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_price">
-									All	
+									Tất cả	
 								</button>
 							</form>	
 							<form action="{{ route('pages.fillterSort') }}#pos" method="GET">
-								<button type="submit" href="#" name="Asc" value="Price: Low to High" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Price: Low to High</button><br>
-								<button type="submit" href="#" name="Desc" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Price: High to Low</button>
+								<button type="submit" href="#" name="Asc" value="Giá tiền từ thấp đến cao" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Giá từ thấp đến cao</button><br>
+								<button type="submit" href="#" name="Desc" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5">Giá từ cao đến thấp</button>
 							</form>		
 						</div>
 					<div class="filter-col2 p-r-15 p-b-27">
 						<div class="mtext-102 cl2 p-b-15">
-							Price
+							Giá tiền
 						</div>
 						@csrf
 						<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
 							<button type="submit" href="#pos" name="0" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_price">
-								All	
+							Tất cả		
 							</button>
 						</form>		
 						@foreach($price as $row)
@@ -77,12 +77,12 @@
 					</div>
 					<div class="filter-col3 p-r-15 p-b-27">
 						<div class="mtext-102 cl2 p-b-15">
-							Brand
+							Thương hiệu
 						</div>
 						@csrf
 						<form action="{{ route('page',['page'=>'']) }}#pos" method="GET">
 							<button type="submit" href="#pos" name="0" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 list_brand">
-								All	
+								Tất cả		
 							</button>
 						</form>		
 						@foreach($brands as $row)
@@ -116,12 +116,15 @@
 		@if(isset($sortPriceName))
 			<h5 style="padding-bottom : 5px; text-transform: lowercase;">Sản phẩm {{ isset($sortPriceName) ? $sortPriceName : ''  }}</b></h5>
 		@endif
+		@if(isset($sortBrandName))
+			<h5 style="padding-bottom : 5px; text-transform: lowercase;">Sản phẩm thuộc thương hiệu {{ isset($sortBrandName) ? $sortBrandName : ''  }}</b></h5>
+		@endif
 		<div class="row isotope-grid" id="pos">
 			<!-- product -->
 			@foreach($dataProduct as $row)
 			<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
 				<div class="block2">
-					<div class="block2-pic hov-img0">
+					<div class="block2-pic hov-img0" style="border: 1px solid #d7ebd7; ">
 						<img src="{{ asset('assets/images/products/'. $row->product_images_1) }}" alt="IMG-PRODUCT">
 						<a href="{{ route('pages.products_detail', $row->product_id)}}" target="_self" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 ">
 							Quick View

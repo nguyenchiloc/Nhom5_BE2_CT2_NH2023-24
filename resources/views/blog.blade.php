@@ -26,11 +26,10 @@ E - Sunshine
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
-										22
+										14
 									</span>
-
 									<span class="stext-109 cl3 txt-center">
-										Jan 2018
+										May 2024
 									</span>
 								</div>
 							</a>
@@ -38,12 +37,12 @@ E - Sunshine
 							<div class="p-t-32">
 								<h4 class="p-b-15">
 									<a href="#" class="ltext-108 cl2 hov-cl1 trans-04">
-										8 Inspiring Ways to Wear Dresses in the Winter
+										Khám phá bất ngờ về công nghệ Trung Quốc có trên Huawei Pura 70 Pro
 									</a>
 								</h4>
 
 								<p class="stext-117 cl6">
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
+									Bản phân tích Pura 70 Pro tiết lộ rằng phần lớn linh kiện trên mẫu smartphone mới của Huawei được sản xuất tại Trung Quốc.
 								</p>
 
 								<div class="flex-w flex-sb-m p-t-18">
@@ -52,18 +51,9 @@ E - Sunshine
 											<span class="cl4">By</span> Admin  
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
-
-										<span>
-											StreetStyle, Mobile Phones, Couple  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											8 Comments
-										</span>
 									</span>
 
-									<a href="#" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+									<a href="https://www.24h.com.vn/thoi-trang-hi-tech/kham-pha-bat-ngo-ve-cong-nghe-trung-quoc-co-tren-huawei-pura-70-pro-c407a1566767.html" target="_blank" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 										Continue Reading
 
 										<i class="fa fa-long-arrow-right m-l-9"></i>
@@ -79,11 +69,10 @@ E - Sunshine
 
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
-										18
+										10
 									</span>
-
 									<span class="stext-109 cl3 txt-center">
-										Jan 2018
+										May 2024
 									</span>
 								</div>
 							</a>
@@ -91,12 +80,12 @@ E - Sunshine
 							<div class="p-t-32">
 								<h4 class="p-b-15">
 									<a href="#" class="ltext-108 cl2 hov-cl1 trans-04">
-										The Great Big List of Men’s Gifts for the Holidays 
+										Hàng triệu người dùng điện thoại Galaxy cũ bắt đầu đón nhận “trí tuệ nhân tạo”
 									</a>
 								</h4>
 
 								<p class="stext-117 cl6">
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
+								Nhật ký thay đổi của những điện thoại này chỉ đề cập đến tính năng Circle to Search như một phần của bản cập nhật One UI 6.1. Trong khi đó, Galaxy Z Fold 3 dường như sẽ nhận được nhiều tính năng AI hơn, bao gồm hình nền do AI tạo và chỉnh sửa hình ảnh AI tạo sinh.
 								</p>
 
 								<div class="flex-w flex-sb-m p-t-18">
@@ -105,20 +94,10 @@ E - Sunshine
 											<span class="cl4">By</span> Admin  
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
-
-										<span>
-											StreetStyle, Mobile Phones, Couple  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											8 Comments
-										</span>
 									</span>
 
-									<a href="#" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+									<a href="https://www.24h.com.vn/thoi-trang-hi-tech/hang-trieu-nguoi-dung-dien-thoai-galaxy-cu-bat-dau-don-nhan-tri-tue-nhan-tao-c407a1564727.html" target="_blank"  class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 										Continue Reading
-
 										<i class="fa fa-long-arrow-right m-l-9"></i>
 									</a>
 								</div>
@@ -129,14 +108,13 @@ E - Sunshine
 						<div class="p-b-63">
 							<a href="#" class="hov-img0 how-pos5-parent">
 								<img src="{{ asset('assets/images/blog-03.jpg') }}" alt="IMG-BLOG">
-
 								<div class="flex-col-c-m size-123 bg9 how-pos5">
 									<span class="ltext-107 cl2 txt-center">
-										16
+										08
 									</span>
 
 									<span class="stext-109 cl3 txt-center">
-										Jan 2018
+										May 2024
 									</span>
 								</div>
 							</a>
@@ -144,32 +122,20 @@ E - Sunshine
 							<div class="p-t-32">
 								<h4 class="p-b-15">
 									<a href="#" class="ltext-108 cl2 hov-cl1 trans-04">
-										5 Winter-to-Spring Mobile Phones Trends to Try Now
+									iPhone 17 series sẽ mang đến điều bất ngờ
 									</a>
 								</h4>
-
 								<p class="stext-117 cl6">
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
-								</p>
-
+									Chủ đề “Lộ diện iPhone 17 sẽ ra mắt mẫu Slim” trên Weibo đã lập tức đứng đầu danh sách tìm kiếm nóng, thu hút sự chú ý.
+								</p>	
 								<div class="flex-w flex-sb-m p-t-18">
 									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
 										<span>
 											<span class="cl4">By</span> Admin  
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
-
-										<span>
-											StreetStyle, Mobile Phones, Couple  
-											<span class="cl12 m-l-4 m-r-6">|</span>
-										</span>
-
-										<span>
-											8 Comments
-										</span>
-									</span>
-
-									<a href="#" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
+									</span>	
+									<a href="https://www.24h.com.vn/thoi-trang-hi-tech/iphone-17-series-se-mang-den-dieu-bat-ngo-c407a1565578.html" target="_blank" class="stext-101 cl2 hov-cl1 trans-04 m-tb-10">
 										Continue Reading
 
 										<i class="fa fa-long-arrow-right m-l-9"></i>
@@ -177,7 +143,6 @@ E - Sunshine
 								</div>
 							</div>
 						</div>
-
 						<!-- Pagination -->
 						<div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
 							<a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
@@ -202,7 +167,7 @@ E - Sunshine
 
 						<div class="p-t-55">
 							<h4 class="mtext-112 cl2 p-b-33">
-								Categories
+								Loại sản phẩm
 							</h4>
 							<ul>
 								<li class="bor18">
@@ -265,7 +230,7 @@ E - Sunshine
 								<li class="p-b-7">
 									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
 										<span>
-											July 2018
+											July 2024
 										</span>
 
 										<span>
@@ -277,7 +242,7 @@ E - Sunshine
 								<li class="p-b-7">
 									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
 										<span>
-											June 2018
+											June 2024
 										</span>
 
 										<span>
@@ -289,7 +254,7 @@ E - Sunshine
 								<li class="p-b-7">
 									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
 										<span>
-											May 2018
+											May 2024
 										</span>
 
 										<span>
@@ -301,7 +266,7 @@ E - Sunshine
 								<li class="p-b-7">
 									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
 										<span>
-											April  2018
+											April  2024
 										</span>
 
 										<span>
@@ -313,7 +278,7 @@ E - Sunshine
 								<li class="p-b-7">
 									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
 										<span>
-											March 2018
+											March 2024
 										</span>
 
 										<span>
@@ -325,7 +290,7 @@ E - Sunshine
 								<li class="p-b-7">
 									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
 										<span>
-											February 2018
+											February 2024
 										</span>
 
 										<span>
@@ -337,7 +302,7 @@ E - Sunshine
 								<li class="p-b-7">
 									<a href="#" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
 										<span>
-											January 2018
+											January 2024
 										</span>
 
 										<span>

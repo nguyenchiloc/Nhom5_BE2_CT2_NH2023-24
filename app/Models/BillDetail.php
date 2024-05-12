@@ -14,7 +14,7 @@ class BillDetail extends Model
         'bill_id',
         'cart_id',
         'product_id',
-        'quantily',
+        'quantity',
         'price',
     ];
     public function getBills()

@@ -40,7 +40,7 @@
 						@endphp
 						@endforeach
 					@else    
-					<p>You have no items in the shopping cart</p>
+					<p>Giỏ hàng của bạn chưa có sản phẩm</p>
 					@endif
 				</ul>
 				

@@ -13,8 +13,8 @@
             </style>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-sm text-back-index active test" aria-current="page">Edit User</li>
+                    <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item text-sm text-back-index active test" aria-current="page">Chỉnh sửa thông tin</li>
                 </ol>
             </nav>
 
@@ -97,22 +97,22 @@
                                         @csrf
                                         @method('patch')
                                         @if($errors->any())
-                                            <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
+                                            <!-- <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
                                                 <span class="alert-text text-white">
                                                 {{$errors->first()}}</span>
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                                                     <i class="fa fa-close" aria-hidden="true"></i>
                                                 </button>
-                                            </div>
+                                            </div> -->
                                         @endif
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="avatar" class="form-control-label">{{ __('Profile Avatar') }}</label>
+                                                    <label for="avatar" class="form-control-label">{{ __('Ảnh đại diện') }}</label>
                                                     <div class="@error('avatar')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="file" placeholder="Choose File" id="avatar" name="avatar" onchange="previewImg()">
+                                                        <input class="form-control" type="file" placeholder="Choose File" id="avatar" name="avatar" value="{{ $user->avatar }}" onchange="previewImg()">
                                                         @error('avatar')
-                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        <p class="text-danger text-xs mt-2">Tên của bạn không được để trống</p>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -121,10 +121,7 @@
                                                 <div class="form-group">
                                                     <label for="email" class="form-control-label">{{ __('Email') }}</label>
                                                     <div class="@error('email')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="email" placeholder="@mail.com" value="{{ $user->email }}" id="email" name="email" disabled>
-                                                        @error('email')
-                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                                        @enderror
+                                                        <input class="form-control" type="email" placeholder="@mail.com" value="{{ $user->email }}" id="email" name="email" readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -132,9 +129,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="name" class="form-control-label">{{ __('Full Name') }}</label>
+                                                    <label for="name" class="form-control-label">{{ __('Họ và tên') }}</label>
                                                     <div class="@error('full_name')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="name" id="user-name" value="{{ $user->full_name }}" name="full_name">
+                                                        <input class="form-control" type="text" placeholder="name" id="user-name" value="{{ $user->full_name }}" name="full_name" required>
                                                         @error('full_name')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -143,7 +140,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="gender" class="form-control-label">{{ __('Gender') }}</label>
+                                                    <label for="gender" class="form-control-label">{{ __('Giới tính') }}</label>
                                                     <div class="@error('gender')border border-danger rounded-3 @enderror">
                                                         <select class="form-control" id="gender" name="gender">
                                                             <option value="0"  @if( $user->gender  == 0) selected @endif>Không xác định</option>
@@ -160,18 +157,18 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="phone" class="form-control-label">{{ __('Phone') }}</label>
+                                                    <label for="phone" class="form-control-label">{{ __('Số điện thoại') }}</label>
                                                     <div class="@error('phone')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="tel" value="{{ $user->phone }}" placeholder="+84" id="number" name="phone">
+                                                        <input class="form-control" type="tel" value="{{ $user->phone }}" placeholder="+84" id="number" name="phone" required>
                                                         @error('phone')
-                                                        <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                        <p class="text-danger text-xs mt-2">Số điện thoại không được trống</p>
                                                         @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="date" class="form-control-label">{{ __('Date of Birth') }}</label>
+                                                    <label for="date" class="form-control-label">{{ __('Ngày sinh') }}</label>
                                                     <div class="@error('date') border border-danger rounded-3 @enderror">
                                                         <input class="form-control" type="date" value="{{ $user->date }}" placeholder="date" id="date" name="date">
                                                     </div>
@@ -181,20 +178,23 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="address" class="form-control-label">{{ __('Address') }}</label>
+                                                    <label for="address" class="form-control-label">{{ __('Địa chỉ') }}</label>
                                                     <div class="@error('address') border border-danger rounded-3 @enderror">
                                                         <input class="form-control" type="text" value="{{ $user->address }}" placeholder="address" id="address" name="address">
+                                                        @error('')
+                                                        <p class="text-danger text-xs mt-2">Địa chỉ không được trống</p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="about">{{ 'About Me' }}</label>
+                                            <label for="about">{{ 'Giới thiệu về bản thân' }}</label>
                                             <div class="@error('user.about')border border-danger rounded-3 @enderror">
                                                 <textarea class="form-control" id="about" rows="3" placeholder="Say something about user!!!"  name="about">{{ $user->about }}</textarea>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div class="row" hidden>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="is_active" class="form-control-label">{{ __('Active') }}</label>
@@ -233,9 +233,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="old_password" class="form-control-label">{{ __('Password Current') }}</label>
+                                                    <label for="old_password" class="form-control-label">{{ __('Mật khẩu cũ') }}</label>
                                                     <div class="@error('old_password') border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="password" placeholder="current password" id="old_password" name="old_password">
+                                                        <input class="form-control" type="password" placeholder="Mật khẩu cũ" id="old_password" name="old_password">
                                                         @error('old_password')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -246,9 +246,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="new_password" class="form-control-label">{{ __('New Password') }}</label>
+                                                    <label for="new_password" class="form-control-label">{{ __('Mật khẩu mới') }}</label>
                                                     <div class="@error('new_password') border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="password" placeholder="New Password" id="new_password" name="new_password">
+                                                        <input class="form-control" type="password" placeholder="Mật khẩu mới" id="new_password" name="new_password">
                                                         @error('new_password')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -259,9 +259,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="password_confirmation" class="form-control-label">{{ __('Re-Enter Password') }}</label>
+                                                    <label for="password_confirmation" class="form-control-label">{{ __('Nhập lại mật khẩu mới') }}</label>
                                                     <div class="@error('password_confirmation')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="password" placeholder="Re-Enter Password" id="password_confirmation" name="password_confirmation">
+                                                        <input class="form-control" type="password" placeholder="Nhập lại mật khẩu mới" id="password_confirmation" name="password_confirmation">
                                                         @error('password_confirmation')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror

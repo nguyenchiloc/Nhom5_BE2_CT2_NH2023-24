@@ -59,10 +59,13 @@ class ProductFilterController extends Controller
         /***************************Common****************************************** */
         
         $brandID =$brandID;
+        $brand_view = Brand::where('brand_id', $brandID)->first();
+        
+        $sortBrandName = $brand_view->brand_name;
         $dataProduct = Product::where('brand_id', $brandID)->latest()->paginate(15); 
         //hiển thị user
         $user = Auth::user() == '' ? [] : User::where('user_id', Auth::user()->user_id)->get();
-        return view('index', compact('dataProduct','category','brands','user', 'brandID', 'price'));
+        return view('index', compact('dataProduct','category','brands','user', 'brandID', 'price', 'sortBrandName'));
     }  
     /**
     * Show fillter theo giá từ khoảng đến khoảng
@@ -94,7 +97,6 @@ class ProductFilterController extends Controller
     public function fillterSort(Request $request)
     {
         /***************************Common****************************************** */
-        /***************************Common****************************************** */
         //hiển thị danh sách loại sản phẩm active
         $category = Category::all()->where('category_status', '=', 'Active');  
         //hiển thị danh sách thương hiệu active
@@ -108,11 +110,11 @@ class ProductFilterController extends Controller
         $sortName = "";
         if($request->Asc){
             $dataProduct = Product::orderBy('product_price', 'asc')->paginate(15);
-            $sortName = "Price: Low to High";
+            $sortName = "Giá tiền từ thấp đến cao";
         }
         else{
             $dataProduct = Product::orderBy('product_price', 'desc')->paginate(15);
-            $sortName = "Price: High to Low";
+            $sortName = "Giá tiền từ cao đến thấp ";
         }
         return view('index', compact('dataProduct','category','brands','user','price', 'sortName'));
     }

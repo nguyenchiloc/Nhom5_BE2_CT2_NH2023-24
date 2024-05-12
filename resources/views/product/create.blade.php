@@ -13,8 +13,8 @@
             </style>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('product.index') }}">Back</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Create products</li>
+                    <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('product.index') }}">Trở về</a></li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Thêm sản phẩm</li>
                 </ol>
             </nav>
 
@@ -26,7 +26,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header pb-0 px-3">
-                                    <h5 class="mb-0">{{ __('Create Product') }}</h5>
+                                    <h5 class="mb-0">{{ __('Thêm sản phẩm') }}</h5>
                                 </div>
                                 <div class="card-body pt-4 p-3">
                                     <form action="{{ route('product.store') }}" method="post" role="form text-left" enctype="multipart/form-data">
@@ -34,9 +34,9 @@
                                     <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="product_name" class="form-control-label">{{ __('Product Name') }}</label>
+                                                    <label for="product_name" class="form-control-label">{{ __('Tên sản phẩm') }}</label>
                                                     <div class="@error('product_name')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input name...." id="product_name" value="" name="product_name">
+                                                        <input class="form-control" type="text" placeholder="Nhập tên...." id="product_name" value="" name="product_name" required>
                                                         @error('product_name')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -45,9 +45,9 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="product_price" class="form-control-label">{{ __('Price') }}</label>
+                                                    <label for="product_price" class="form-control-label">{{ __('Giá') }}</label>
                                                     <div class="@error('product_price')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input price" id="product_price" value="" name="product_price">
+                                                        <input class="form-control" type="text" placeholder="Input price" id="product_price" value="" name="product_price" required>
                                                         @error('product_price')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -60,7 +60,7 @@
                                                 <div class="form-group">
                                                     <label for="product_qty" class="form-control-label">{{ __('Product Qty') }}</label>
                                                     <div class="@error('product_qty')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input Qty" id="product_qty" value="" name="product_qty">
+                                                        <input class="form-control" type="text" placeholder="Input Qty" id="product_qty" value="" name="product_qty" required>
                                                         @error('product_qty')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -99,18 +99,21 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="description" class="form-control-label">{{  __('Description') }}</label>
-                                            <div class="@error('description')border border-danger rounded-3 @enderror">
-                                                <textarea class="form-control" id="description" rows="3" placeholder="Input description..."  name="product_description"></textarea>
+                                            <label for="product_description" class="form-control-label">{{  __('Description') }}</label>
+                                            <div class="@error('product_description')border border-danger rounded-3 @enderror">
+                                                <textarea class="form-control" id="product_description" rows="3" placeholder="Nhập mô tả...."  name="product_description"></textarea>
+                                                @error('product_description')
+                                                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="img-product-1" class="form-control-label">{{ __('Product Img 1') }}</label>
-                                                    <div class="@error('img-product-1')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="file" placeholder="Choose File" id="img-product-1" name="product_images" onchange="previewImg1()">
-                                                        @error('img-product-1')
+                                                    <label for="product_images_1" class="form-control-label">{{ __('Product Img 1') }}</label>
+                                                    <div class="@error('product_images_1')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="file" placeholder="Choose File" id="product_images_1" name="product_images_1" onchange="previewImg1()">
+                                                        @error('product_images_1')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </div>
@@ -118,10 +121,10 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="img-product-2" class="form-control-label">{{ __('Product Img 2') }}</label>
-                                                    <div class="@error('img-product-2')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="file" placeholder="Choose File" id="img-product-2" name="img-product-2" onchange="previewImg2()">
-                                                        @error('img-product-2')
+                                                    <label for="product_images_2" class="form-control-label">{{ __('Product Img 2') }}</label>
+                                                    <div class="@error('product_images_2')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="file" placeholder="Choose File" id="product_images_2" name="product_images_2" onchange="previewImg2()">
+                                                        @error('product_images_2')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </div>
@@ -129,10 +132,10 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group">
-                                                    <label for="img-product-1" class="form-control-label">{{ __('Product Img 3') }}</label>
-                                                    <div class="@error('img-product-3')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="file" placeholder="Choose File" id="img-product-3" name="img-product-3" onchange="previewImg3()">
-                                                        @error('img-product-3')
+                                                    <label for="product_images_1" class="form-control-label">{{ __('Product Img 3') }}</label>
+                                                    <div class="@error('product_images_3')border border-danger rounded-3 @enderror">
+                                                        <input class="form-control" type="file" placeholder="Choose File" id="product_images_3" name="product_images_3" onchange="previewImg3()">
+                                                        @error('product_images_3')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
                                                     </div>
@@ -153,7 +156,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row"> ---img
+                                        <div class="row"> 
                                             <div class="col-md-3">
                                                 <div class="form-group">
                                                     <div class="col-auto">

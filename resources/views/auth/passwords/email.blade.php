@@ -26,7 +26,7 @@
                                     <div class="form-check form-check-info text-left">
                                         <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            I agree the <a href="javascript:;" class="text-primary text-gradient font-weight-bolder">Terms and Conditions</a>
+                                            Tôi đồng ý với các <a href="javascript:;" class=" bg-gradient-info font-weight-bolder">Điều khoản và Điều kiện</a>
                                         </label>
                                     </div>
                                     <div class="text-center">

@@ -74,6 +74,7 @@ class ProfileController extends Controller
      */
     private $uploadPath; 
     private $uploadFolder;
+
     public function __construct()  
     {  
       $this->uploadPath = public_path('assets/images/avt');  
@@ -92,12 +93,14 @@ class ProfileController extends Controller
         $user->date     = $request->date;
         $user->address  = $request->address;
         $user->about    = $request->about;
-        //set avatar
-        $file = $request->avatar;
-        $extension = "jpg";
-        $filename  = $user->user_id. '.' . $extension;//$file->getClientOriginalName();//lấy tên file
-        $user->avatar  = $filename;
-        $request->file('avatar')->move('assets/images/avt/', $filename);  //Lưu vào thư mục
+        //set avatar, kiểm tra và đổi avt
+        if ($request->hasFile('avatar')) {
+            $file = $request->avatar;
+            $extension = "jpg";
+            $filename  = $user->user_id. '.' . $extension;//$file->getClientOriginalName();//lấy tên file
+            $user->avatar  = $filename;
+            $request->file('avatar')->move('assets/images/avt/',  $user->avatar);  //Lưu vào thư mục
+        }
         if($user->save()) {
             $flasher->addSuccess('Updated success', 'Sunshine !');
         }else{

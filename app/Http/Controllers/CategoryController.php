@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Flasher\Prime\FlasherInterface;
 
@@ -55,11 +56,17 @@ class CategoryController extends Controller
     public function destroy($id, FlasherInterface $flasher)
     {
         $data_delete = Category::findOrFail($id);
-        if( $data_delete->delete()) {
-            $flasher->addSuccess('Delete success', 'Sunshine !');
-        }else{
-            $flasher->addError('Fail!');
+        $count_product = Product::where('category_id', $data_delete->category_id)->get(); 
+        if($count_product->count() > 0){
+            $message = "Có " .$count_product->count() . " sản phẩm thuộc loại " .$data_delete->category_name . ". Bạn không thể xóa";
+            $flasher->addError($message);
+            return redirect()->route('category.index');
         }
+        // if( $data_delete->delete()) {
+        //     $flasher->addSuccess('Delete success', 'Sunshine !');
+        // }else{
+        //     $flasher->addError('Fail!');
+        // }
         return redirect()->route('category.index');
     }
 }

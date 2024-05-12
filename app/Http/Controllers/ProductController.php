@@ -17,16 +17,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()  
+    {  
+      $this->uploadPath = public_path('assets/images/products');  
+      $this->uploadFolder = 'public/assets/images/products/';  
+    } 
     public function index()
     {
         //hien thi danh sach san pham
-        if(Auth::user() == ''){
-            $user = [];
-        }else{
-            //hiển thị tên tài khoản đăng nhập
-            $user = User::where('user_id', Auth::user()->user_id)->get();
-        }
-        $products = Product::paginate(15);
+        $user = Auth::user() == '' ? [] : User::where('user_id', Auth::user()->user_id)->get();
+        $products = Product::orderBy('product_id', 'desc')->paginate(15);
         $category = Category::all(); //hiển thị danh sách loại sản phẩm
         $brands = Brand::all(); //hiển thị danh sách thương hiệu 
         $product_news = Product::getProductNews(); //lấy sản phẩm mới nhất hiển thị cho page blog
@@ -56,15 +56,39 @@ class ProductController extends Controller
      */
     public function store(Request $request, FlasherInterface $flasher)
     { 
-        $news = new Product;
-        $inputs = $request->all(); 
-        $news = Product::create($inputs);
+        
+        $this->validate($request,[
+            'product_price' => 'required|numeric',
+            'product_qty' => 'required|numeric',
+            'product_description' => 'required',
+            'product_images_1' => 'required',
+            'product_images_2' => 'required',
+            'product_images_3' => 'required',
+        ]);
+        $product = new Product();
 
-        if( $news->save()) {
-            $flasher->addSuccess('Create success', 'Sunshine !');
+        $product ->product_name         = $request->product_name;
+        $product ->product_price        = $request->product_price;
+        $product ->product_qty          = $request->product_qty;
+        $product ->category_id          = $request->category_id;
+        $product ->brand_id             = $request->brand_id;
+        $product ->product_description  = $request->product_description;
+        $product ->product_status       = $request->product_status;
+        $product ->product_images_1     = $request->product_images_1->getClientOriginalName();
+        $product ->product_images_2     = $request->product_images_2->getClientOriginalName();
+        $product ->product_images_3     = $request->product_images_3->getClientOriginalName();
+
+        if($request->hasFile('product_images_1') || $request->hasFile('product_images_2') || $request->hasFile('product_images_3')) {
+            $request->file('product_images_1')->move('assets/images/products/',  $request->product_images_1->getClientOriginalName());  //Lưu vào thư mục
+            $request->file('product_images_2')->move('assets/images/products/',  $request->product_images_2->getClientOriginalName());  //Lưu vào thư mục
+            $request->file('product_images_3')->move('assets/images/products/',  $request->product_images_3->getClientOriginalName());  //Lưu vào thư mục
+        }
+        if( $product->save()) {
+            $flasher->addSuccess('Thêm sản phẩm thành công', 'Sunshine !');
         }else{
             $flasher->addError('Fail !');
         }
+
         return redirect()->back();
     }
 
@@ -104,18 +128,36 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id, FlasherInterface $flasher)
     {
-        //
+        //Kiểm tra
+        $this->validate($request,[
+            'product_price' => 'required|numeric',
+            'product_qty' => 'required|numeric',
+            'product_description' => 'required',
+        ]);
+         // set ảnh sản phẩm, kiểm tra
+         //Xác định file có trên request hay không bằng cách sử dụng phương thức hasFile:
+        
         $data_edit = Product::findOrFail($id);
         $data_edit->product_name = $request->product_name;
         $data_edit->product_price = $request->product_price;
-        $data_edit->sale_price = $request->sale_price;
+        $data_edit->product_price = $request->product_price;
         $data_edit->product_qty = $request->product_qty;
         $data_edit->category_id = $request->category_id;
         $data_edit->brand_id = $request->brand_id;
         $data_edit->product_description = $request->product_description;
-        $data_edit->product_images_1 = $request->product_images_1;
-        $data_edit->product_images_2 = $request->product_images_2;
-        $data_edit->product_images_3 = $request->product_images_3;
+        if($request->hasFile('product_images_1')) {
+             $data_edit->product_images_1     = $request->product_images_1->getClientOriginalName();
+             $request->file('product_images_1')->move('assets/images/products/',  $request->product_images_1->getClientOriginalName());  //Lưu vào thư mục
+         }
+        if($request->hasFile('product_images_2')) {
+            $data_edit->product_images_2     = $request->product_images_2->getClientOriginalName();
+            $request->file('product_images_2')->move('assets/images/products/',  $request->product_images_2->getClientOriginalName());  //Lưu vào thư mục
+        }
+        if($request->hasFile('product_images_3')) {
+            $data_edit->product_images_3     = $request->product_images_3->getClientOriginalName();
+            $request->file('product_images_3')->move('assets/images/products/',  $request->product_images_3->getClientOriginalName());  //Lưu vào thư mục
+        }
+       
         if( $data_edit->save()) {
             $flasher->addSuccess('Updated success', 'Sunshine !');
         }else{

@@ -10,7 +10,7 @@ E - Sunshine
 @section('main-content')
 	<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url({{ asset('assets/images/bg-01.jpg') }});">
 		<h2 class="ltext-105 cl0 txt-center">
-			About
+			Dịch vụ bảo hành
 		</h2>
 	</section>	
 	<!-- Content page -->
@@ -19,21 +19,35 @@ E - Sunshine
 			<div class="row p-b-148">
 				<div class="col-md-7 col-lg-8">
 					<div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
-						<h3 class="mtext-111 cl2 p-b-16">
-							Our Story
+						<h3 class="mtext-11 cl2 p-b-16" style="font-weight: bold">
+							CHI TIẾT CÁC GÓI DỊCH VỤ BẢO HÀNH MỞ RỘNG
 						</h3>
-
-						<p class="stext-113 cl6 p-b-26">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat consequat enim, non auctor massa ultrices non. Morbi sed odio massa. Quisque at vehicula tellus, sed tincidunt augue. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas varius egestas diam, eu sodales metus scelerisque congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas gravida justo eu arcu egestas convallis. Nullam eu erat bibendum, tempus ipsum eget, dictum enim. Donec non neque ut enim dapibus tincidunt vitae nec augue. Suspendisse potenti. Proin ut est diam. Donec condimentum euismod tortor, eget facilisis diam faucibus et. Morbi a tempor elit.
+						<p class="stext-113 cl6 p-t-10 p-b-26">
+							Các sản phẩm tại E - Sunshine là hàng chính hãng và được bảo hành theo tiêu chuẩn của hãng - xem chi tiết thông tin bảo hành các hãng tại đây. <br>
+							Ngoài ra, nhằm mang đến sự an tâm và tiện lợi hơn cho Quý khách hàng trong quá trình sử dụng sản phẩm, E - Sunshine còn cung cấp các gói dịch vụ bảo hành mở rộng thêm ngoài chính sách bảo hành tiêu chuẩn của các hãng
 						</p>
-
-						<p class="stext-113 cl6 p-b-26">
-							Donec gravida lorem elit, quis condimentum ex semper sit amet. Fusce eget ligula magna. Aliquam aliquam imperdiet sodales. Ut fringilla turpis in vehicula vehicula. Pellentesque congue ac orci ut gravida. Aliquam erat volutpat. Donec iaculis lectus a arcu facilisis, eu sodales lectus sagittis. Etiam pellentesque, magna vel dictum rutrum, neque justo eleifend elit, vel tincidunt erat arcu ut sem. Sed rutrum, turpis ut commodo efficitur, quam velit convallis ipsum, et maximus enim ligula ac ligula. 
+						<h6 style="font-weight: bold">I. BẢO HÀNH 1 ĐỔI 1 VIP :</h6>
+						<p class="stext-113 cl6 p-t-10 p-b-26">
+							Sản phẩm áp dụng: Điện thoại, máy tính bảng mới/cũ, tai nghe cao cấp mới, đồng hồ thông minh Apple/Samsung mới. Thời gian tham gia: 6 tháng / 12 tháng 
 						</p>
-
-						<p class="stext-113 cl6 p-b-26">
-							Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-						</p>
+						<ul><span class="p-b-26">Quyền lợi và dịch vụ bảo hành:</span> 
+							<li class="stext-113 cl6 p-t-10 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Bao test 1 đổi 1 toàn bộ linh kiện phần cứng của máy ( Bao gồm lỗi phím bấm vật lý - Lỗi pin dưới 70%).</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Không giới hạn số lần bảo hành đổi máy nếu phát sinh lỗi (trong phạm vi bảo hành) trong thời gian tham gia.</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Đổi máy tương đương sản phẩm bảo hành.</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Được chuyển nhượng quyền sở hữu của sản phẩm và gói bảo hành trong thời gian tham gia.</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 
@@ -49,23 +63,39 @@ E - Sunshine
 			<div class="row">
 				<div class="order-md-2 col-md-7 col-lg-8 p-b-30">
 					<div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
-						<h3 class="mtext-111 cl2 p-b-16">
-							Our Mission
+						<h3 class="mtext-11 cl2 p-b-16" style="font-weight: bold">
+							II. BẢO HÀNH RƠI VỠ, RƠI NƯỚC ( BHRV-NN)
 						</h3>
 
 						<p class="stext-113 cl6 p-b-26">
-							Mauris non lacinia magna. Sed nec lobortis dolor. Vestibulum rhoncus dignissim risus, sed consectetur erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam maximus mauris sit amet odio convallis, in pharetra magna gravida. Praesent sed nunc fermentum mi molestie tempor. Morbi vitae viverra odio. Pellentesque ac velit egestas, luctus arcu non, laoreet mauris. Sed in ipsum tempor, consequat odio in, porttitor ante. Ut mauris ligula, volutpat in sodales in, porta non odio. Pellentesque tempor urna vitae mi vestibulum, nec venenatis nulla lobortis. Proin at gravida ante. Mauris auctor purus at lacus maximus euismod. Pellentesque vulputate massa ut nisl hendrerit, eget elementum libero iaculis.
+							Sản phẩm áp dụng: Điện thoại/ máy tính bảng mới/ cũ. <br> Thời gian tham gia: 12 tháng.
 						</p>
-
-						<div class="bor16 p-l-29 p-b-9 m-t-22">
-							<p class="stext-114 cl6 p-r-40 p-b-11">
-								Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
-							</p>
-
-							<span class="stext-111 cl8">
-								- Steve Job’s 
-							</span>
-						</div>
+						<ul><span class="p-b-26">Quyền lợi và dịch vụ bảo hành:</span> 
+							<li class="stext-113 cl6 p-t-10 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>24 tháng đến 36 tháng bao gồm 12 tháng bảo hành từ nhà sản xuất.</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Sau khi hết bảo hành chính hãng, sản phẩm vẫn được CellphoneS tiếp tục bảo hành các lỗi nhà sản xuất, thời gian bảo hành theo gói bảo hành mà khách hàng lựa chọn.</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Khách hàng được miễn phí chi phí sửa chữa và thay thế linh kiện.</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Được đổi sản phẩm tương đương nếu máy hư hỏng nặng không sửa chữa được.</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Được trợ giá nhập lại sản phẩm bị hỏng để lên đời nếu không có sản phẩm để đổi.</span>
+							</li>
+							<li class="stext-113 cl6 p-b-10">
+								<i class="zmdi zmdi-plus"></i>
+								<span>Quỹ bảo hành sửa chữa tính trên giá Niêm Yết sản phẩm.</span>
+							</li>
+						</ul>
 					</div>
 				</div>
 

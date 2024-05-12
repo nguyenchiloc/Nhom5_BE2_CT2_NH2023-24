@@ -7,8 +7,8 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                            <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('product.index') }}">Back</a></li>
-                            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Edit products</li>
+                            <li class="breadcrumb-item text-sm"><a class="text-back-index" href="{{ route('product.index') }}">Trở về</a></li>
+                            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Chỉnh sửa sản phẩm</li>
                         </ol>
                     </nav>
                     <div class="card">
@@ -22,9 +22,9 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="product_name" class="form-control-label">{{ __('Product Name') }}</label>
+                                            <label for="product_name" class="form-control-label">{{ __('Tên sản phẩm') }}</label>
                                             <div class="@error('product_name')border border-danger rounded-3 @enderror">
-                                                <input class="form-control" type="text" placeholder="Input name...." id="product_name" value="{{ $product->product_name }}" name="product_name">
+                                                <input class="form-control" type="text" placeholder="Nhập tên...." id="product_name" value="{{ $product->product_name }}" name="product_name">
                                                 @error('product_name')
                                                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                 @enderror
@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="product_price" class="form-control-label">{{ __('Price') }}</label>
+                                            <label for="product_price" class="form-control-label">{{ __('Giá') }}</label>
                                             <div class="@error('product_price')border border-danger rounded-3 @enderror">
                                                 <input class="form-control" type="text" placeholder="Input price" id="product_price" value="{{ $product->product_price }}" name="product_price">
                                                 @error('product_price')
@@ -60,7 +60,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="product_qty" class="form-control-label">{{ __('Product Qty') }}</label>
+                                            <label for="product_qty" class="form-control-label">{{ __('Số lượng') }}</label>
                                             <div class="@error('product_qty')border border-danger rounded-3 @enderror">
                                                 <input class="form-control" type="text" placeholder="Input Qty" id="product_qty" value="{{ $product->product_qty }}" name="product_qty">
                                                 @error('product_qty')
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="category_id" class="form-control-label">{{ __('Select Category') }}</label>
+                                            <label for="category_id" class="form-control-label">{{ __('Chọn loại') }}</label>
                                             <div class="@error('category_id')border border-danger rounded-3 @enderror">
                                                 <select class="form-control" id="category_id" name="category_id">
                                                     @foreach ($category as $category)
@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="brand_id" class="form-control-label">{{ __('Select Brand') }}</label>
+                                            <label for="brand_id" class="form-control-label">{{ __('Chọn thương hiệu') }}</label>
                                             <div class="@error('brand_id')border border-danger rounded-3 @enderror">
                                                 <select class="form-control" id="brand_id" name="brand_id">
                                                     @foreach ($brands as $brand)
@@ -101,18 +101,18 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="description" class="form-control-label">{{  __('Description') }}</label>
+                                    <label for="description" class="form-control-label">{{  __('Mô tả') }}</label>
                                     <div class="@error('description')border border-danger rounded-3 @enderror">
-                                        <textarea class="form-control" id="description" rows="3" placeholder="Input description..."  name="product_description"></textarea>
+                                        <textarea class="form-control" id="description" rows="3" name="product_description">{{ $product->product_description }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="img-product-1" class="form-control-label">{{ __('Product Img 1') }}</label>
-                                            <div class="@error('img-product-1')border border-danger rounded-3 @enderror">
-                                                <input class="form-control" type="file" placeholder="Choose File" id="img-product-1" name="product_images" onchange="previewImg1()">
-                                                @error('img-product-1')
+                                            <label for="product_images_1" class="form-control-label">{{ __('Ảnh 1') }}</label>
+                                            <div class="@error('product_images_1')border border-danger rounded-3 @enderror">
+                                                <input class="form-control" type="file" placeholder="Choose File" id="product_images_1" name="product_images_1" onchange="previewImg1()">
+                                                @error('product_images_1')
                                                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -120,10 +120,10 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="img-product-2" class="form-control-label">{{ __('Product Img 2') }}</label>
-                                            <div class="@error('img-product-2')border border-danger rounded-3 @enderror">
-                                                <input class="form-control" type="file" placeholder="Choose File" id="img-product-2" name="img-product-2" onchange="previewImg2()">
-                                                @error('img-product-2')
+                                            <label for="product_images_2" class="form-control-label">{{ __('Ảnh 2') }}</label>
+                                            <div class="@error('product_images_2')border border-danger rounded-3 @enderror">
+                                                <input class="form-control" type="file" placeholder="Choose File" id="product_images_2" name="product_images_2" onchange="previewImg2()">
+                                                @error('product_images_2')
                                                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -131,10 +131,10 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="img-product-1" class="form-control-label">{{ __('Product Img 3') }}</label>
-                                            <div class="@error('img-product-3')border border-danger rounded-3 @enderror">
-                                                <input class="form-control" type="file" placeholder="Choose File" id="img-product-3" name="img-product-3" onchange="previewImg3()">
-                                                @error('img-product-3')
+                                            <label for="product_images_1" class="form-control-label">{{ __('Ảnh 3') }}</label>
+                                            <div class="@error('product_images_3')border border-danger rounded-3 @enderror">
+                                                <input class="form-control" type="file" placeholder="Choose File" id="product_images_3" name="product_images_3" onchange="previewImg3()">
+                                                @error('product_images_3')
                                                 <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -146,7 +146,7 @@
                                         <div class="form-group">
                                             <div class="col-auto">
                                                 <div class="avatar avatar-xl position-relative">
-                                                    <img id="uploadImg1" alt="no avt" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
+                                                    <img id="uploadImg1" src="{{ asset('assets/images/products/'. $product->product_images_1) }}" alt="IMG-PRODUCT" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
                                                 </div>
                                             </div>
                                         </div>
@@ -155,7 +155,7 @@
                                         <div class="form-group">
                                             <div class="col-auto">
                                                 <div class="avatar avatar-xl position-relative">
-                                                    <img id="uploadImg2" alt="no avt" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
+                                                    <img id="uploadImg2" src="{{ asset('assets/images/products/'. $product->product_images_2) }}" alt="IMG-PRODUCT" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@
                                         <div class="form-group">
                                             <div class="col-auto">
                                                 <div class="avatar avatar-xl position-relative">
-                                                    <img id="uploadImg3" alt="no avt" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
+                                                    <img id="uploadImg3" src="{{ asset('assets/images/products/'. $product->product_images_3) }}" alt="IMG-PRODUCT" class="w-100 border-radius-lg shadow-sm" width="100" height="90">
                                                 </div>
                                             </div>
                                         </div>

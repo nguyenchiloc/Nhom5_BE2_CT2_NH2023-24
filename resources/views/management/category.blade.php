@@ -4,16 +4,16 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Category</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Loại</li>
                 </ol>
-                <h5 class="font-weight-bolder mb-0">Category Management</h5>
+                <h5 class="font-weight-bolder mb-0">Quản lý loại sản phẩm</h5>
             </nav>
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="row">
                         <div class="col-2 d-flex align-items-center">
-                            <h6>All Category</h6>
+                            <h6>Tất cả loại</h6>
                         </div>
                         <div class="col-8 text-end">
                             @include('admin.admin-navhead')
@@ -26,9 +26,9 @@
                             <thead>
                             <tr class="text-center">
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mô tả</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 <th class="text-secondary opacity-7"></th>
                             </tr>
@@ -54,16 +54,16 @@
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <form id="adminDelete" action="{{ route('category.destroy', $category->category_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
-                                            <a href="#create" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Create">
+                                            <a href="#create" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Tạo">
                                                 <i class="fa fa-plus "></i>
                                             </a>
                                             @csrf
                                             @method('PATCH')
-                                            <a href="#edit"  class="mx-3 edit-category" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick="window.location='{{ route('category.edit', $category->category_id) }}#edit'">
+                                            <a href="#edit"  class="mx-3 edit-category" data-bs-toggle="tooltip" data-bs-original-title="Chỉnh sửa" onclick="window.location='{{ route('category.edit', $category->category_id) }}#edit'">
                                                 <i class="fas fa-edit "></i>
                                             </a>
                                             @method('DELETE')
-                                            <button class="cursor-pointer fas fa-trash" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete" onclick="return confirm('Are you sure?')"></button>
+                                            <button class="cursor-pointer fas fa-trash" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Xóa" onclick="return confirm('Are you sure?')"></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -80,7 +80,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header pb-0 px-3">
-                                    <h5 class="mb-0">{{ __('Create') }}</h5>
+                                    <h5 class="mb-0">{{ __('Tạo') }}</h5>
                                 </div>
                                 <div class="card-body pt-4 p-3">
                                     <form action="{{ route('category.create') }}" method="post" role="form text-left" enctype="multipart/form-data">
@@ -88,9 +88,9 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="category_name" class="form-control-label">{{ __('Name') }}</label>
+                                                    <label for="category_name" class="form-control-label">{{ __('Tên') }}</label>
                                                     <div class="@error('category_name')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input name...." id="category_name" value="" name="category_name">
+                                                        <input class="form-control" type="text" placeholder="Nhập tên...." id="category_name" value="" name="category_name" required>
                                                         @error('category_name')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -99,9 +99,9 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label for="category_description" class="form-control-label">{{ __('Description') }}</label>
+                                                    <label for="category_description" class="form-control-label">{{ __('Mô tả') }}</label>
                                                     <div class="@error('category_description')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input description..." id="category_description" value="" name="category_description">
+                                                        <input class="form-control" type="text" placeholder="Nhập mô tả...." id="category_description" value="" name="category_description">
                                                         @error('category_description')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="form-group">
-                                                    <label for="category_status" class="form-control-label">{{ __('Status') }}</label>
+                                                    <label for="category_status" class="form-control-label">{{ __('Trạng thái') }}</label>
                                                     <div class="@error('category_status')border border-danger rounded-3 @enderror">
                                                         <select class="form-control" id="category_status" name="category_status">
                                                             <option value="InActive" >InActive</option>
@@ -164,7 +164,7 @@
                                                     <div class="form-group">
                                                         <label for="category_name" class="form-control-label">{{ __('Category Name') }}</label>
                                                         <div class="@error('category_name')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" placeholder="Input name...." id="category_name" value="{{ $category_data_old->category_name }}" name="category_name">
+                                                            <input class="form-control" type="text" placeholder="Nhập tên...." id="category_name" value="{{ $category_data_old->category_name }}" name="category_name">
                                                             @error('category_name')
                                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                             @enderror
@@ -199,7 +199,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-end">
-                                                <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Update' }}</button>
+                                                <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Cập nhật' }}</button>
                                             </div>
                                         </form>
                                     </div>

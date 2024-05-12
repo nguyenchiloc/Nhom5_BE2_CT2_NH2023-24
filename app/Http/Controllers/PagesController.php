@@ -44,8 +44,13 @@ class PagesController extends Controller
       $user = Auth::user() == '' ? [] : User::where('user_id', Auth::user()->user_id)->get();
       // Query Lấy các product chi tiết
       $product_detail = Product::where('product_id', $id)->first();
+      //Đề nghị sản phẩm theo thương hiệu
+      $suggested_product = Product::all()
+      //  ->where('category_id', $product_detail->category_id)
+                     ->where('brand_id', $product_detail->brand_id);
+      //  ->orderBy('product_id', 'desc')->get()
       //All list
       $products = Product::all();
-      return view('pages.products_detail', ['dataProduct'=> $products], compact('product_detail', 'user'));
+      return view('pages.products_detail', ['dataProduct'=> $suggested_product], compact('product_detail', 'user'));
    }
 }

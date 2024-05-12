@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id('product_id');
             $table->string('product_name');
             $table->double('product_price');
-            $table->double('sale_price')->nullable();
             $table->integer('product_qty');
             $table->integer('category_id');
             $table->integer('brand_id');

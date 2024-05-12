@@ -26,7 +26,7 @@ E - Sunshine
         <div class="col-md-10 cart">
             <div class="title">
                 <div class="row">
-                    <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                    <div class="col"><h4><b>Giỏ hàng</b></h4></div>
                     @if(!Auth::check())
                         <div class="col align-self-center text-right text-muted"> 0 items</div>
                     @else
@@ -67,7 +67,7 @@ E - Sunshine
                                 @csrf
                                 <div class="cart_quantity_button" style="display: flex;width: 60%;" >
                                     <button type="submit" class="cart_quantity_down"  style="padding-right: 15px;" name="cart_qty_status" value="cart_quantity_down"> - </button>
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="{{$cart->quantity}}" autocomplete="off" size="2" width="50%" style="text-align :center;">
+                                    <input class="cart_quantity_input" type="text" name="quantity" value="{{$cart->quantity}}" autocomplete="off" size="2" width="50%" style="text-align :center;" readonly>
                                     <button type="submit" class="cart_quantity_up" style="padding-left: 15px;" name="cart_qty_status" value="cart_quantity_up"> + </button>
                                 </div>
                             </form>
@@ -90,29 +90,27 @@ E - Sunshine
                 @endphp
                 @endforeach
             @else    
-            <p>You have no items in the shopping cart</p>
+            <p>Giỏ hàng của bạn chưa có sản phẩm</p>
             @endif
             <div class="back-to-shop"onclick="window.location='{{ route('home') }}'"><a href="/">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
         </div>
         <div class="col-md-2 summary">
-            <div><h5><b>Summary</b></h5></div>
-            <hr>
+            <div><h5 style="text-align: center;"><b>Tổng</b></h5></div>
+         
             <div class="row" style="margin:0 5px;">
                 <div class="col" style="padding-left:0;"></div>
                 <div class="col text-right"></div>
             </div>
-            <form>
+            <!-- <form>
                 <p>SHIPPING</p>
                     <select>
                         <option class="text-muted"></option>
                     </select>
                 <p>GIVE CODE</p>
                 <input id="code" placeholder="Enter your code">
-            </form>
-            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-            </div>
-            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0; font-weight: 900;">
+            </form> -->
+           
+            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 10vh 0; font-weight: 900;">
                 <div class="col text-right">{{ number_format($total_price) }} VND</div>
             </div>
             <!-- <form action="{{ route('cart.getCheckOut') }}" method="post">

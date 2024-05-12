@@ -26,7 +26,8 @@ class CartController extends Controller
         $user_id = Auth::user()->user_id;
         $product_id = $product_id;
         $product = Product::where('product_id', $product_id)->first();
-        $existing_cart = Cart::where('product_id', $product_id)->where('user_id', $user_id)->first();
+        //Kiểm tra sản phẩm trong giỏ hàng đã tồn tại hay chưa ? cart_status = save để phân biệt với những sản phẩm đã đặt hàng
+        $existing_cart = Cart::where('product_id', $product_id)->where('user_id', $user_id)->where('cart_status', '=', 'save')->first();
         if ($existing_cart == null) {
             $request->validate([
                 'quantity' => 'required|gte:1|lte:' . $product->product_qty,
@@ -136,7 +137,7 @@ class CartController extends Controller
         $bill = Bill::create([
             'user_id' => Auth::user()->user_id,
             'total_qty' => $request->total_qty,
-            'total_amount' => $request->total_price,
+            'total_amount' => $request->total_amt,
             'date_invoice' => date('Y-m-d H:i:s'),
             'status' => 'unconfirm',//trạng thái chưa xác nhận đơn hàng
             'note' => $request->note,
@@ -148,7 +149,7 @@ class CartController extends Controller
                 'bill_id'    => $bill->bill_id,
                 'cart_id'    => $cart->cart_id,
                 'product_id' => $cart->product_id,
-                'quantily'  => $cart->quantity,
+                'quantity'  => $cart->quantity,
                 'price'     => $product->product_price,
             ]);
             //Khi user đặt hàng thì số lượng sản phẩm trong kho trừ ra

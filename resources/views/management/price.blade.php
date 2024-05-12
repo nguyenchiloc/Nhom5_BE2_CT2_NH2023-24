@@ -4,10 +4,10 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Price</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Giá</li>
                 </ol>
-                <h5 class="font-weight-bolder mb-0">Price Management</h5>
+                <h5 class="font-weight-bolder mb-0">Quản lý giá sản phẩm</h5>
             </nav>
             <div class="card mb-4">
                 <div class="card-header pb-0">
@@ -26,10 +26,10 @@
                             <thead>
                             <tr class="text-center">
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price To (VND)</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price From (VND)</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Satus</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Từ giá (VND)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Đến giá (VND)</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                             </tr>
                             </thead>
@@ -57,16 +57,16 @@
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <form id="adminDelete" action="{{ route('price.destroy', $price->price_id) }}" method="post" role="form text-left" enctype="multipart/form-data">
-                                            <a href="#create" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Create">
+                                            <a href="#create" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Tạo">
                                                 <i class="fa fa-plus "></i>
                                             </a>
                                             @csrf
                                             @method('PATCH')
-                                            <a href="#edit"  class="mx-3 edit-price" data-bs-toggle="tooltip" data-bs-original-title="Edit" onclick="window.location=' {{ route('price.edit', $price->price_id) }}#edit'">
+                                            <a href="#edit"  class="mx-3 edit-price" data-bs-toggle="tooltip" data-bs-original-title="Chỉnh sửa" onclick="window.location=' {{ route('price.edit', $price->price_id) }}#edit'">
                                                 <i class="fas fa-edit "></i>
                                             </a>
                                             @method('DELETE')
-                                            <button class="cursor-pointer fas fa-trash" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Delete" onclick="return confirm('Are you sure?')"></button>
+                                            <button class="cursor-pointer fas fa-trash" style="border: none; background: no-repeat;" data-bs-toggle="tooltip" data-bs-original-title="Xóa" onclick="return confirm('Are you sure?')"></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -83,7 +83,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header pb-0 px-3">
-                                    <h5 class="mb-0">{{ __('Create') }}</h5>
+                                    <h5 class="mb-0">{{ __('Tạo') }}</h5>
                                 </div>
                                 <div class="card-body pt-4 p-3">
                                     <form action="{{ route('price.create') }}" method="post" role="form text-left" enctype="multipart/form-data">
@@ -91,9 +91,9 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <label for="price_name" class="form-control-label">{{ __('Name') }}</label>
+                                                    <label for="price_name" class="form-control-label">{{ __('Tên') }}</label>
                                                     <div class="@error('price_name')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="text" placeholder="Input name...." id="price_name" value="" name="price_name">
+                                                        <input class="form-control" type="text" placeholder="Nhập tên...." id="price_name" value="" name="price_name" required>
                                                         @error('price_name')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -104,7 +104,7 @@
                                                 <div class="form-group">
                                                     <label for="price_to" class="form-control-label">{{ __('Price To') }}</label>
                                                     <div class="@error('price_to')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="number" placeholder="Input description..." id="price_to" value="" name="price_to">
+                                                        <input class="form-control" type="number" placeholder="Nhập mô tả...." id="price_to" value="" name="price_to" required>
                                                         @error('price_to')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -115,7 +115,7 @@
                                                 <div class="form-group">
                                                     <label for="price_from" class="form-control-label">{{ __('Price From') }}</label>
                                                     <div class="@error('price_from')border border-danger rounded-3 @enderror">
-                                                        <input class="form-control" type="number" placeholder="Input description..." id="price_from" value="" name="price_from">
+                                                        <input class="form-control" type="number" placeholder="Nhập mô tả...." id="price_from" value="" name="price_from" required>
                                                         @error('price_from')
                                                         <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                         @enderror
@@ -124,7 +124,7 @@
                                             </div>
                                             <div class="col-md-1">
                                                 <div class="form-group">
-                                                    <label for="price_status" class="form-control-label">{{ __('Status') }}</label>
+                                                    <label for="price_status" class="form-control-label">{{ __('Trạng thái') }}</label>
                                                     <div class="@error('price_status')border border-danger rounded-3 @enderror">
                                                         <select class="form-control" id="price_status" name="price_status">
                                                             <option value="InActive" >InActive</option>
@@ -178,7 +178,7 @@
                                                     <div class="form-group">
                                                         <label for="price_name" class="form-control-label">{{ __('Price Name') }}</label>
                                                         <div class="@error('new_price_name')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="text" placeholder="Input name...." id="price_name" value="{{ $price_data_old->price_name }}" name="new_price_name">
+                                                            <input class="form-control" type="text" placeholder="Nhập tên...." id="price_name" value="{{ $price_data_old->price_name }}" name="new_price_name">
                                                             @error('new_price_name')
                                                             <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                                             @enderror
@@ -189,7 +189,7 @@
                                                     <div class="form-group">
                                                         <label for="price_to" class="form-control-label">{{ __('Price To') }}</label>
                                                         <div class="@error('new_price_to')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="number" placeholder="Input description..." id="price_to" value="{{ $price_data_old->price_to }}" name="new_price_to">
+                                                            <input class="form-control" type="number" placeholder="Nhập mô tả...." id="price_to" value="{{ $price_data_old->price_to }}" name="new_price_to">
                                                             @error('new_price_to')
                                                             <p class="text-danger text-xs mt-2">Price to can not large price from</p>
                                                             @enderror
@@ -200,7 +200,7 @@
                                                     <div class="form-group">
                                                         <label for="price_from" class="form-control-label">{{ __('Price From') }}</label>
                                                         <div class="@error('new_price_from')border border-danger rounded-3 @enderror">
-                                                            <input class="form-control" type="number" placeholder="Input description..." id="price_from" value="{{ $price_data_old->price_from }}" name="new_price_from">
+                                                            <input class="form-control" type="number" placeholder="Nhập mô tả...." id="price_from" value="{{ $price_data_old->price_from }}" name="new_price_from">
                                                             @error('new_price_from')
                                                             <p class="text-danger text-xs mt-2">Price form must belarge price to</p>
                                                             @enderror
@@ -224,7 +224,7 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-end">
-                                                <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Update' }}</button>
+                                                <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Cập nhật' }}</button>
                                             </div>
                                         </form>
                                     </div>

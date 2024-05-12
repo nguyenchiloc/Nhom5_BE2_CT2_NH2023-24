@@ -23,7 +23,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Products</span>
+                    <span class="nav-link-text ms-1">Sản phẩm</span>
                 </a>
             </li>
             <!-- Category -->
@@ -37,7 +37,7 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M14 17.5C14 14.8748 14.0281 14 17.5 14C20.9719 14 21 14.8748 21 17.5C21 20.1252 21.0111 21 17.5 21C13.9889 21 14 20.1252 14 17.5Z" stroke="#130F26" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Category</span>
+                    <span class="nav-link-text ms-1">Loại</span>
                 </a>
             </li>
             <!-- Brand -->
@@ -76,7 +76,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Brand</span>
+                    <span class="nav-link-text ms-1">Thương hiệu</span>
                 </a>
             </li>
             <!-- Price -->
@@ -101,7 +101,7 @@
                                 L131.314,124.243z"/>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Price</span>
+                    <span class="nav-link-text ms-1">Giá</span>
                 </a>
             </li>
             <!-- Customer -->
@@ -115,7 +115,7 @@
                             <path class="color-background" d="M12.1538 13.9389C11.8462 13.9389 11.641 13.8369 11.3333 13.8369H7.4359C4.46154 13.8369 2 16.2859 2 19.245C2 19.9593 2.30769 20.4695 2.82051 20.8777C3.64103 21.3879 5.58974 22.0001 9.38461 22.0001C13.1795 22.0001 15.0256 21.3879 15.9487 20.8777C15.9487 20.8777 16.0513 20.7757 16.1538 20.7757C16.5641 20.4695 16.8718 19.9593 16.8718 19.245C16.7692 16.592 14.8205 14.3471 12.1538 13.9389Z" fill="#030D45"/>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Customer</span>
+                    <span class="nav-link-text ms-1">Tài khoản</span>
                 </a>
             </li>
             <!-- Order/Bill -->
@@ -126,7 +126,7 @@
                         <path d="M7,22  V4h18v18c0,2.209-1.791,4-4,4" style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;"/><path d="M17,22  L17,22H4l0,0c0,2.209,1.791,4,4,4h13C18.791,26,17,24.209,17,22z" style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;"/><line style="fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;" x1="15" x2="21" y1="13" y2="13"/><line style="fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;" x1="11" x2="13" y1="13" y2="13"/><line style="fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;" x1="15" x2="21" y1="17" y2="17"/><line style="fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;" x1="11" x2="13" y1="17" y2="17"/><line style="fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;" x1="15" x2="21" y1="9" y2="9"/><line style="fill:none;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;" x1="11" x2="13" y1="9" y2="9"/>
                         <path d="M17,22L17,22H4l0,0c0,2.209,1.791,4,4,4h13C18.791,26,17,24.209,17,22z"/></svg>
                     </div>
-                    <span class="nav-link-text ms-1">Order</span>
+                    <span class="nav-link-text ms-1">Hóa đơn</span>
                 </a>
             </li>
             <li class="nav-item mt-3">

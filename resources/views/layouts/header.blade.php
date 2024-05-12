@@ -6,7 +6,7 @@
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+						Miễn phí giao hàng cho tất cả đơn hàng
 					</div>
 					<div class="right-top-bar flex-w h-full">
 						@method('POST')
@@ -15,20 +15,20 @@
 									<a href="{{ route('profile.index') }}" class="flex-c-m trans-04 p-lr-25"> {{ Auth::user()->full_name}}</a>
 									@if (Auth::user()->level_id == '1')
 										<a href="{{ route('product.index') }}" class="flex-c-m trans-04 p-lr-25">
-											Manager Admin
+											Quản trị viên
 										</a>
 									@endif
-									<a href="{{ route('home') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex-c-m trans-04 p-lr-25">Log Out</a> 
+									<a href="{{ route('home') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="flex-c-m trans-04 p-lr-25">Đăng xuất</a> 
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 										@csrf
 									</form>
 								@else
 									<a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">
-										Log in
+										Đăng nhập
 									</a>
 									@if (Route::has('register'))
 										<a href="{{ route('register') }}" class="flex-c-m trans-04 p-lr-25">
-											Register
+											Đăng ký
 										</a>
 									@endif
 								@endauth
@@ -47,19 +47,19 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li class="{{ Request::is('/') ? 'active-menu' : '' }}">
-								<a href="{{ route('page',['page'=>'']) }}">Home</a>
+								<a href="{{ route('page',['page'=>'']) }}">Trang chủ</a>
 							</li>
 							<li class="{{ Request::is('products') ? 'active-menu' : '' }}">
-								<a href="{{ route('page',['page'=>'products']) }}">Products</a>
+								<a href="{{ route('page',['page'=>'products']) }}">Sản phẩm</a>
 							</li>
 							<li class="{{ Request::is('blog') ? 'active-menu' : '' }}">
 								<a href="{{ route('page',['page'=>'blog']) }}">Blog</a>
 							</li>
 							<li class="{{ Request::is('about') ? 'active-menu' : '' }}">
-								<a href="{{ route('page',['page'=>'about']) }}">About</a>
+								<a href="{{ route('page',['page'=>'about']) }}">Dịch vụ bảo hành</a>
 							</li>
 							<li class="{{ Request::is('contact') ? 'active-menu' : '' }}">
-								<a href="{{ route('page',['page'=>'contact']) }}">Contact</a>
+								<a href="{{ route('page',['page'=>'contact']) }}">Liên hệ</a>
 							</li>
 						</ul>
 					</div>	
@@ -126,7 +126,7 @@
 			<ul class="topbar-mobile">
 				<li>
 					<div class="left-top-bar">
-						Free shipping for standard order over $100
+						Miễn phí giao hàng cho tất cả đơn hàng
 					</div>
 				</li>
 

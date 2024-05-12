@@ -8,6 +8,54 @@ E - Sunshine
 @endsection
 @section('main-content')
 <!-- Product Detail -->
+<style>
+	.promoadd {
+		border: 1px solid #e0e0e0;
+		border-radius: 4px;
+		padding-bottom: 10px;
+		text-align: center;
+	}
+	.promoadd__ttl {
+		background-color: #f6f6f6;
+		border-bottom: 1px solid #e0e0e0;
+		font-size: 13px;
+		line-height: 16px;
+		padding: 12px;
+		text-align: left;
+	}
+	.promoadd__ttl em {
+		font-weight: bold;
+		font-style: normal;
+		font-size: 14px;
+		line-height: 17px;
+	}
+	.promoadd__list {
+		padding: 10px;
+		text-align: center;
+	}
+	.promoadd__list li {
+		display: flex;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+	.promoadd__list li i {
+    	margin-top: 3px;
+	}
+	.icondetail-tick {
+		background-position: -275px -20px;
+		height: 14px;
+		min-width: 14px;
+		width: 14px;
+	}
+	.promoadd__list li p {
+		padding: 0 16px 0 8px;
+		width: calc(100% - 55px);
+		line-height: 1.5;
+	}
+	.promoadd__list li:last-child {
+		margin-bottom: 0;
+	}
+</style>
 <section class="sec-product-detail bg0 p-t-90 p-b-60">
 	<div class="container">
 		<div class="row">
@@ -27,21 +75,21 @@ E - Sunshine
 								</div>
 							</div>
 
-							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
+							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images_2) }}">
 								<div class="wrap-pic-w pos-relative">
-									<img src="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}" alt="IMG-PRODUCT">
+									<img src="{{ asset('assets/images/products/'. $product_detail->product_images_2) }}" alt="IMG-PRODUCT">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images_2) }}">
 										<i class="fa fa-expand"></i>
 									</a>
 								</div>
 							</div>
 
-							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
+							<div class="item-slick3" data-thumb="{{ asset('assets/images/products/'. $product_detail->product_images_3) }}">
 								<div class="wrap-pic-w pos-relative">
-									<img src="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}" alt="IMG-PRODUCT">
+									<img src="{{ asset('assets/images/products/'. $product_detail->product_images_3) }}" alt="IMG-PRODUCT">
 
-									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images_1) }}">
+									<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="{{ asset('assets/images/products/'. $product_detail->product_images_3) }}">
 										<i class="fa fa-expand"></i>
 									</a>
 								</div>
@@ -114,12 +162,33 @@ E - Sunshine
 											</div>
 										</div>
 
-										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" type="submit">
+										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail" type="submit" style="border: 1px solid green;">
 											Add to cart
 										</button>
 								</div>
 							</form>
 						</div>
+					</div>
+					<!--  -->
+					<div class="promoadd m-t-50" data-max="2">
+						<p class="promoadd__ttl">
+							<em><b class="bonus_count">2</b> ưu đãi thêm</em>
+								<span>Dự kiến áp dụng đến 23:59 | 31/05</span>
+						</p>
+						<ul class="promoadd__list">
+							<li class="" data-tovalue="95" data-promotion="2438096">
+								<i class="zmdi zmdi-check-circle" style="color: #0a9588"></i>
+								<p>Balo/Túi chống sốc/Đế laptop/Miếng dán/Tai nghe dây/Tai nghe TWS AVA+/Loa di động/Loa vi tính giảm đến 50% (Không áp dụng khuyến mãi khác)</p>
+							</li>
+							<li class="" data-tovalue="80" data-promotion="2425701">
+								<i class="zmdi zmdi-check-circle" style="color: #0a9588"></i>
+								<p>Mua đồng hồ thời trang giảm 40% (không áp dụng khuyến mãi khác).</p>
+							</li>
+							<li class="" data-tovalue="80" data-promotion="2425701">
+								<i class="zmdi zmdi-check-circle" style="color: #0a9588"></i>
+								<p>Giảm từ {{ number_format(200000) }} VND đến {{ number_format(1000000) }} VND cho các đơn hàng đủ điều kiện</p>
+							</li>
+						</ul>
 					</div>
 					<!--  -->
 					<div class="flex-w flex-m p-l-100 p-t-40 respon7">
@@ -151,98 +220,25 @@ E - Sunshine
 			</p>
 		</div>	
 		
-		
 		<div class="bor10 m-t-50 p-t-43 p-b-40">
 			<!-- Tab01 -->
 			<div class="tab01">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item p-b-10">
+				<li class="nav-item p-b-10">
+						<a class="nav-link active" data-toggle="tab" href="#reviews" role="tab">Reviews ({{ $product_detail->getProdReview->count() }})
+					</li>
+					<!-- <li class="nav-item p-b-10">
 						<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
-					</li>
+					</li> -->
 
-					<li class="nav-item p-b-10">
+					<!-- <li class="nav-item p-b-10">
 						<a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional information</a>
-					</li>
-
-					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews ({{ $product_detail->getProdReview->count() }})
+					</li> -->
 				</ul>
-
 				<!-- Tab panes -->
-				<div class="tab-content p-t-43">
-					<!-- - -->
-					<div class="tab-pane fade show active" id="description" role="tabpanel">
-						<div class="how-pos2 p-lr-15-md">
-							<p class="stext-102 cl6">
-								Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim, cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
-							</p>
-							<a href=""></a>
-						</div>
-					</div>
-
-					<!-- - -->
-					<div class="tab-pane fade" id="information" role="tabpanel">
-						<div class="row">
-							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-								<ul class="p-lr-28 p-lr-15-sm">
-									<li class="flex-w flex-t p-b-7">
-										<span class="stext-102 cl3 size-205">
-											Weight
-										</span>
-
-										<span class="stext-102 cl6 size-206">
-											0.79 kg
-										</span>
-									</li>
-
-									<li class="flex-w flex-t p-b-7">
-										<span class="stext-102 cl3 size-205">
-											Dimensions
-										</span>
-
-										<span class="stext-102 cl6 size-206">
-											110 x 33 x 100 cm
-										</span>
-									</li>
-
-									<li class="flex-w flex-t p-b-7">
-										<span class="stext-102 cl3 size-205">
-											Materials
-										</span>
-
-										<span class="stext-102 cl6 size-206">
-											60% cotton
-										</span>
-									</li>
-
-									<li class="flex-w flex-t p-b-7">
-										<span class="stext-102 cl3 size-205">
-											Color
-										</span>
-
-										<span class="stext-102 cl6 size-206">
-											Black, Blue, Grey, Green, Red, White
-										</span>
-									</li>
-
-									<li class="flex-w flex-t p-b-7">
-										<span class="stext-102 cl3 size-205">
-											Size
-										</span>
-
-										<span class="stext-102 cl6 size-206">
-											XL, L, M, S
-										</span>
-									</li>
-								</ul>
-								<a href=""></a>
-							</div>
-						</div>
-					</div>
-
-					<!-- - -->
-					<div class="tab-pane fade" id="reviews" role="tabpanel">
+				<div class="tab-content p-t-43"><!-- - -->
+					<div class="tab-pane fade show active" id="reviews" role="tabpanel">
 						<div class="row">
 							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 								<div class="p-b-30 m-lr-15-sm">
@@ -321,7 +317,7 @@ E - Sunshine
 														</div>
 													</div>
 													<div class="d-flex justify-content-end">
-														<button type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn2 p-lr-15 trans-04 m-b-10" style="border: 1px soild gray"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Update' }}</button>
+														<button type="submit" class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn2 p-lr-15 trans-04 m-b-10" style="border: 1px soild gray"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Cập nhật' }}</button>
 													</div>
                                        			 </form>
 											</div>
@@ -368,6 +364,76 @@ E - Sunshine
 							</div>
 						</div>
 					</div>
+					<!-- - -->
+					<div class="tab-pane fade  " id="description" role="tabpanel">
+						<div class="how-pos2 p-lr-15-md">
+							<p class="stext-102 cl6">
+							</p>
+							<a href=""></a>
+						</div>
+					</div>
+
+					<!-- - -->
+					<!-- <div class="tab-pane fade" id="information" role="tabpanel">
+						<div class="row">
+							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
+								<ul class="p-lr-28 p-lr-15-sm">
+									<li class="flex-w flex-t p-b-7">
+										<span class="stext-102 cl3 size-205">
+											Weight
+										</span>
+
+										<span class="stext-102 cl6 size-206">
+											0.79 kg
+										</span>
+									</li>
+
+									<li class="flex-w flex-t p-b-7">
+										<span class="stext-102 cl3 size-205">
+											Dimensions
+										</span>
+
+										<span class="stext-102 cl6 size-206">
+											110 x 33 x 100 cm
+										</span>
+									</li>
+
+									<li class="flex-w flex-t p-b-7">
+										<span class="stext-102 cl3 size-205">
+											Materials
+										</span>
+
+										<span class="stext-102 cl6 size-206">
+											60% cotton
+										</span>
+									</li>
+
+									<li class="flex-w flex-t p-b-7">
+										<span class="stext-102 cl3 size-205">
+											Color
+										</span>
+
+										<span class="stext-102 cl6 size-206">
+											Black, Blue, Grey, Green, Red, White
+										</span>
+									</li>
+
+									<li class="flex-w flex-t p-b-7">
+										<span class="stext-102 cl3 size-205">
+											Size
+										</span>
+
+										<span class="stext-102 cl6 size-206">
+											XL, L, M, S
+										</span>
+									</li>
+								</ul>
+								<a href=""></a>
+							</div>
+						</div>
+					</div> -->
+
+					
 				</div>
 			</div>
 		</div>

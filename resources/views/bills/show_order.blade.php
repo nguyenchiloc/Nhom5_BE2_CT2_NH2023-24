@@ -28,7 +28,7 @@ E - Sunshine
                 <div class="col-md-12 cart">
                     <div class="title">
                         <div class="row">
-                            <div class="col"><h4><b>Your Order</b></h4></div>
+                            <div class="col"><h4><b>Đơn hàng của bạn</b></h4></div>
                             @if(!Auth::check())
                                 <div class="col align-self-center text-right text-muted"> 0 items</div>
                             @else
@@ -38,11 +38,11 @@ E - Sunshine
                     </div>   
                     <div class="row border-top border-bottom">
                         <div class="row main align-items-center">
-                            <div class="col-3" style="text-align :center;">ID Order</div>
-                            <div class="col-2" style="text-align :center;">Date</div>
-                            <div class="col-2" style="text-align :center;">Status</div> 
-                            <div class="col-2" style="text-align :center;">Detail</div> 
-                            <div class="col-3" style="text-align :center;">Total</div> 
+                            <div class="col-3" style="text-align :center;">Mã đơn</div>
+                            <div class="col-2" style="text-align :center;">Ngày đặt</div>
+                            <div class="col-2" style="text-align :center;">Trạng thái</div> 
+                            <div class="col-2" style="text-align :center;">Chi tiết</div> 
+                            <div class="col-3" style="text-align :center;">Tiền</div> 
                         </div>
                     </div>
                     @if(count($bills))
@@ -54,11 +54,21 @@ E - Sunshine
                                 </div>
                                 <div class="col-2" style="text-align :center;">{{  date('d/m/Y', strtotime($bill->date_invoice)) }}
                                 </div>
-                                <div class="col-2" style="text-align :center;">{{ $bill->status}}</div>
+                                <div class="col-2" style="text-align :center;">
+                                    @if($bill->status == 'unconfirm')
+                                        <span>Chờ xác nhận</span>
+                                    @elseif($bill->status == 'confirm')
+                                        <span>Đã xác nhận</span>
+                                    @elseif($bill->status == 'cancel')
+                                        <span>Đã hủy</span>
+                                    @else
+                                        <span>Không xác nhận</span>
+                                    @endif
+                                </div>
                                 <div class="col-2" style="text-align :center;">
                                     <form method="POST" action="{{ route('bills.show_detail', $bill->bill_id) }}">
                                         @csrf
-                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-1 mb-1 ml-3 mr-3"></i>{{ 'Detail' }}</button>
+                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-1 mb-1"></i>{{ 'Chi tiết' }}</button>
                                     </form>
                                 </div>
                                 <div class="col-3" style="text-align :center">{{ number_format($bill->total_amount) }} VND</div>
@@ -68,7 +78,7 @@ E - Sunshine
                         <!-- Paginator -->
                         {{ $bills->links() }}
                     @else    
-                    <p>You have no items in the shopping cart</p>
+                    <p>Giỏ hàng của bạn chưa có sản phẩm</p>
                     @endif
                 </div>
             </div>
@@ -79,7 +89,7 @@ E - Sunshine
                 <div class="col-md-12 cart">
                     <div class="title">
                         <div class="row">
-                            <div class="col-10"><h5><b>Detail order: {{ Auth::user()->user_id }}-{{ $bills_info->bill_id }}-{{ date('Ymd', strtotime($bills_info->date_invoice)) }}</b></h5></div>
+                            <div class="col-10"><b>Chi tiết đơn hàng: {{ Auth::user()->user_id }}-{{ $bills_info->bill_id }}-{{ date('Ymd', strtotime($bills_info->date_invoice)) }}</b></div>
                             <div class="col align-self-center text-right text-muted"> {{  $bills_detail->count() }} items</div>
                         </div>
                     </div>   
@@ -96,9 +106,9 @@ E - Sunshine
                         <div class="row border-top border-bottom">
                             <div class="row main align-items-center">
                                 <div class="col-4" style="text-align :start;"> {{ $index +1 }}.{{ $bill_detail->getDetailProduct->product_name }}</div>
-                                <div class="col-2" style="text-align :center;"> {{ $bill_detail->quantily}}</div>
+                                <div class="col-2" style="text-align :center;"> {{ $bill_detail->quantity}}</div>
                                 <div class="col-3" style="text-align :center;"> {{ number_format($bill_detail->price) }}</div>
-                                <div class="col-3" style="text-align :center;"> {{ number_format($bill_detail->price * $bill_detail->quantily) }}</div>
+                                <div class="col-3" style="text-align :center;"> {{ number_format($bill_detail->price * $bill_detail->quantity) }}</div>
                             </div>
                         </div>
                         @endforeach
@@ -114,7 +124,7 @@ E - Sunshine
                         <form action="{{ route('bills.getCancelOrder', $bills_info->bill_id) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn" @if ($bills_info->status == 'confirm') disabled @endif onclick="return confirm('Are you sure cancel?')">Cancel</button>
+                            <button type="submit" class="btn" @if ($bills_info->status == 'confirm' || $bills_info->status == 'cancel') disabled @endif onclick="return confirm('Are you sure cancel?')">Cancel</button>
                         </form>
                         <!-- Paginator -->
                     @else    

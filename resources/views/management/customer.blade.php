@@ -4,16 +4,16 @@
         <div class="col-12">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Customer</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-back-index" href="{{ route('home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tài khoản</li>
                 </ol>
-                <h5 class="font-weight-bolder mb-0">Customer Management</h5>
+                <h5 class="font-weight-bolder mb-0">Quản lý tài khoản</h5>
             </nav>
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <div class="row">
                         <div class="col-2 d-flex align-items-center">
-                            <h6>Customer customer</h6>
+                            <h6>Tất cả tài khoản</h6>
                         </div>
                         <div class="col-8 text-end">
                             @include('admin.admin-navhead')
@@ -25,15 +25,15 @@
                         <table class="table align-items-center mb-0" id="detailTable">
                             <thead>
                             <tr class="text-center">
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Avatar</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Customer</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ảnh</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">DateofBirth</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Level</th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số điện thoại</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Giới tính</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ngày sinh</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Địa chỉ</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quyền</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Trạng thái</th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                                 <th class="text-secondary opacity-7"></th>
                             </tr>
@@ -83,7 +83,7 @@
                                             </div>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <button class="cursor-pointer fas fa-save" style="border: none; background: no-repeat;font-size:24px" data-bs-toggle="tooltip" data-bs-original-title="Update" onclick="return confirm('Are you sure?')"></button>
+                                            <button class="cursor-pointer fas fa-save" style="border: none; background: no-repeat;font-size:24px" data-bs-toggle="tooltip" data-bs-original-title="Cập nhật" onclick="return confirm('Are you sure?')"></button>
                                         </td>  
                                     </form>
                                 </tr>

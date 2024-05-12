@@ -1895,7 +1895,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 /*//////////////////////////////////////////////////////////////////
-[ Table Shopping Cart ]*/
+[ Table Giỏ hàng ]*/
 
 .wrap-table-shopping-cart {
   overflow: auto;
@@ -2255,7 +2255,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .mtext-102 {
-  font-family: Poppins-SemiBold;
+  font-family: Montserrat-Bold;
   font-size: 16px;
   line-height: 1.6;
 }
@@ -2360,7 +2360,7 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .ltext-105 {
-  font-family: Poppins-Bold;
+  font-family: Montserrat-Bold;
   font-size: 50px;
   line-height: 1.1;
 }
@@ -2372,13 +2372,13 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .ltext-107 {
-  font-family: Poppins-Bold;
+  font-family: Montserrat-Bold;
   font-size: 30px;
   line-height: 1.1;
 }
 
 .ltext-108 {
-  font-family: Poppins-Bold;
+  font-family: Montserrat-Bold;
   font-size: 26px;
   line-height: 1.3846;
 }

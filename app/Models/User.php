@@ -26,6 +26,7 @@ class User extends Authenticatable
         'date',
         'address',
         'avatar',
+        'about',
         'level_id',
         'status',
     ];

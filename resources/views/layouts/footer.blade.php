@@ -3,40 +3,29 @@
 			<div class="row">
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Categories
+						Tổng đài hỗ trợ
 					</h4>
-
 					<ul>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Laptop
+								Gọi mua : 1800.1062.111 (8:00 - 17:00)
 							</a>
 						</li>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Mobile Phones
+								Gọi khiếu nại : 1800.1062.112 (8:00 - 22:00)
 							</a>
 						</li>
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Smart Watches
-							</a>
-						</li>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Headphones
-							</a>
-						</li>
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Accessories
+								Bảo hành: 1800.1062.1113 (8:00 - 21:00)
 							</a>
 						</li>
 					</ul>
 				</div>
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						Newsletter
+						YOUR EMAIL
 					</h4>
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
@@ -53,7 +42,7 @@
 				</div>
 				<div class="col-sm-6 col-lg-3 p-b-50">
 					<h4 class="stext-301 cl0 p-b-30">
-						GET IN TOUCH
+						Thông tin thêm
 					</h4>
 
 					<p class="stext-107 cl7 size-201">
