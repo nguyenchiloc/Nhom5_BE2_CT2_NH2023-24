@@ -111,11 +111,12 @@ class ProfileController extends Controller
     public function changePassword(Request $request, $id, FlasherInterface $flasher)
     {
         $user = User::findOrFail($id);
-        
-        // $request->validate([
-        //     'old_password' => 'required|confirmed|min:5',
-        //     'new_password' => 'required|confirmed|min:5'
-        // ]); tam thoi dong, check lai sau 
+
+        $this->validate($request, [
+            'old_password'          => 'required',
+            'new_password'          => 'required|min:5',
+            'password_confirmation' => 'required|same:new_password'
+        ]);
         if (!Hash::check($request->old_password, $user->password)) 
         {
             $flasher->addError("Old Password Doesn't match!");

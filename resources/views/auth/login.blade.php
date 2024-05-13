@@ -16,7 +16,7 @@
                                     @csrf
                                     <label>Email</label>
                                     <div class="mb-3">
-                                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" aria-label="Email" aria-describedby="email-addon">
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Example @mail.com" name="email" aria-label="Email" aria-describedby="email-addon">
                                         @error('email')
                                             <span class="invalid-feedback text-xs" role="alert">
                                                 <strong>{{ $message }}</strong>
