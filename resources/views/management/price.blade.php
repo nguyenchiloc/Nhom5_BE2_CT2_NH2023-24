@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Create' }}</button>
+                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Tạo' }}</button>
                                         </div>
                                     </form>
                                 </div>

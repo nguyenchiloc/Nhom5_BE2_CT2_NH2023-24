@@ -62,11 +62,11 @@ class CategoryController extends Controller
             $flasher->addError($message);
             return redirect()->route('category.index');
         }
-        // if( $data_delete->delete()) {
-        //     $flasher->addSuccess('Delete success', 'Sunshine !');
-        // }else{
-        //     $flasher->addError('Fail!');
-        // }
+        if( $data_delete->delete()) {
+            $flasher->addSuccess('Delete success', 'Sunshine !');
+        }else{
+            $flasher->addError('Fail!');
+        }
         return redirect()->route('category.index');
     }
 }

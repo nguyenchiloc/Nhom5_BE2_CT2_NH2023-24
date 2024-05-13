@@ -44,9 +44,6 @@
                                     <td>
                                         <span class="text-secondary text-xs font-weight-bold">{{ $brand->brand_description }}</span>
                                     </td>
-                                    <td>
-                                        <span class="text-secondary text-xs font-weight-bold">{{ $brand->brand_description }}</span>
-                                    </td>
                                     <td class="align-middle text-center text-sm">
                                         @if($brand->brand_status == 'InActive')
                                             <span class="badge badge-sm bg-gradient-secondary">InActive</span>
@@ -126,7 +123,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Create' }}</button>
+                                            <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4 ml-5 mr-5"><i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;{{ 'Tạo' }}</button>
                                         </div>
                                     </form>
                                 </div>
